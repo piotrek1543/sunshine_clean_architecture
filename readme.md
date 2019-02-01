@@ -1,20 +1,8 @@
-[![Build Status](https://travis-ci.org/bufferapp/android-clean-architecture-boilerplate.svg?branch=master)](https://travis-ci.org/bufferapp/android-clean-architecture-boilerplate) [![codecov](https://codecov.io/gh/bufferapp/android-clean-architecture-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/bufferapp/android-clean-architecture-boilerplate) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/278fa00f492d48a288ab64188d15fb61)](https://www.codacy.com/app/hitherejoe/android-clean-architecture-boilerplate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bufferapp/android-clean-architecture-boilerplate&amp;utm_campaign=Badge_Grade) 
+[![Build Status](https://travis-ci.org/piotrek1543/sunshine_clean_architecture.svg?branch=master)](https://travis-ci.org/piotrek1543/sunshine_clean_architecture) [![codecov](https://codecov.io/gh/piotrek1543/sunshine_clean_architecture/branch/master/graph/badge.svg)](https://codecov.io/gh/piotrek1543/sunshine_clean_architecture) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ee987d2a95e48bdb175f7b9dbcf830f)](https://www.codacy.com/app/piotrek1543/sunshine_clean_architecture?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=piotrek1543/sunshine_clean_architecture&amp;utm_campaign=Badge_Grade)
 
-# Android Clean Architecture Components Boilerplate
+# Sunshine Clean Architecture Example
 
-
-Note: This is a fork of our original [Clean Architecture Boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate), except in this repo we have switched out the MVP approach found in the presentation layer to now use ViewModels from the Android Architecture Components Library.
-The caching layer now also uses Room.
-
-
-Welcome 👋 We hope this boilerplate is not only helpful to other developers, but also that it helps to educate in the area of architecture. We created this boilerplate for a few reasons:
-
-1. To experiment with modularisation
-2. To experiment with the Android Architecture Components
-3. To share some approaches to clean architecture, especially as we've been [talking a lot about it](https://academy.realm.io/posts/converting-an-app-to-use-clean-architecture/)
-4. To use as a starting point in future projects where clean architecture feels appropriate
-
-It is written 100% in Kotlin with both UI and Unit tests - we will also be keeping this up-to-date as libraries change!
+WIP
 
 ### Disclaimer
 
