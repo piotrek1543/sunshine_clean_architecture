@@ -11,12 +11,10 @@ env:
     - ANDROID_ABI=armeabi-v7a
     - ANDROID_TAG=google_apis
     - ANDROID_TARGET=android-28
-    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+    - ADB_INSTALL_TIMEOUT=40 # minutes (2 minutes by default)
 
 android:
   components:
-    - tools
-    - platform-tools
     - android-$ANDROID_API_LEVEL_22
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     - android-$ANDROID_API_LEVEL
@@ -54,8 +52,7 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  — ./gradlew build jacocoTestReport
-  - ./gradlew build connectedAndroidTest --stacktrace
+  - ./gradlew build jacocoTestReport connectedAndroidTest --stacktrace
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
