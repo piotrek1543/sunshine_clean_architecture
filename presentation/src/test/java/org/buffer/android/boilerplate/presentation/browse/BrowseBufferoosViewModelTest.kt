@@ -21,10 +21,13 @@ import org.mockito.Mock
 @RunWith(JUnit4::class)
 class BrowseBufferoosViewModelTest {
 
-    @get:Rule var instantTaskExecutorRule = InstantTaskExecutorRule()
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Mock lateinit var getBufferoos: GetBufferoos
-    @Mock lateinit var bufferooMapper: BufferooMapper
+    @Mock
+    lateinit var getBufferoos: GetBufferoos
+    @Mock
+    lateinit var bufferooMapper: BufferooMapper
 
     @Captor
     private lateinit var captor: KArgumentCaptor<DisposableSubscriber<List<Bufferoo>>>
