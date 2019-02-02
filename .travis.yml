@@ -17,7 +17,7 @@ android:
   components:
     - tools
     - platform-tools
-    - android-$ANDROID_API_LEVEL_27
+    - android-$ANDROID_API_LEVEL_22
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     - android-$ANDROID_API_LEVEL
     # For Google APIs
