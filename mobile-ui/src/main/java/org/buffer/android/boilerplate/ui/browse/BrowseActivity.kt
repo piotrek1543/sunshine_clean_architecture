@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import dagger.android.AndroidInjection
+import dagger.android.DaggerActivity
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_browse.*
 import org.buffer.android.boilerplate.presentation.ViewModelFactory
 import org.buffer.android.boilerplate.presentation.browse.BrowseBufferoosViewModel
@@ -18,7 +20,7 @@ import org.buffer.android.boilerplate.ui.widget.empty.EmptyListener
 import org.buffer.android.boilerplate.ui.widget.error.ErrorListener
 import javax.inject.Inject
 
-class BrowseActivity : AppCompatActivity() {
+class BrowseActivity : DaggerAppCompatActivity() {
 
     @Inject lateinit var browseAdapter: BrowseAdapter
     @Inject lateinit var mapper: BufferooMapper
@@ -28,8 +30,6 @@ class BrowseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browse)
-        AndroidInjection.inject(this)
-
         browseBufferoosViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(BrowseBufferoosViewModel::class.java)
 

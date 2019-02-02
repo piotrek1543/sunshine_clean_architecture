@@ -3,6 +3,8 @@ package org.buffer.android.boilerplate.ui.injection
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import dagger.android.support.AndroidSupportInjectionModule
 import org.buffer.android.boilerplate.ui.BufferooApplication
 import org.buffer.android.boilerplate.ui.injection.module.*
@@ -19,7 +21,7 @@ import javax.inject.Singleton
         RemoteModule::class,
         UiModule::class)
 )
-interface ApplicationComponent {
+interface ApplicationComponent : AndroidInjector<DaggerApplication> {
 
     @Component.Builder
     interface Builder {
@@ -28,7 +30,5 @@ interface ApplicationComponent {
 
         fun build(): ApplicationComponent
     }
-
-    fun inject(app: BufferooApplication)
 
 }
