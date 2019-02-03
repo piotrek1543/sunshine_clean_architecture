@@ -6,7 +6,6 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.support.AndroidSupportInjectionModule
-import org.buffer.android.boilerplate.ui.BufferooApplication
 import org.buffer.android.boilerplate.ui.injection.module.*
 import javax.inject.Singleton
 

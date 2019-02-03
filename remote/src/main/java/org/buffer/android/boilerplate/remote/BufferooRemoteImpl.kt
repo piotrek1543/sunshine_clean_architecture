@@ -1,7 +1,6 @@
 package org.buffer.android.boilerplate.remote
 
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import org.buffer.android.boilerplate.data.model.BufferooEntity
 import org.buffer.android.boilerplate.data.repository.BufferooRemote
 import org.buffer.android.boilerplate.remote.mapper.BufferooEntityMapper

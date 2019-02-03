@@ -8,7 +8,6 @@ import org.buffer.android.boilerplate.domain.executor.PostExecutionThread
 import org.buffer.android.boilerplate.domain.repository.BufferooRepository
 import org.buffer.android.boilerplate.ui.injection.ApplicationComponent
 import org.buffer.android.boilerplate.ui.injection.module.*
-import org.buffer.android.boilerplate.ui.injection.scopes.PerApplication
 import org.buffer.android.boilerplate.ui.test.TestApplication
 import javax.inject.Singleton
 

@@ -20,7 +20,6 @@ class BufferooCacheImpl @Inject constructor(val bufferoosDatabase: BufferoosData
                                             private val preferencesHelper: PreferencesHelper) :
         BufferooCache {
 
-    private val EXPIRATION_TIME = (60 * 10 * 1000).toLong()
 
     /**
      * Remove all the data from all the tables in the database.
@@ -86,6 +85,10 @@ class BufferooCacheImpl @Inject constructor(val bufferoosDatabase: BufferoosData
      */
     private fun getLastCacheUpdateTimeMillis(): Long {
         return preferencesHelper.lastCacheTime
+    }
+
+    companion object {
+        private const val EXPIRATION_TIME = (60 * 10 * 1000).toLong()
     }
 
 }

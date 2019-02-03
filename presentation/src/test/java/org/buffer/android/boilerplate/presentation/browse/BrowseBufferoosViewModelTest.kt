@@ -36,7 +36,7 @@ class BrowseBufferoosViewModelTest {
 
     @Before
     fun setUp() {
-        captor = argumentCaptor<DisposableSubscriber<List<Bufferoo>>>()
+        captor = argumentCaptor()
         getBufferoos = mock()
         bufferooMapper = mock()
         bufferoosViewModel = BrowseBufferoosViewModel(getBufferoos, bufferooMapper)
