@@ -10,15 +10,15 @@ import org.buffer.android.boilerplate.ui.injection.module.*
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(
-        ApplicationModule::class,
-        AndroidSupportInjectionModule::class,
-        CacheModule::class,
-        DataModule::class,
-        DomainModule::class,
-        PresentationModule::class,
-        RemoteModule::class,
-        UiModule::class)
+@Component(modules = [
+    ApplicationModule::class,
+    AndroidSupportInjectionModule::class,
+    CacheModule::class,
+    DataModule::class,
+    DomainModule::class,
+    PresentationModule::class,
+    RemoteModule::class,
+    UiModule::class]
 )
 interface ApplicationComponent : AndroidInjector<DaggerApplication> {
 

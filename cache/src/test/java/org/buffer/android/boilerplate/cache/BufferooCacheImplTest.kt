@@ -1,7 +1,7 @@
 package org.buffer.android.boilerplate.cache
 
 import android.arch.persistence.room.Room
-import org.buffer.android.boilerplate.cache.db.BufferoosDatabase
+import org.buffer.android.boilerplate.cache.db.SunshineDatabase
 import org.buffer.android.boilerplate.cache.mapper.BufferooEntityMapper
 import org.buffer.android.boilerplate.cache.model.CachedBufferoo
 import org.buffer.android.boilerplate.cache.test.factory.BufferooFactory
@@ -17,7 +17,7 @@ import kotlin.test.assertEquals
 class BufferooCacheImplTest {
 
     private var bufferoosDatabase = Room.inMemoryDatabaseBuilder(RuntimeEnvironment.application,
-            BufferoosDatabase::class.java).allowMainThreadQueries().build()
+            SunshineDatabase::class.java).allowMainThreadQueries().build()
     private var entityMapper = BufferooEntityMapper()
     private var preferencesHelper = PreferencesHelper(RuntimeEnvironment.application)
 

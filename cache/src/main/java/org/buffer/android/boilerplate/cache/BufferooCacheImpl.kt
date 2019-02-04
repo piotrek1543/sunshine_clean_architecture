@@ -3,7 +3,7 @@ package org.buffer.android.boilerplate.cache
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
-import org.buffer.android.boilerplate.cache.db.BufferoosDatabase
+import org.buffer.android.boilerplate.cache.db.SunshineDatabase
 import org.buffer.android.boilerplate.cache.mapper.BufferooEntityMapper
 import org.buffer.android.boilerplate.cache.model.CachedBufferoo
 import org.buffer.android.boilerplate.data.model.BufferooEntity
@@ -15,7 +15,7 @@ import javax.inject.Inject
  * [BufferooCache] from the Data layer as it is that layers responsibility for defining the
  * operations in which data store implementation layers can carry out.
  */
-class BufferooCacheImpl @Inject constructor(val bufferoosDatabase: BufferoosDatabase,
+class BufferooCacheImpl @Inject constructor(val sunshineDatabase: SunshineDatabase,
                                             private val entityMapper: BufferooEntityMapper,
                                             private val preferencesHelper: PreferencesHelper) :
         BufferooCache {
@@ -26,7 +26,7 @@ class BufferooCacheImpl @Inject constructor(val bufferoosDatabase: BufferoosData
      */
     override fun clearBufferoos(): Completable {
         return Completable.defer {
-            bufferoosDatabase.cachedBufferooDao().clearBufferoos()
+            sunshineDatabase.cachedBufferooDao().clearBufferoos()
             Completable.complete()
         }
     }
@@ -37,7 +37,7 @@ class BufferooCacheImpl @Inject constructor(val bufferoosDatabase: BufferoosData
     override fun saveBufferoos(bufferoos: List<BufferooEntity>): Completable {
         return Completable.defer {
             bufferoos.forEach {
-                bufferoosDatabase.cachedBufferooDao().insertBufferoo(
+                sunshineDatabase.cachedBufferooDao().insertBufferoo(
                         entityMapper.mapToCached(it))
             }
             Completable.complete()
@@ -49,7 +49,7 @@ class BufferooCacheImpl @Inject constructor(val bufferoosDatabase: BufferoosData
      */
     override fun getBufferoos(): Flowable<List<BufferooEntity>> {
         return Flowable.defer {
-            Flowable.just(bufferoosDatabase.cachedBufferooDao().getBufferoos())
+            Flowable.just(sunshineDatabase.cachedBufferooDao().getBufferoos())
         }.map {
             it.map { entityMapper.mapFromCached(it) }
         }
@@ -60,7 +60,7 @@ class BufferooCacheImpl @Inject constructor(val bufferoosDatabase: BufferoosData
      */
     override fun isCached(): Single<Boolean> {
         return Single.defer {
-            Single.just(bufferoosDatabase.cachedBufferooDao().getBufferoos().isNotEmpty())
+            Single.just(sunshineDatabase.cachedBufferooDao().getBufferoos().isNotEmpty())
         }
     }
 

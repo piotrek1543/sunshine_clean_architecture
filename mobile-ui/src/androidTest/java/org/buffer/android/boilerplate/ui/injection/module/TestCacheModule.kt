@@ -6,7 +6,7 @@ import com.nhaarman.mockito_kotlin.mock
 import dagger.Module
 import dagger.Provides
 import org.buffer.android.boilerplate.cache.PreferencesHelper
-import org.buffer.android.boilerplate.cache.db.BufferoosDatabase
+import org.buffer.android.boilerplate.cache.db.SunshineDatabase
 import org.buffer.android.boilerplate.data.repository.BufferooCache
 import javax.inject.Singleton
 
@@ -15,10 +15,10 @@ object TestCacheModule {
 
     @Provides
     @JvmStatic
-    fun provideBufferoosDatabase(application: Application): BufferoosDatabase {
+    fun provideBufferoosDatabase(application: Application): SunshineDatabase {
         return Room.databaseBuilder(
                 application.applicationContext,
-                BufferoosDatabase::class.java, "bufferoos.db")
+                SunshineDatabase::class.java, "bufferoos.db")
                 .build()
     }
 

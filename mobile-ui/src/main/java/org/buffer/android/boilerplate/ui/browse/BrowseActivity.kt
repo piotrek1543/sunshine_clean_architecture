@@ -5,12 +5,14 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.Toast
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_browse.*
 import org.buffer.android.boilerplate.presentation.ViewModelFactory
-import org.buffer.android.boilerplate.presentation.browse.BrowseBufferoosViewModel
+import org.buffer.android.boilerplate.presentation.browse.GetWeatherDataViewModel
 import org.buffer.android.boilerplate.presentation.data.ResourceState
 import org.buffer.android.boilerplate.presentation.model.BufferooView
+import org.buffer.android.boilerplate.presentation.model.WeatherDataView
 import org.buffer.android.boilerplate.ui.R
 import org.buffer.android.boilerplate.ui.mapper.BufferooMapper
 import org.buffer.android.boilerplate.ui.widget.empty.EmptyListener
@@ -22,13 +24,13 @@ class BrowseActivity : DaggerAppCompatActivity() {
     @Inject lateinit var browseAdapter: BrowseAdapter
     @Inject lateinit var mapper: BufferooMapper
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var browseBufferoosViewModel: BrowseBufferoosViewModel
+    private lateinit var getWeatherDataViewModel: GetWeatherDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browse)
-        browseBufferoosViewModel = ViewModelProviders.of(this, viewModelFactory)
-                .get(BrowseBufferoosViewModel::class.java)
+        getWeatherDataViewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(GetWeatherDataViewModel::class.java)
 
         setupBrowseRecycler()
         setupViewListeners()
@@ -36,7 +38,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        browseBufferoosViewModel.getBufferoos().observe(this, Observer {
+        getWeatherDataViewModel.getWeatherDatas().observe(this, Observer {
             if (it != null) this.handleDataState(it.status, it.data, it.message)
         })
     }
@@ -46,7 +48,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
         recycler_browse.adapter = browseAdapter
     }
 
-    private fun handleDataState(resourceState: ResourceState, data: List<BufferooView>?,
+    private fun handleDataState(resourceState: ResourceState, data: WeatherDataView?,
                                 message: String?) {
         when (resourceState) {
             ResourceState.LOADING -> setupScreenForLoadingState()
@@ -62,11 +64,11 @@ class BrowseActivity : DaggerAppCompatActivity() {
         view_error.visibility = View.GONE
     }
 
-    private fun setupScreenForSuccess(data: List<BufferooView>?) {
+    private fun setupScreenForSuccess(data: WeatherDataView?) {
         view_error.visibility = View.GONE
         progress.visibility = View.GONE
-        if (data != null && data.isNotEmpty()) {
-            updateListView(data)
+        if (data != null) {
+            Toast.makeText(this@BrowseActivity, "${data.cod} ${data.cnt} ${data.message}", Toast.LENGTH_LONG).show()
             recycler_browse.visibility = View.VISIBLE
         } else {
             view_empty.visibility = View.VISIBLE
@@ -83,6 +85,8 @@ class BrowseActivity : DaggerAppCompatActivity() {
         recycler_browse.visibility = View.GONE
         view_empty.visibility = View.GONE
         view_error.visibility = View.VISIBLE
+        Toast.makeText(this@BrowseActivity, message, Toast.LENGTH_LONG).show()
+
     }
 
     private fun setupViewListeners() {
@@ -92,13 +96,13 @@ class BrowseActivity : DaggerAppCompatActivity() {
 
     private val emptyListener = object : EmptyListener {
         override fun onCheckAgainClicked() {
-            browseBufferoosViewModel.fetchBufferoos()
+            getWeatherDataViewModel.fetchWeatherDatas()
         }
     }
 
     private val errorListener = object : ErrorListener {
         override fun onTryAgainClicked() {
-            browseBufferoosViewModel.fetchBufferoos()
+            getWeatherDataViewModel.fetchWeatherDatas()
         }
     }
 

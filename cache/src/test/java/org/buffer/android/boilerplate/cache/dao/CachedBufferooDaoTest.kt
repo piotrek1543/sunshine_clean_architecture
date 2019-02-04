@@ -1,7 +1,7 @@
 package org.buffer.android.boilerplate.cache.dao
 
 import android.arch.persistence.room.Room
-import org.buffer.android.boilerplate.cache.db.BufferoosDatabase
+import org.buffer.android.boilerplate.cache.db.SunshineDatabase
 import org.buffer.android.boilerplate.cache.test.factory.BufferooFactory
 import org.junit.After
 import org.junit.Before
@@ -13,28 +13,28 @@ import org.robolectric.RuntimeEnvironment
 @RunWith(RobolectricTestRunner::class)
 open class CachedBufferooDaoTest {
 
-    private lateinit var bufferoosDatabase: BufferoosDatabase
+    private lateinit var sunshineDatabase: SunshineDatabase
 
     @Before
     fun initDb() {
-        bufferoosDatabase = Room.inMemoryDatabaseBuilder(
+        sunshineDatabase = Room.inMemoryDatabaseBuilder(
                 RuntimeEnvironment.application.baseContext,
-                BufferoosDatabase::class.java)
+                SunshineDatabase::class.java)
                 .allowMainThreadQueries()
                 .build()
     }
 
     @After
     fun closeDb() {
-        bufferoosDatabase.close()
+        sunshineDatabase.close()
     }
 
     @Test
     fun insertBufferoosSavesData() {
         val cachedBufferoo = BufferooFactory.makeCachedBufferoo()
-        bufferoosDatabase.cachedBufferooDao().insertBufferoo(cachedBufferoo)
+        sunshineDatabase.cachedBufferooDao().insertBufferoo(cachedBufferoo)
 
-        val bufferoos = bufferoosDatabase.cachedBufferooDao().getBufferoos()
+        val bufferoos = sunshineDatabase.cachedBufferooDao().getBufferoos()
         assert(bufferoos.isNotEmpty())
     }
 
@@ -43,9 +43,9 @@ open class CachedBufferooDaoTest {
         val cachedBufferoos = BufferooFactory.makeCachedBufferooList(5)
 
         cachedBufferoos.forEach {
-            bufferoosDatabase.cachedBufferooDao().insertBufferoo(it) }
+            sunshineDatabase.cachedBufferooDao().insertBufferoo(it) }
 
-        val retrievedBufferoos = bufferoosDatabase.cachedBufferooDao().getBufferoos()
+        val retrievedBufferoos = sunshineDatabase.cachedBufferooDao().getBufferoos()
         assert(retrievedBufferoos == cachedBufferoos.sortedWith(compareBy({ it.id }, { it.id })))
     }
 
