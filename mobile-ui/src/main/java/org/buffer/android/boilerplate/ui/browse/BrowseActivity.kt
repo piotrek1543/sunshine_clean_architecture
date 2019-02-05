@@ -38,7 +38,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        getWeatherDataViewModel.getWeatherDatas().observe(this, Observer {
+        getWeatherDataViewModel.getWeatherData().observe(this, Observer {
             if (it != null) this.handleDataState(it.status, it.data, it.message)
         })
     }
@@ -96,13 +96,13 @@ class BrowseActivity : DaggerAppCompatActivity() {
 
     private val emptyListener = object : EmptyListener {
         override fun onCheckAgainClicked() {
-            getWeatherDataViewModel.fetchWeatherDatas()
+            getWeatherDataViewModel.fetchWeatherData()
         }
     }
 
     private val errorListener = object : ErrorListener {
         override fun onTryAgainClicked() {
-            getWeatherDataViewModel.fetchWeatherDatas()
+            getWeatherDataViewModel.fetchWeatherData()
         }
     }
 

@@ -6,28 +6,28 @@ import io.reactivex.Single
 import org.buffer.android.boilerplate.data.model.WeatherDataEntity
 
 /**
- * Interface defining methods for the caching of Bufferroos. This is to be implemented by the
+ * Interface defining methods for the caching of WeatherData. This is to be implemented by the
  * cache layer, using this interface as a way of communicating.
  */
 interface WeatherDataCache {
 
     /**
-     * Clear all WeatherDatas from the cache.
+     * Clear all WeatherData from the cache.
      */
     fun clearWeatherData(): Completable
 
     /**
-     * Save a given list of WeatherDatas to the cache.
+     * Save a given list of WeatherData to the cache.
      */
     fun saveWeatherData(weatherData: WeatherDataEntity): Completable
 
     /**
-     * Retrieve a list of WeatherDatas, from the cache.
+     * Retrieve a list of WeatherData, from the cache.
      */
     fun getWeatherData(): Flowable<WeatherDataEntity>
 
     /**
-     * Check whether there is a list of WeatherDatas stored in the cache.
+     * Check whether there is a list of WeatherData stored in the cache.
      *
      * @return true if the list is cached, otherwise false
      */

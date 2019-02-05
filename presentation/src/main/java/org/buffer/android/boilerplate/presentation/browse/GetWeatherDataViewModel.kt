@@ -13,28 +13,28 @@ import org.buffer.android.boilerplate.presentation.model.WeatherDataView
 import javax.inject.Inject
 
 open class GetWeatherDataViewModel @Inject internal constructor(
-        private val getWeatherDatas: GetWeatherData,
+        private val getWeatherData: GetWeatherData,
         private val weatherDataMapper: WeatherDataMapper) : ViewModel() {
 
     private val weatherDataLiveData: MutableLiveData<Resource<WeatherDataView>> =
             MutableLiveData()
 
     init {
-        fetchWeatherDatas()
+        fetchWeatherData()
     }
 
     override fun onCleared() {
-        getWeatherDatas.dispose()
+        getWeatherData.dispose()
         super.onCleared()
     }
 
-    fun getWeatherDatas(): LiveData<Resource<WeatherDataView>> {
+    fun getWeatherData(): LiveData<Resource<WeatherDataView>> {
         return weatherDataLiveData
     }
 
-    fun fetchWeatherDatas() {
+    fun fetchWeatherData() {
         weatherDataLiveData.postValue(Resource(ResourceState.LOADING, null, null))
-        return getWeatherDatas.execute(WeatherDataSubscriber())
+        return getWeatherData.execute(WeatherDataSubscriber())
     }
 
     inner class WeatherDataSubscriber: DisposableSubscriber<WeatherData>() {

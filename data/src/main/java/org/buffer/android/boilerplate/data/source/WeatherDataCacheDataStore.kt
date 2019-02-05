@@ -16,7 +16,7 @@ open class WeatherDataCacheDataStore @Inject constructor(private val weatherData
         WeatherDataDataStore {
 
     /**
-     * Clear all WeatherDatas from the cache
+     * Clear WeatherData from the cache
      */
     override fun clearWeatherData(): Completable {
         return weatherDataCache.clearWeatherData()
