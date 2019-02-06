@@ -14,7 +14,7 @@ android {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
         targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
         multiDexEnabled = true
-        testInstrumentationRunner "org.buffer.android.boilerplate.ui.test.TestRunner"
+        testInstrumentationRunner "com.piotrek1543.android.boilerplate.ui.test.TestRunner"
     }
 
     buildTypes {
