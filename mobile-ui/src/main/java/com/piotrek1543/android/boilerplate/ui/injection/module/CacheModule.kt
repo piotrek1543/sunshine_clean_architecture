@@ -3,10 +3,10 @@ package com.piotrek1543.android.boilerplate.ui.injection.module
 import android.app.Application
 import android.arch.persistence.room.Room
 import com.piotrek1543.android.boilerplate.cache.BufferooCacheImpl
-import com.piotrek1543.android.boilerplate.cache.WeatherDataCacheImpl
+import com.piotrek1543.android.boilerplate.cache.ForecastCacheImpl
 import com.piotrek1543.android.boilerplate.cache.db.SunshineDatabase
 import com.piotrek1543.android.boilerplate.data.repository.BufferooCache
-import com.piotrek1543.android.boilerplate.data.repository.WeatherDataCache
+import com.piotrek1543.android.boilerplate.data.repository.ForecastCache
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -39,5 +39,5 @@ abstract class CacheModule {
     abstract fun bindBufferooCache(bufferooCacheImpl: BufferooCacheImpl): BufferooCache
 
     @Binds
-    abstract fun bindWeatherDataCache(weatherDataCacheImple: WeatherDataCacheImpl): WeatherDataCache
+    abstract fun bindForecastCache(forecastCacheImpl: ForecastCacheImpl): ForecastCache
 }

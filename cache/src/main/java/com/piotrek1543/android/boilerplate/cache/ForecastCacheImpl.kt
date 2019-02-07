@@ -1,60 +1,60 @@
 package com.piotrek1543.android.boilerplate.cache
 
 import com.piotrek1543.android.boilerplate.cache.db.SunshineDatabase
-import com.piotrek1543.android.boilerplate.cache.mapper.WeatherDataEntityMapper
-import com.piotrek1543.android.boilerplate.data.model.WeatherDataEntity
-import com.piotrek1543.android.boilerplate.data.repository.WeatherDataCache
+import com.piotrek1543.android.boilerplate.cache.mapper.ForecastEntityMapper
+import com.piotrek1543.android.boilerplate.data.model.ForecastEntity
+import com.piotrek1543.android.boilerplate.data.repository.ForecastCache
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
 
 /**
- * Cached implementation for retrieving and saving WeatherData instances. This class implements the
- * [WeatherDataCache] from the Data layer as it is that layers responsibility for defining the
+ * Cached implementation for retrieving and saving Forecast instances. This class implements the
+ * [ForecastCache] from the Data layer as it is that layers responsibility for defining the
  * operations in which data store implementation layers can carry out.
  */
-class WeatherDataCacheImpl @Inject constructor(val sunshineDatabase: SunshineDatabase,
-                                               private val entityMapper: WeatherDataEntityMapper,
-                                               private val preferencesHelper: PreferencesHelper) :
-        WeatherDataCache {
+class ForecastCacheImpl @Inject constructor(val sunshineDatabase: SunshineDatabase,
+                                            private val entityMapper: ForecastEntityMapper,
+                                            private val preferencesHelper: PreferencesHelper) :
+        ForecastCache {
 
     /**
      * Remove all the data from all the tables in the database.
      */
-    override fun clearWeatherData(): Completable {
+    override fun clearForecast(): Completable {
         return Completable.defer {
-            sunshineDatabase.cachedWeatherDataDao().clearWeatherData()
+            sunshineDatabase.cachedForecastDao().clearForecast()
             Completable.complete()
         }
     }
 
     /**
-     * Save the given list of [WeatherDataEntity] instances to the database.
+     * Save the given list of [ForecastEntity] instances to the database.
      */
-    override fun saveWeatherData(weatherData: WeatherDataEntity): Completable {
+    override fun saveForecast(forecast: ForecastEntity): Completable {
         return Completable.defer {
-            sunshineDatabase.cachedWeatherDataDao().insertWeatherData(
-                    entityMapper.mapToCached(weatherData))
+            sunshineDatabase.cachedForecastDao().insertForecast(
+                    entityMapper.mapToCached(forecast))
             Completable.complete()
         }
     }
 
     /**
-     * Retrieve a list of [WeatherDataEntity] instances from the database.
+     * Retrieve a list of [ForecastEntity] instances from the database.
      */
-    override fun getWeatherData(): Flowable<WeatherDataEntity> {
+    override fun getForecast(): Flowable<ForecastEntity> {
         return Flowable.defer {
-            Flowable.just(sunshineDatabase.cachedWeatherDataDao().getWeatherData())
+            Flowable.just(sunshineDatabase.cachedForecastDao().getForecast())
         }.map { entityMapper.mapFromCached(it) }
     }
 
     /**
-     * Check whether there are instances of [CachedWeatherData] stored in the cache.
+     * Check whether there are instances of [CachedForecast] stored in the cache.
      */
     override fun isCached(): Single<Boolean> {
         return Single.defer {
-            Single.just(sunshineDatabase.cachedWeatherDataDao().getWeatherData() == null)
+            Single.just(sunshineDatabase.cachedForecastDao().getForecast() == null)
         }
     }
 

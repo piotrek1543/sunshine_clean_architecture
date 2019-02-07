@@ -1,6 +1,6 @@
 package com.piotrek1543.android.boilerplate.data.repository
 
-import com.piotrek1543.android.boilerplate.data.model.WeatherDataEntity
+import com.piotrek1543.android.boilerplate.data.model.ForecastEntity
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -10,13 +10,13 @@ import io.reactivex.Single
  * This is to be implemented by external data source layers, setting the requirements for the
  * operations that need to be implemented
  */
-interface WeatherDataDataStore {
+interface ForecastDataStore {
 
-    fun clearWeatherData(): Completable
+    fun clearForecast(): Completable
 
-    fun saveWeatherData(weatherData: WeatherDataEntity): Completable
+    fun saveForecast(forecast: ForecastEntity): Completable
 
-    fun getWeatherData(): Flowable<WeatherDataEntity>
+    fun getForecast(): Flowable<ForecastEntity>
 
     fun isCached(): Single<Boolean>
 

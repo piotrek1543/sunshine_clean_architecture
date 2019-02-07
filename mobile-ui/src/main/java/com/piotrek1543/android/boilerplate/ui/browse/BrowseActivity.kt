@@ -7,10 +7,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.piotrek1543.android.boilerplate.presentation.ViewModelFactory
-import com.piotrek1543.android.boilerplate.presentation.browse.GetWeatherDataViewModel
+import com.piotrek1543.android.boilerplate.presentation.browse.GetForecastViewModel
 import com.piotrek1543.android.boilerplate.presentation.data.ResourceState
 import com.piotrek1543.android.boilerplate.presentation.model.BufferooView
-import com.piotrek1543.android.boilerplate.presentation.model.WeatherDataView
+import com.piotrek1543.android.boilerplate.presentation.model.ForecastView
 import com.piotrek1543.android.boilerplate.ui.R
 import com.piotrek1543.android.boilerplate.ui.mapper.BufferooMapper
 import com.piotrek1543.android.boilerplate.ui.widget.empty.EmptyListener
@@ -27,13 +27,13 @@ class BrowseActivity : DaggerAppCompatActivity() {
     lateinit var mapper: BufferooMapper
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var getWeatherDataViewModel: GetWeatherDataViewModel
+    private lateinit var getForecastViewModel: GetForecastViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browse)
-        getWeatherDataViewModel = ViewModelProviders.of(this, viewModelFactory)
-                .get(GetWeatherDataViewModel::class.java)
+        getForecastViewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(GetForecastViewModel::class.java)
 
         setupBrowseRecycler()
         setupViewListeners()
@@ -41,7 +41,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        getWeatherDataViewModel.getWeatherData().observe(this, Observer {
+        getForecastViewModel.getForecast().observe(this, Observer {
             if (it != null) this.handleDataState(it.status, it.data, it.message)
         })
     }
@@ -51,7 +51,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
         recycler_browse.adapter = browseAdapter
     }
 
-    private fun handleDataState(resourceState: ResourceState, data: WeatherDataView?,
+    private fun handleDataState(resourceState: ResourceState, data: ForecastView?,
                                 message: String?) {
         when (resourceState) {
             ResourceState.LOADING -> setupScreenForLoadingState()
@@ -67,7 +67,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
         view_error.visibility = View.GONE
     }
 
-    private fun setupScreenForSuccess(data: WeatherDataView?) {
+    private fun setupScreenForSuccess(data: ForecastView?) {
         view_error.visibility = View.GONE
         progress.visibility = View.GONE
         if (data != null) {
@@ -99,13 +99,13 @@ class BrowseActivity : DaggerAppCompatActivity() {
 
     private val emptyListener = object : EmptyListener {
         override fun onCheckAgainClicked() {
-            getWeatherDataViewModel.fetchWeatherData()
+            getForecastViewModel.fetchForecast()
         }
     }
 
     private val errorListener = object : ErrorListener {
         override fun onTryAgainClicked() {
-            getWeatherDataViewModel.fetchWeatherData()
+            getForecastViewModel.fetchForecast()
         }
     }
 

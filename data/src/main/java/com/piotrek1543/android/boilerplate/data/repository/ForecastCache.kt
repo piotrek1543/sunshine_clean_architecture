@@ -1,33 +1,33 @@
 package com.piotrek1543.android.boilerplate.data.repository
 
-import com.piotrek1543.android.boilerplate.data.model.WeatherDataEntity
+import com.piotrek1543.android.boilerplate.data.model.ForecastEntity
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 
 /**
- * Interface defining methods for the caching of WeatherData. This is to be implemented by the
+ * Interface defining methods for the caching of Forecast. This is to be implemented by the
  * cache layer, using this interface as a way of communicating.
  */
-interface WeatherDataCache {
+interface ForecastCache {
 
     /**
-     * Clear all WeatherData from the cache.
+     * Clear all Forecast from the cache.
      */
-    fun clearWeatherData(): Completable
+    fun clearForecast(): Completable
 
     /**
-     * Save a given list of WeatherData to the cache.
+     * Save a given list of Forecast to the cache.
      */
-    fun saveWeatherData(weatherData: WeatherDataEntity): Completable
+    fun saveForecast(forecast: ForecastEntity): Completable
 
     /**
-     * Retrieve a list of WeatherData, from the cache.
+     * Retrieve a list of Forecast, from the cache.
      */
-    fun getWeatherData(): Flowable<WeatherDataEntity>
+    fun getForecast(): Flowable<ForecastEntity>
 
     /**
-     * Check whether there is a list of WeatherData stored in the cache.
+     * Check whether there is a list of Forecast stored in the cache.
      *
      * @return true if the list is cached, otherwise false
      */

@@ -2,13 +2,13 @@ package com.piotrek1543.android.boilerplate.cache.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import com.piotrek1543.android.boilerplate.cache.db.constants.WeatherDataConstants
+import com.piotrek1543.android.boilerplate.cache.db.constants.ForecastConstants
 
 /**
- * Model used solely for the caching of a WeatherData
+ * Model used solely for the caching of a Forecast
  */
-@Entity(tableName = WeatherDataConstants.TABLE_NAME)
-data class CachedWeatherData(
+@Entity(tableName = ForecastConstants.TABLE_NAME)
+data class CachedForecast(
         @PrimaryKey(autoGenerate = true)
         var id: Int = 0,
         //var cachedCity: CachedCity? = null,

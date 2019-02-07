@@ -1,9 +1,9 @@
 package com.piotrek1543.android.boilerplate.domain.model
 
 /**
- * Representation for a [WeatherData] fetched from an external layer data source
+ * Representation for a [Forecast] fetched from an external layer data source
  */
-data class WeatherData (
+data class Forecast (
         val city: City? = null,
         val cod: String? = null,
         val message: Double? = null,

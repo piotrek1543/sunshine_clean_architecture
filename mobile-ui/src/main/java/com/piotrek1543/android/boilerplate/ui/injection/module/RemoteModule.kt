@@ -1,7 +1,7 @@
 package com.piotrek1543.android.boilerplate.ui.injection.module
 
 import com.piotrek1543.android.boilerplate.data.repository.BufferooRemote
-import com.piotrek1543.android.boilerplate.data.repository.WeatherDataRemote
+import com.piotrek1543.android.boilerplate.data.repository.ForecastRemote
 import com.piotrek1543.android.boilerplate.remote.*
 import com.piotrek1543.android.boilerplate.ui.BuildConfig
 import dagger.Binds
@@ -37,5 +37,5 @@ abstract class RemoteModule {
     abstract fun bindBufferooRemote(bufferooRemoteImpl: BufferooRemoteImpl): BufferooRemote
 
     @Binds
-    abstract fun bindWeatherDataRemote(weatherDataRemoteImpl: WeatherDataRemoteImpl): WeatherDataRemote
+    abstract fun bindForecastRemote(forecastRemoteImpl: ForecastRemoteImpl): ForecastRemote
 }

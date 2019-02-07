@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.piotrek1543.android.boilerplate.presentation.ViewModelFactory
 import com.piotrek1543.android.boilerplate.presentation.browse.BrowseBufferoosViewModel
-import com.piotrek1543.android.boilerplate.presentation.browse.GetWeatherDataViewModel
+import com.piotrek1543.android.boilerplate.presentation.browse.GetForecastViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -32,8 +32,8 @@ abstract class PresentationModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(GetWeatherDataViewModel::class)
-    abstract fun bindGetWeatherDataViewModel(viewModel: GetWeatherDataViewModel): ViewModel
+    @ViewModelKey(GetForecastViewModel::class)
+    abstract fun bindGetForecastViewModel(viewModel: GetForecastViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
