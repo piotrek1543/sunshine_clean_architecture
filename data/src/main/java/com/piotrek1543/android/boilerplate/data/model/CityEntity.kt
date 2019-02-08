@@ -7,5 +7,6 @@ data class CityEntity(
         val id: Int?,
         val name: String?,
         val coordEntity: CoordEntity? = null,
-        val country: String? = null
+        val country: String? = null,
+        val population: Int? = null
 )

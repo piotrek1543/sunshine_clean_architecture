@@ -18,6 +18,7 @@ open class CityMapper @Inject constructor(private val coordMapper: CoordMapper) 
         return City(id = type.id,
                 name = type.name,
                 country = type.country,
+                population = type.population,
                 coord = type.coordEntity?.let { coordMapper.mapFromEntity(it) }
         )
     }
@@ -30,6 +31,7 @@ open class CityMapper @Inject constructor(private val coordMapper: CoordMapper) 
                 id = type.id,
                 name = type.name,
                 country = type.country,
+                population = type.population,
                 coordEntity = type.coord?.let { coordMapper.mapToEntity(it) }
         )
     }

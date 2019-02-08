@@ -9,7 +9,8 @@ import javax.inject.Inject
  * this later and the Data layer
  */
 open class ForecastEntityMapper @Inject constructor(
-        val cityEntityMapper: CityEntityMapper
+        private val cityEntityMapper: CityEntityMapper,
+        val listEntityMapper: ListEntityMapper
 ) : EntityMapper<ForecastModel, ForecastEntity> {
 
     /**
@@ -20,7 +21,8 @@ open class ForecastEntityMapper @Inject constructor(
                 cod = type.cod,
                 cnt = type.cnt,
                 message = type.message,
-                cityEntity = type.city?.let { cityEntityMapper.mapFromRemote(it) }
+                cityEntity = type.city?.let { cityEntityMapper.mapFromRemote(it) },
+                listEntity = type.list?.map { listModel -> let { listEntityMapper.mapFromRemote(listModel) } }
         )
     }
 

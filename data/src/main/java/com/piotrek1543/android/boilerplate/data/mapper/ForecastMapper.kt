@@ -9,7 +9,9 @@ import javax.inject.Inject
  * Map a [ForecastEntity] to and from a [Forecast] instance when data is moving between
  * this later and the Domain layer
  */
-open class ForecastMapper @Inject constructor(val cityMapper: CityMapper) : Mapper<ForecastEntity, Forecast> {
+open class ForecastMapper @Inject constructor(
+        private val cityMapper: CityMapper,
+        private val listMapper: ListMapper) : Mapper<ForecastEntity, Forecast> {
 
     /**
      * Map a [ForecastEntity] instance to a [Forecast] instance
@@ -18,6 +20,7 @@ open class ForecastMapper @Inject constructor(val cityMapper: CityMapper) : Mapp
         return Forecast(cod = type.cod,
                 cnt = type.cnt,
                 message = type.message,
+                list = type.listEntity?.map { listModel -> let { listMapper.mapFromEntity(listModel) } },
                 city = type.cityEntity?.let { cityMapper.mapFromEntity(it) }
         )
     }
@@ -30,6 +33,7 @@ open class ForecastMapper @Inject constructor(val cityMapper: CityMapper) : Mapp
                 cod = type.cod,
                 cnt = type.cnt,
                 message = type.message,
+                listEntity = type.list?.map { listModel -> let { listMapper.mapToEntity(listModel) } },
                 cityEntity = type.city?.let { cityMapper.mapToEntity(it) }
         )
     }
