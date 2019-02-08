@@ -8,13 +8,20 @@ import javax.inject.Inject
  * Map a [ForecastModel] to and from a [ForecastEntity] instance when data is moving between
  * this later and the Data layer
  */
-open class ForecastEntityMapper @Inject constructor() : EntityMapper<ForecastModel, ForecastEntity> {
+open class ForecastEntityMapper @Inject constructor(
+        val cityEntityMapper: CityEntityMapper
+) : EntityMapper<ForecastModel, ForecastEntity> {
 
     /**
      * Map an instance of a [ForecastModel] to a [ForecastEntity] model
      */
     override fun mapFromRemote(type: ForecastModel): ForecastEntity {
-        return ForecastEntity(cod = type.cod, cnt = type.cnt, message = type.message)
+        return ForecastEntity(
+                cod = type.cod,
+                cnt = type.cnt,
+                message = type.message,
+                cityEntity = type.city?.let { cityEntityMapper.mapFromRemote(it) }
+        )
     }
 
 }

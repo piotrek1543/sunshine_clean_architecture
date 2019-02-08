@@ -14,7 +14,7 @@ open class ForecastMapper @Inject constructor() : Mapper<ForecastView, Forecast>
      * Map a [Forecast] instance to a [ForecastView] instance
      */
     override fun mapToView(type: Forecast): ForecastView {
-        return ForecastView(cod = type.cod, cnt = type.cnt, message = type.message)
+        return ForecastView(cod = type.cod, cnt = type.cnt, message = type.message, city = type.city)
     }
 
 

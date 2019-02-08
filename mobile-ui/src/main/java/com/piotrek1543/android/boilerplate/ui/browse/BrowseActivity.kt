@@ -71,7 +71,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
         view_error.visibility = View.GONE
         progress.visibility = View.GONE
         if (data != null) {
-            supportActionBar?.title = "${data.cod} ${data.cnt} ${data.message}"
+            supportActionBar?.title = "${data.cod} ${data.cnt} ${data.message} ${data.city?.coord?.toString()}"
             recycler_browse.visibility = View.VISIBLE
         } else {
             view_empty.visibility = View.VISIBLE

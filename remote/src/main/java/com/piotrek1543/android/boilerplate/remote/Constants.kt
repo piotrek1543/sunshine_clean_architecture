@@ -8,7 +8,7 @@ package com.piotrek1543.android.boilerplate.remote
 
 object Constants {
 
-    val QUERY = "Poznan"
+    val QUERY = "Poznań"
     val MODE = "json"
     val UNITS = "metric"
     val TYPE = "hour"
