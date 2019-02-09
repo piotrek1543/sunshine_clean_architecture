@@ -14,16 +14,12 @@ open class CoordMapper @Inject constructor() : Mapper<CoordEntity, Coord> {
     /**
      * Map a [CoordEntity] instance to a [Coord] instance
      */
-    override fun mapFromEntity(type: CoordEntity): Coord {
-        return Coord(lat = type.lat, lon = type.lon)
-    }
+    override fun mapFromEntity(type: CoordEntity): Coord = Coord(lat = type.lat, lon = type.lon)
 
     /**
      * Map a [Coord] instance to a [CoordEntity] instance
      */
-    override fun mapToEntity(type: Coord): CoordEntity {
-        return CoordEntity(lat = type.lat, lon = type.lon)
-    }
+    override fun mapToEntity(type: Coord): CoordEntity = CoordEntity(lat = type.lat, lon = type.lon)
 
 
 }

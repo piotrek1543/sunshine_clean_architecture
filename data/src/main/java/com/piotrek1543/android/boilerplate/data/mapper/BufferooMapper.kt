@@ -14,16 +14,12 @@ open class BufferooMapper @Inject constructor() : Mapper<BufferooEntity, Buffero
     /**
      * Map a [BufferooEntity] instance to a [Bufferoo] instance
      */
-    override fun mapFromEntity(type: BufferooEntity): Bufferoo {
-        return Bufferoo(type.id, type.name, type.title, type.avatar)
-    }
+    override fun mapFromEntity(type: BufferooEntity): Bufferoo = Bufferoo(type.id, type.name, type.title, type.avatar)
 
     /**
      * Map a [Bufferoo] instance to a [BufferooEntity] instance
      */
-    override fun mapToEntity(type: Bufferoo): BufferooEntity {
-        return BufferooEntity(type.id, type.name, type.title, type.avatar)
-    }
+    override fun mapToEntity(type: Bufferoo): BufferooEntity = BufferooEntity(type.id, type.name, type.title, type.avatar)
 
 
 }

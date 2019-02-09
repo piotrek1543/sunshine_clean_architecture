@@ -13,8 +13,6 @@ open class CoordEntityMapper @Inject constructor() : EntityMapper<CoordModel, Co
     /**
      * Map an instance of a [CoordModel] to a [CoordEntity] model
      */
-    override fun mapFromRemote(type: CoordModel): CoordEntity {
-        return CoordEntity(lat = type.lat, lon = type.lon)
-    }
+    override fun mapFromRemote(type: CoordModel): CoordEntity = CoordEntity(lat = type.lat, lon = type.lon)
 
 }

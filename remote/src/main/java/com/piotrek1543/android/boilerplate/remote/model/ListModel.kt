@@ -23,9 +23,9 @@ class ListModel {
     @SerializedName("rainModel")
     @Expose
     var rainModel: RainModel? = null
-    @SerializedName("snow")
+    @SerializedName("snowModel")
     @Expose
-    var snow: SnowModel? = null
+    var snowModel: SnowModel? = null
     @SerializedName("sys")
     @Expose
     var podModel: PodModel? = null

@@ -14,14 +14,12 @@ open class CityMapper @Inject constructor(private val coordMapper: CoordMapper) 
     /**
      * Map a [CityEntity] instance to a [City] instance
      */
-    override fun mapFromEntity(type: CityEntity): City {
-        return City(id = type.id,
-                name = type.name,
-                country = type.country,
-                population = type.population,
-                coord = type.coordEntity?.let { coordMapper.mapFromEntity(it) }
-        )
-    }
+    override fun mapFromEntity(type: CityEntity): City = City(id = type.id,
+            name = type.name,
+            country = type.country,
+            population = type.population,
+            coord = type.coordEntity?.let { coordMapper.mapFromEntity(it) }
+    )
 
     /**
      * Map a [City] instance to a [CityEntity] instance

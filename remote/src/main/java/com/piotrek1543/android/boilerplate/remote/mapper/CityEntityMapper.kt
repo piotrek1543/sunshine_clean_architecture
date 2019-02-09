@@ -13,13 +13,11 @@ open class CityEntityMapper @Inject constructor(private val coordEntityMapper: C
     /**
      * Map an instance of a [CityModel] to a [CityEntity] model
      */
-    override fun mapFromRemote(type: CityModel): CityEntity {
-        return CityEntity(
-                id = type.id,
-                name = type.name,
-                country = type.country,
-                population = type.population,
-                coordEntity = type.coord?.let { coordEntityMapper.mapFromRemote(it) })
-    }
+    override fun mapFromRemote(type: CityModel): CityEntity = CityEntity(
+            id = type.id,
+            name = type.name,
+            country = type.country,
+            population = type.population,
+            coordEntity = type.coord?.let { coordEntityMapper.mapFromRemote(it) })
 
 }

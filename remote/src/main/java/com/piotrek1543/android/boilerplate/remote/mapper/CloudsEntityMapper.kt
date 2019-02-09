@@ -8,9 +8,7 @@ import javax.inject.Inject
  * Map a [CloudsModel] to and from a [CloudsEntity] instance when data is moving between
  * this later and the Data layer
  */
-open class CloudsEntityMapper @Inject constructor(
-        private val rainEntityMapper: RainEntityMapper
-) : EntityMapper<CloudsModel, CloudsEntity> {
+open class CloudsEntityMapper @Inject constructor() : EntityMapper<CloudsModel, CloudsEntity> {
 
     /**
      * Map an instance of a [CloudsModel] to a [CloudsEntity] model
