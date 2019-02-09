@@ -2,7 +2,6 @@ package com.piotrek1543.android.boilerplate.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.piotrek1543.android.boilerplate.data.model.WindEntity
 
 class ListModel {
 
@@ -20,10 +19,10 @@ class ListModel {
     var cloudsModel: CloudsModel? = null
     @SerializedName("wind")
     @Expose
-    var windEntity: WindEntity? = null
-    @SerializedName("rain")
+    var windModel: WindModel? = null
+    @SerializedName("rainModel")
     @Expose
-    var rain: RainModel? = null
+    var rainModel: RainModel? = null
     @SerializedName("snow")
     @Expose
     var snow: SnowModel? = null
