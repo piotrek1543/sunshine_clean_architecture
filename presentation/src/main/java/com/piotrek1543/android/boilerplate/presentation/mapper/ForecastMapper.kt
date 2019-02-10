@@ -1,6 +1,7 @@
 package com.piotrek1543.android.boilerplate.presentation.mapper
 
 import com.piotrek1543.android.boilerplate.domain.model.Forecast
+import com.piotrek1543.android.boilerplate.domain.model.List
 import com.piotrek1543.android.boilerplate.presentation.model.ForecastView
 import javax.inject.Inject
 
@@ -13,9 +14,7 @@ open class ForecastMapper @Inject constructor() : Mapper<ForecastView, Forecast>
     /**
      * Map a [Forecast] instance to a [ForecastView] instance
      */
-    override fun mapToView(type: Forecast): ForecastView {
-        return ForecastView(cod = type.cod, cnt = type.cnt, message = type.message, city = type.city)
-    }
-
+    override fun mapToView(type: List): ForecastView =
+            ForecastView(temp = type.main?.tempMax ?: 0.0, description = type.dtTxt ?: "")
 
 }

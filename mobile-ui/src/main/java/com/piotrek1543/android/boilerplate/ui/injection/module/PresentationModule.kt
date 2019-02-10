@@ -3,7 +3,6 @@ package com.piotrek1543.android.boilerplate.ui.injection.module
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.piotrek1543.android.boilerplate.presentation.ViewModelFactory
-import com.piotrek1543.android.boilerplate.presentation.browse.BrowseBufferoosViewModel
 import com.piotrek1543.android.boilerplate.presentation.browse.GetForecastViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -25,11 +24,6 @@ annotation class ViewModelKey(val value: KClass<out ViewModel>)
  */
 @Module
 abstract class PresentationModule {
-    @Binds
-    @IntoMap
-    @ViewModelKey(BrowseBufferoosViewModel::class)
-    abstract fun bindBrowseBufferoosViewModel(viewModel: BrowseBufferoosViewModel): ViewModel
-
     @Binds
     @IntoMap
     @ViewModelKey(GetForecastViewModel::class)

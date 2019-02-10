@@ -9,10 +9,9 @@ import android.widget.Toast
 import com.piotrek1543.android.boilerplate.presentation.ViewModelFactory
 import com.piotrek1543.android.boilerplate.presentation.browse.GetForecastViewModel
 import com.piotrek1543.android.boilerplate.presentation.data.ResourceState
-import com.piotrek1543.android.boilerplate.presentation.model.BufferooView
 import com.piotrek1543.android.boilerplate.presentation.model.ForecastView
 import com.piotrek1543.android.boilerplate.ui.R
-import com.piotrek1543.android.boilerplate.ui.mapper.BufferooMapper
+import com.piotrek1543.android.boilerplate.ui.mapper.ForecastMapper
 import com.piotrek1543.android.boilerplate.ui.widget.empty.EmptyListener
 import com.piotrek1543.android.boilerplate.ui.widget.error.ErrorListener
 import dagger.android.support.DaggerAppCompatActivity
@@ -24,7 +23,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var browseAdapter: BrowseAdapter
     @Inject
-    lateinit var mapper: BufferooMapper
+    lateinit var mapper: ForecastMapper
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private lateinit var getForecastViewModel: GetForecastViewModel
@@ -51,7 +50,8 @@ class BrowseActivity : DaggerAppCompatActivity() {
         recycler_browse.adapter = browseAdapter
     }
 
-    private fun handleDataState(resourceState: ResourceState, data: ForecastView?,
+    private fun handleDataState(resourceState: ResourceState,
+                                data: List<ForecastView>?,
                                 message: String?) {
         when (resourceState) {
             ResourceState.LOADING -> setupScreenForLoadingState()
@@ -67,19 +67,19 @@ class BrowseActivity : DaggerAppCompatActivity() {
         view_error.visibility = View.GONE
     }
 
-    private fun setupScreenForSuccess(data: ForecastView?) {
+    private fun setupScreenForSuccess(data: List<ForecastView>?) {
         view_error.visibility = View.GONE
         progress.visibility = View.GONE
         if (data != null) {
-            supportActionBar?.title = "${data.cod} ${data.cnt} ${data.message} ${data.city?.coord?.toString()}"
+            updateListView(data)
             recycler_browse.visibility = View.VISIBLE
         } else {
             view_empty.visibility = View.VISIBLE
         }
     }
 
-    private fun updateListView(bufferoos: List<BufferooView>) {
-        browseAdapter.bufferoos = bufferoos.map { mapper.mapToViewModel(it) }
+    private fun updateListView(bufferoos: List<ForecastView>) {
+        browseAdapter.forecastList = bufferoos.map { mapper.mapToViewModel(it) }
         browseAdapter.notifyDataSetChanged()
     }
 

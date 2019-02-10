@@ -1,5 +1,7 @@
 package com.piotrek1543.android.boilerplate.presentation.mapper
 
+import com.piotrek1543.android.boilerplate.domain.model.List
+
 /**
  * Interface for model mappers. It provides helper methods that facilitate
  * retrieving of models from outer layers
@@ -9,6 +11,6 @@ package com.piotrek1543.android.boilerplate.presentation.mapper
  */
 interface Mapper<out V, in D> {
 
-    fun mapToView(type: D): V
+    fun mapToView(type: List): V
 
 }

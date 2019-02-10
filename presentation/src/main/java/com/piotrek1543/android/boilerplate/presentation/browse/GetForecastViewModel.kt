@@ -16,7 +16,7 @@ open class GetForecastViewModel @Inject internal constructor(
         private val getForecast: GetForecast,
         private val forecastMapper: ForecastMapper) : ViewModel() {
 
-    private val forecast: MutableLiveData<Resource<ForecastView>> =
+    private val forecast: MutableLiveData<Resource<List<ForecastView>>?> =
             MutableLiveData()
 
     init {
@@ -28,7 +28,7 @@ open class GetForecastViewModel @Inject internal constructor(
         super.onCleared()
     }
 
-    fun getForecast(): LiveData<Resource<ForecastView>> {
+    fun getForecast(): LiveData<Resource<List<ForecastView>>?> {
         return forecast
     }
 
@@ -43,7 +43,7 @@ open class GetForecastViewModel @Inject internal constructor(
 
         override fun onNext(t: Forecast) {
             forecast.postValue(Resource(ResourceState.SUCCESS,
-                    forecastMapper.mapToView(t), null))
+                    t.list?.map { forecastMapper.mapToView(it) }, null))
         }
 
         override fun onError(exception: Throwable) {
