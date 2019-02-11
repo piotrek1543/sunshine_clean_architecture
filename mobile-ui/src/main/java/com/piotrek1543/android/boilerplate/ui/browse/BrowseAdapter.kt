@@ -15,7 +15,7 @@ class BrowseAdapter @Inject constructor() : RecyclerView.Adapter<BrowseAdapter.V
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val forecast = forecastList[position]
-        holder.nameText.text = forecast.temp.toString()
+        holder.nameText.text = forecast.date
         holder.titleText.text = forecast.description
 
         /*Glide.with(holder.itemView.context)

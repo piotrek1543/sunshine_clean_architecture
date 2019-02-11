@@ -10,6 +10,7 @@ import javax.inject.Inject
  */
 open class ListEntityMapper @Inject constructor(
         private val mainEntityMapper: MainEntityMapper,
+        private val weatherEntityMapper: WeatherEntityMapper,
         private val cloudsEntityMapper: CloudsEntityMapper,
         private val windEntityMapper: WindEntityMapper,
         private val rainEntityMapper: RainEntityMapper,
@@ -23,6 +24,9 @@ open class ListEntityMapper @Inject constructor(
     override fun mapFromRemote(type: ListModel): ListEntity = ListEntity(
             dt = type.dt,
             mainEntity = type.mainModel?.let { mainEntityMapper.mapFromRemote(it) },
+            weatherEntity = type.weatherModel?.map { weatherModel ->
+                weatherModel.let { weatherEntityMapper.mapFromRemote(it) }
+            },
             cloudsEntity = type.cloudsModel?.let { cloudsEntityMapper.mapFromRemote(it) },
             windEntity = type.windModel?.let { windEntityMapper.mapFromRemote(it) },
             rainEntity = type.rainModel?.let { rainEntityMapper.mapFromRemote(it) },

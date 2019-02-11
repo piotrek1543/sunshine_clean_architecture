@@ -15,6 +15,12 @@ open class ForecastMapper @Inject constructor() : Mapper<ForecastView, Forecast>
      * Map a [Forecast] instance to a [ForecastView] instance
      */
     override fun mapToView(type: List): ForecastView =
-            ForecastView(temp = type.main?.tempMax ?: 0.0, description = type.dtTxt ?: "")
+            ForecastView(
+                    date = type.dtTxt ?: "",
+                    tempMin = type.main?.tempMin.toString(),
+                    tempMax = type.main?.tempMax.toString(),
+                    description = type.weather?.get(0)?.description ?: "",
+                    icon = type.weather?.get(0)?.icon ?: ""
+            )
 
 }

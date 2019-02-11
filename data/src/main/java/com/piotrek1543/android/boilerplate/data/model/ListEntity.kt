@@ -6,7 +6,7 @@ package com.piotrek1543.android.boilerplate.data.model
 data class ListEntity(
         val dt: Int? = null,
         val mainEntity: MainEntity? = null,
-        val forecastEntity: kotlin.collections.List<ForecastEntity>? = null,
+        val weatherEntity: kotlin.collections.List<WeatherEntity>? = null,
         val cloudsEntity: CloudsEntity? = null,
         val windEntity: WindEntity? = null,
         val rainEntity: RainEntity? = null,
