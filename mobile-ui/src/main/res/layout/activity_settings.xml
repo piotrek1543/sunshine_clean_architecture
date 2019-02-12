@@ -13,21 +13,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <color name="colorPrimary">#03A9F4</color>
-    <color name="colorPrimaryDark">#0288D1</color>
-    <color name="colorAccent">#FFD740</color>
-    <color name="colorPrimaryLight">#B3E5FC</color>
-
-    <color name="white">#FFFFFF</color>
-
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
-
-    <!--our detail accent colors -->
-    <color name="detail_accent_pane_background">#455A64</color>
-    <color name="detail_accent_label">#90A4AE</color>
-
-    <!-- the activated state color for a forecast list item -->
-    <color name="activated">#E0E0E0</color>
-</resources>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="com.example.android.sunshine.SettingsFragment"
+    android:id="@+id/weather_settings_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
