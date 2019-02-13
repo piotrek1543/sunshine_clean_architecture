@@ -60,6 +60,11 @@
 
     <string name="content_authority">com.example.android.sunshine</string>
 
+    <string name="label_empty_result">Oops, there are no results to display</string>
+    <string name="label_error_result">Oops, there was an error fetching the data</string>
+    <string name="button_check_again">Check again</string>
+    <string name="button_try_again">Try again</string>
+
 
     <!-- - - - - - - - - - - - - - - -
       - Used by SunshinePreferences  -

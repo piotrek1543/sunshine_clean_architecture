@@ -70,6 +70,7 @@ dependencies {
     implementation project(':remote')
 
     implementation mobileUiDependencies.javaxAnnotation
+    implementation mobileUiDependencies.constraintLayout
 
     implementation mobileUiDependencies.kotlin
     implementation mobileUiDependencies.javaxInject
