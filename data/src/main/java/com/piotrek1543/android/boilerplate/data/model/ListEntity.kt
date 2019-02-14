@@ -4,7 +4,7 @@ package com.piotrek1543.android.boilerplate.data.model
  * Representation for a [ListEntity] fetched from an external layer data source
  */
 data class ListEntity(
-        val dt: Int? = null,
+        val dt: Long? = null,
         val mainEntity: MainEntity? = null,
         val weatherEntity: kotlin.collections.List<WeatherEntity>? = null,
         val cloudsEntity: CloudsEntity? = null,

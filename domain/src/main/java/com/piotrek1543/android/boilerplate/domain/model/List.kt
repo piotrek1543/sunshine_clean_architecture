@@ -4,7 +4,7 @@ package com.piotrek1543.android.boilerplate.domain.model
  * Representation for a [List] fetched from an external layer data source
  */
 data class List(
-        val dt: Int? = null,
+        val dt: Long? = null,
         val main: Main? = null,
         val weather: kotlin.collections.List<Weather>? = null,
         val clouds: Clouds? = null,

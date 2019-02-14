@@ -8,11 +8,11 @@ package com.piotrek1543.android.boilerplate.remote
 
 object Constants {
 
-    val QUERY = "Poznań"
-    val MODE = "json"
-    val UNITS = "metric"
-    val TYPE = "hour"
+    const val QUERY = "Poznań"
+    const val MODE = "json"
+    const val UNITS = "metric"
+    const val TYPE = "hour"
 
-    val BASE_URL = "http://api.openweathermap.org/data/2.5/"
-    val APPID = "cf28f00904e59e7ba0fc080879080861"
+    const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
+    const val APPID = "cf28f00904e59e7ba0fc080879080861"
 }//not called

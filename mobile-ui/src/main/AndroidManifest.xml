@@ -16,7 +16,7 @@
         tools:targetApi="m"
         android:allowBackup="false">
 
-        <activity android:name=".browse.BrowseActivity">
+        <activity android:name=".forecast.BrowseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,7 +7,7 @@ class ListModel {
 
     @SerializedName("dt")
     @Expose
-    var dt: Int? = null
+    var dt: Long? = null
     @SerializedName("main")
     @Expose
     var mainModel: MainModel? = null

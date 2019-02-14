@@ -2,7 +2,7 @@ package com.piotrek1543.android.boilerplate.ui.injection.module
 
 import com.piotrek1543.android.boilerplate.domain.executor.PostExecutionThread
 import com.piotrek1543.android.boilerplate.ui.UiThread
-import com.piotrek1543.android.boilerplate.ui.browse.BrowseActivity
+import com.piotrek1543.android.boilerplate.ui.forecast.BrowseActivity
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

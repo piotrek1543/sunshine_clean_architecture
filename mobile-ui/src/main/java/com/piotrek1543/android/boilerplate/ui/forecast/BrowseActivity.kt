@@ -1,4 +1,4 @@
-package com.piotrek1543.android.boilerplate.ui.browse
+package com.piotrek1543.android.boilerplate.ui.forecast
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -21,7 +21,7 @@ import javax.inject.Inject
 class BrowseActivity : DaggerAppCompatActivity() {
 
     @Inject
-    lateinit var browseAdapter: BrowseAdapter
+    lateinit var browseAdapter: ForecastAdapter
     @Inject
     lateinit var mapper: ForecastMapper
     @Inject

@@ -1,4 +1,4 @@
-package com.piotrek1543.android.boilerplate.ui.browse
+package com.piotrek1543.android.boilerplate.ui.forecast
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
