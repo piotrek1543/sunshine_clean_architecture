@@ -242,5 +242,6 @@
         High:<xliff:g id="high">%2$s</xliff:g>
         Low:<xliff:g id="low">%3$s</xliff:g>
     </string>
+    <string name="accessibility_weather_icon">Weather icon</string>
 
 </resources>

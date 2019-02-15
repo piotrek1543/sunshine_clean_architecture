@@ -8,9 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp"
-        android:scrollbars="vertical" />
+        android:paddingBottom="8dp"/>
 
     <ProgressBar
         android:id="@+id/progress"

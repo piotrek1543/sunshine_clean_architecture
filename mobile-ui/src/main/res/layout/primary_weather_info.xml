@@ -68,6 +68,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/accessibility_weather_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/horizontal_middle"

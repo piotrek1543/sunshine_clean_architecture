@@ -22,12 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/detail_accent_pane_background"
-        android:paddingBottom="@dimen/forecast_detail_vertical_padding"
-        android:paddingEnd="@dimen/forecast_detail_horizontal_padding"
-        android:paddingLeft="@dimen/forecast_detail_horizontal_padding"
-        android:paddingRight="@dimen/forecast_detail_horizontal_padding"
         android:paddingStart="@dimen/forecast_detail_horizontal_padding"
-        android:paddingTop="@dimen/forecast_detail_vertical_padding">
+        android:paddingLeft="@dimen/forecast_detail_horizontal_padding"
+        android:paddingTop="@dimen/forecast_detail_vertical_padding"
+        android:paddingEnd="@dimen/forecast_detail_horizontal_padding"
+        android:paddingRight="@dimen/forecast_detail_horizontal_padding"
+        android:paddingBottom="@dimen/forecast_detail_vertical_padding">
 
         <!-- This guideline divides the layout into a left and right half and is used for alignment -->
         <android.support.constraint.Guideline

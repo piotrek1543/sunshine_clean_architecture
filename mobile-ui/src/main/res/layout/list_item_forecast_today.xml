@@ -31,8 +31,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/today_touch_selector"
-    android:paddingBottom="@dimen/today_forecast_list_item_vertical_padding"
-    android:paddingTop="@dimen/today_forecast_list_item_vertical_padding">
+    android:paddingTop="@dimen/today_forecast_list_item_vertical_padding"
+    android:paddingBottom="@dimen/today_forecast_list_item_vertical_padding">
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
      - This Guideline divides the screen into a left half and a right half and is used to        -
@@ -76,6 +76,7 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/accessibility_weather_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/horizontal_middle"

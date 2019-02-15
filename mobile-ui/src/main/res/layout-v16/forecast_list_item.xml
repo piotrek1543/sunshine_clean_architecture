@@ -33,13 +33,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:src="@drawable/art_clouds" />
+        tools:src="@drawable/art_clouds"
+        android:contentDescription="@string/accessibility_weather_icon" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/list_item_date_left_margin"
         android:layout_marginStart="@dimen/list_item_date_start_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -61,7 +61,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/forecast_temperature_space"
-        android:layout_marginRight="@dimen/forecast_temperature_space"
         android:fontFamily="sans-serif-light"
         android:textColor="@color/primary_text"
         android:textSize="@dimen/forecast_text_size"
