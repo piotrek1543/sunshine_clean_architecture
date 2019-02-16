@@ -221,38 +221,27 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
         /*
          * Based on weather code data for Open Weather Map.
          */
-        if (weatherId in 200..232) {
-            return R.drawable.ic_storm
-        } else if (weatherId in 300..321) {
-            return R.drawable.ic_light_rain
-        } else if (weatherId in 500..504) {
-            return R.drawable.ic_rain
-        } else if (weatherId == 511) {
-            return R.drawable.ic_snow
-        } else if (weatherId in 520..531) {
-            return R.drawable.ic_rain
-        } else if (weatherId in 600..622) {
-            return R.drawable.ic_snow
-        } else if (weatherId in 701..761) {
-            return R.drawable.ic_fog
-        } else if (weatherId == 761 || weatherId == 771 || weatherId == 781) {
-            return R.drawable.ic_storm
-        } else if (weatherId == 800) {
-            return R.drawable.ic_clear
-        } else if (weatherId == 801) {
-            return R.drawable.ic_light_clouds
-        } else if (weatherId in 802..804) {
-            return R.drawable.ic_cloudy
-        } else if (weatherId in 900..906) {
-            return R.drawable.ic_storm
-        } else if (weatherId in 958..962) {
-            return R.drawable.ic_storm
-        } else if (weatherId in 951..957) {
-            return R.drawable.ic_clear
+        return when (weatherId) {
+            in 200..232 ->  R.drawable.ic_storm
+            in 300..321 ->  R.drawable.ic_light_rain
+            in 500..504 ->  R.drawable.ic_rain
+            511 ->  R.drawable.ic_snow
+            in 520..531 ->  R.drawable.ic_rain
+            in 600..622 ->  R.drawable.ic_snow
+            in 701..761 ->  R.drawable.ic_fog
+            761, 771, 781 ->  R.drawable.ic_storm
+            800 ->  R.drawable.ic_clear
+            801 ->  R.drawable.ic_light_clouds
+            in 802..804 ->  R.drawable.ic_cloudy
+            in 900..906 ->  R.drawable.ic_storm
+            in 958..962 ->  R.drawable.ic_storm
+            in 951..957 ->  R.drawable.ic_clear
+            else -> {
+                Log.e(TAG, "Unknown Weather: $weatherId")
+                 R.drawable.ic_storm
+            }
         }
 
-        Log.e(TAG, "Unknown Weather: $weatherId")
-        return R.drawable.ic_storm
     }
 
     /**
@@ -275,24 +264,24 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
         /*
          * Based on weather code data for Open Weather Map.
          */
-        when {
-            weatherId in 200..232 -> return R.drawable.art_storm
-            weatherId in 300..321 -> return R.drawable.art_light_rain
-            weatherId in 500..504 -> return R.drawable.art_rain
-            weatherId == 511 -> return R.drawable.art_snow
-            weatherId in 520..531 -> return R.drawable.art_rain
-            weatherId in 600..622 -> return R.drawable.art_snow
-            weatherId in 701..761 -> return R.drawable.art_fog
-            weatherId == 761 || weatherId == 771 || weatherId == 781 -> return R.drawable.art_storm
-            weatherId == 800 -> return R.drawable.art_clear
-            weatherId == 801 -> return R.drawable.art_light_clouds
-            weatherId in 802..804 -> return R.drawable.art_clouds
-            weatherId in 900..906 -> return R.drawable.art_storm
-            weatherId in 958..962 -> return R.drawable.art_storm
-            weatherId in 951..957 -> return R.drawable.art_clear
+        return when (weatherId) {
+            in 200..232 ->  R.drawable.art_storm
+            in 300..321 ->  R.drawable.art_light_rain
+            in 500..504 ->  R.drawable.art_rain
+            511 ->  R.drawable.art_snow
+            in 520..531 ->  R.drawable.art_rain
+            in 600..622 ->  R.drawable.art_snow
+            in 701..761 ->  R.drawable.art_fog
+            761, 771, 781 ->  R.drawable.art_storm
+            800 ->  R.drawable.art_clear
+            801 ->  R.drawable.art_light_clouds
+            in 802..804 ->  R.drawable.art_clouds
+            in 900..906 ->  R.drawable.art_storm
+            in 958..962 ->  R.drawable.art_storm
+            in 951..957 ->  R.drawable.art_clear
             else -> {
                 Log.e(TAG, "Unknown Weather: $weatherId")
-                return R.drawable.art_storm
+                R.drawable.art_storm
             }
         }
 

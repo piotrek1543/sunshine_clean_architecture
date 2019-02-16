@@ -34,6 +34,10 @@ class BrowseActivity : DaggerAppCompatActivity() {
         getForecastViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(GetForecastViewModel::class.java)
 
+        supportActionBar?.let {
+            it.elevation = 0.0f
+        }
+
         setupBrowseRecycler()
         setupViewListeners()
     }

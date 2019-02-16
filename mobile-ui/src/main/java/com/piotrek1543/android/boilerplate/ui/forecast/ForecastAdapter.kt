@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.piotrek1543.android.boilerplate.ui.R
 import com.piotrek1543.android.boilerplate.ui.model.ForecastViewModel
 import com.piotrek1543.android.boilerplate.ui.utils.SunshineWeatherUtils
@@ -27,7 +25,7 @@ class ForecastAdapter @Inject constructor(
         with(holder) {
             val context1 = itemView.context.applicationContext
             dateTV.text = forecast.date
-            descriptionTV.text = forecast.description
+            descriptionTV.text = weatherUtils.getStringForWeatherCondition(context1, forecast.icon)
             tempMaxTV.text = weatherUtils.formatTemperature(context1, forecast.tempMax)
             tempMinTV.text = weatherUtils.formatTemperature(context1, forecast.tempMin)
 
@@ -39,10 +37,7 @@ class ForecastAdapter @Inject constructor(
                 else -> R.drawable.ic_cloudy
             }
 
-            Glide.with(context1)
-                    .load(weatherImageId)
-                    .apply(RequestOptions.circleCropTransform())
-                    .into(holder.weatherIconIV)
+            weatherIconIV.setImageResource(weatherImageId)
 
             itemView.setOnClickListener {
                 Toast.makeText(it.context!!, forecast.toString(), Toast.LENGTH_SHORT).show()
