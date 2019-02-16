@@ -2,7 +2,7 @@ package com.piotrek1543.android.boilerplate.ui.injection.module
 
 import com.piotrek1543.android.boilerplate.domain.executor.PostExecutionThread
 import com.piotrek1543.android.boilerplate.ui.UiThread
-import com.piotrek1543.android.boilerplate.ui.forecast.BrowseActivity
+import com.piotrek1543.android.boilerplate.ui.forecast.ForecastActivity
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -17,5 +17,5 @@ abstract class UiModule {
     abstract fun bindPostExecutionThread(uiThread: UiThread): PostExecutionThread
 
     @ContributesAndroidInjector
-    abstract fun contributeMainActivity(): BrowseActivity
+    abstract fun contributeMainActivity(): ForecastActivity
 }

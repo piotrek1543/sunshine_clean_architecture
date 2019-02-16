@@ -9,21 +9,16 @@ import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Flowable
-import org.buffer.android.boilerplate.domain.model.Bufferoo
-import org.buffer.android.boilerplate.ui.R
-import org.buffer.android.boilerplate.ui.test.TestApplication
-import org.buffer.android.boilerplate.ui.test.util.BufferooFactory
-import org.buffer.android.boilerplate.ui.test.util.RecyclerViewMatcher
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class BrowseActivityTest {
+class ForecastActivityTest {
 
     @Rule @JvmField
-    val activity = ActivityTestRule<BrowseActivity>(BrowseActivity::class.java, false, false)
+    val activity = ActivityTestRule<ForecastActivity>(ForecastActivity::class.java, false, false)
 
     @Test
     fun activityLaunches() {

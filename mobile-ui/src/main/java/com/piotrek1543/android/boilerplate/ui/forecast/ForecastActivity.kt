@@ -15,10 +15,10 @@ import com.piotrek1543.android.boilerplate.ui.mapper.ForecastMapper
 import com.piotrek1543.android.boilerplate.ui.widget.empty.EmptyListener
 import com.piotrek1543.android.boilerplate.ui.widget.error.ErrorListener
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_browse.*
+import kotlinx.android.synthetic.main.activity_forecast.*
 import javax.inject.Inject
 
-class BrowseActivity : DaggerAppCompatActivity() {
+class ForecastActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var browseAdapter: ForecastAdapter
@@ -30,7 +30,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_browse)
+        setContentView(R.layout.activity_forecast)
         getForecastViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(GetForecastViewModel::class.java)
 
@@ -38,7 +38,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
             it.elevation = 0.0f
         }
 
-        setupBrowseRecycler()
+        setupRecyclerView()
         setupViewListeners()
     }
 
@@ -49,7 +49,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
         })
     }
 
-    private fun setupBrowseRecycler() {
+    private fun setupRecyclerView() {
         recycler_browse.layoutManager = LinearLayoutManager(this)
         recycler_browse.adapter = browseAdapter
     }
@@ -92,7 +92,7 @@ class BrowseActivity : DaggerAppCompatActivity() {
         recycler_browse.visibility = View.GONE
         view_empty.visibility = View.GONE
         view_error.visibility = View.VISIBLE
-        Toast.makeText(this@BrowseActivity, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this@ForecastActivity, message, Toast.LENGTH_LONG).show()
 
     }
 
