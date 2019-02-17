@@ -6,7 +6,7 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 
 /**
- * Interface defining methods for the data operations related to Bufferroos.
+ * Interface defining methods for the data operations related to Forecasts.
  * This is to be implemented by external data source layers, setting the requirements for the
  * operations that need to be implemented
  */

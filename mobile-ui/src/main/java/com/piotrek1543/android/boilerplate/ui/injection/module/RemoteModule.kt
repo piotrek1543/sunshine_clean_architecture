@@ -1,8 +1,9 @@
 package com.piotrek1543.android.boilerplate.ui.injection.module
 
-import com.piotrek1543.android.boilerplate.data.repository.BufferooRemote
 import com.piotrek1543.android.boilerplate.data.repository.ForecastRemote
-import com.piotrek1543.android.boilerplate.remote.*
+import com.piotrek1543.android.boilerplate.remote.ForecastRemoteImpl
+import com.piotrek1543.android.boilerplate.remote.SunshineService
+import com.piotrek1543.android.boilerplate.remote.SunshineServiceFactory
 import com.piotrek1543.android.boilerplate.ui.BuildConfig
 import dagger.Binds
 import dagger.Module
@@ -22,19 +23,10 @@ abstract class RemoteModule {
     companion object {
         @Provides
         @JvmStatic
-        fun provideBufferooService(): BufferooService {
-            return BufferooServiceFactory.makeBuffeoorService(BuildConfig.DEBUG)
-        }
-
-        @Provides
-        @JvmStatic
         fun provideSunshineService(): SunshineService {
             return SunshineServiceFactory.makeSunshineService(BuildConfig.DEBUG)
         }
     }
-
-    @Binds
-    abstract fun bindBufferooRemote(bufferooRemoteImpl: BufferooRemoteImpl): BufferooRemote
 
     @Binds
     abstract fun bindForecastRemote(forecastRemoteImpl: ForecastRemoteImpl): ForecastRemote
