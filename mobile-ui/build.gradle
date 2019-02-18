@@ -71,6 +71,7 @@ dependencies {
 
     implementation mobileUiDependencies.javaxAnnotation
     implementation mobileUiDependencies.constraintLayout
+    implementation mobileUiDependencies.preferenceSupport
 
     implementation mobileUiDependencies.kotlin
     implementation mobileUiDependencies.javaxInject

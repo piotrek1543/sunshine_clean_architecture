@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 interface SunshineService {
 
-    @GET("forecast")
+    @GET("forecast/")
     operator fun get(@Query("q") q: String,
                      @Query("mode") mode: String,
                      @Query("units") units: String,

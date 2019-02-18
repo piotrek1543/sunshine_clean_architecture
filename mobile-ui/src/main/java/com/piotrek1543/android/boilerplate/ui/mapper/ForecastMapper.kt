@@ -16,6 +16,7 @@ open class ForecastMapper @Inject constructor() : Mapper<ForecastViewModel, Fore
     override fun mapToViewModel(type: ForecastView): ForecastViewModel =
             ForecastViewModel(
                     date = type.date,
+                    dateTxt = type.dateTxt,
                     description = type.description,
                     tempMax = type.tempMax,
                     tempMin = type.tempMin,

@@ -4,6 +4,8 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.piotrek1543.android.boilerplate.presentation.ViewModelFactory
@@ -49,9 +51,30 @@ class ForecastActivity : DaggerAppCompatActivity() {
         })
     }
 
-    private fun setupRecyclerView() {
-        recycler_browse.layoutManager = LinearLayoutManager(this)
-        recycler_browse.adapter = browseAdapter
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.forecast, menu)
+        return true
+    }
+
+    private fun setupRecyclerView() = with(recycler_browse) {
+        layoutManager = LinearLayoutManager(this@ForecastActivity)
+        setHasFixedSize(true)
+        adapter = browseAdapter
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val id = item.itemId
+
+        if (id == R.id.action_settings) {
+            //openSettingsActivity()
+        }
+        if (id == R.id.action_map) {
+            //openPreferredLocationInMap()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun handleDataState(resourceState: ResourceState,
