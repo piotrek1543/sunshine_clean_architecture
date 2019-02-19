@@ -1,27 +1,20 @@
 package com.piotrek1543.android.boilerplate.remote.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 class CityModel {
 
-    @SerializedName("id")
-    @Expose
+    @field:Json(name = "id")
     var id: Int? = null
-    @SerializedName("name")
-    @Expose
+    @field:Json(name = "name")
     var name: String? = null
-    @SerializedName("coord")
-    @Expose
+    @field:Json(name = "coord")
     var coord: CoordModel? = null
-    @SerializedName("country")
-    @Expose
+    @field:Json(name = "country")
     var country: String? = null
-    @SerializedName("population")
-    @Expose
+    @field:Json(name = "population")
     var population: Int? = null
-    @SerializedName("sys")
-    @Expose
+    @field:Json(name = "sys")
     var sys: SysModel? = null
 
 }

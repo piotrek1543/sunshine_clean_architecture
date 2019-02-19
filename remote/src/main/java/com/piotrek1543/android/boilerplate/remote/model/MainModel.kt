@@ -1,33 +1,24 @@
 package com.piotrek1543.android.boilerplate.remote.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 class MainModel {
 
-    @SerializedName("temp")
-    @Expose
+    @field:Json(name = "temp")
     var temp: Double? = null
-    @SerializedName("temp_min")
-    @Expose
+    @field:Json(name = "temp_min")
     var tempMin: Double? = null
-    @SerializedName("temp_max")
-    @Expose
+    @field:Json(name = "temp_max")
     var tempMax: Double? = null
-    @SerializedName("pressure")
-    @Expose
+    @field:Json(name = "pressure")
     var pressure: String? = null
-    @SerializedName("sea_level")
-    @Expose
+    @field:Json(name = "sea_level")
     var seaLevel: String? = null
-    @SerializedName("grnd_level")
-    @Expose
+    @field:Json(name = "grnd_level")
     var grndLevel: String? = null
-    @SerializedName("humidity")
-    @Expose
+    @field:Json(name = "humidity")
     var humidity: Int? = null
-    @SerializedName("temp_kf")
-    @Expose
+    @field:Json(name = "temp_kf")
     var tempKf: String? = null
 
 }

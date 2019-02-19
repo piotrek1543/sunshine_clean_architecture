@@ -1,21 +1,16 @@
 package com.piotrek1543.android.boilerplate.remote.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 class WeatherModel {
 
-    @SerializedName("id")
-    @Expose
+    @field:Json(name = "id")
     var id: Int? = null
-    @SerializedName("main")
-    @Expose
+    @field:Json(name = "main")
     var main: String? = null
-    @SerializedName("description")
-    @Expose
+    @field:Json(name = "description")
     var description: String? = null
-    @SerializedName("icon")
-    @Expose
+    @field:Json(name = "icon")
     var icon: String? = null
 
 }

@@ -1,24 +1,18 @@
 package com.piotrek1543.android.boilerplate.remote.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 class ForecastModel {
 
-    @SerializedName("city")
-    @Expose
+    @field:Json(name = "city")
     var city: CityModel? = null
-    @SerializedName("cod")
-    @Expose
+    @field:Json(name = "cod")
     var cod: String? = null
-    @SerializedName("message")
-    @Expose
+    @field:Json(name = "message")
     var message: Double? = null
-    @SerializedName("cnt")
-    @Expose
+    @field:Json(name = "cnt")
     var cnt: Int? = null
-    @SerializedName("list")
-    @Expose
-    var list: kotlin.collections.List<ListModel>? = null
+    @field:Json(name = "list")
+    var list: List<ListModel>? = null
 
 }

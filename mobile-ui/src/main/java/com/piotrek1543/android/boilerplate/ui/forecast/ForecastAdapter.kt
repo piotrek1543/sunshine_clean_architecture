@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.piotrek1543.android.boilerplate.ui.R
 import com.piotrek1543.android.boilerplate.ui.model.ForecastViewModel
-import com.piotrek1543.android.boilerplate.ui.utils.SunshineDateUtils
 import com.piotrek1543.android.boilerplate.ui.utils.SunshineWeatherUtils
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,7 +32,8 @@ class ForecastAdapter @Inject constructor(
             else
                 dateTV.text = DateUtils.formatDateTime(context, forecast.date * 1000L, DateUtils.FORMAT_SHOW_DATE);
 
-            dateTV.text = SunshineDateUtils.getFriendlyDateString(context, forecast.date * 1000L, false)
+            //val timestamp = forecast.date * 1000L
+            // dateTV.text = SunshineDateUtils.getFriendlyDateString(context, timestamp, false)
             descriptionTV.text = weatherUtils.getStringForWeatherCondition(context, forecast.icon)
             tempMaxTV.text = weatherUtils.formatTemperature(context, forecast.tempMax)
             tempMinTV.text = weatherUtils.formatTemperature(context, forecast.tempMin)

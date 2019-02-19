@@ -1,15 +1,13 @@
 package com.piotrek1543.android.boilerplate.remote.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+
 
 class CoordModel {
 
-    @SerializedName("lon")
-    @Expose
+    @field:Json(name = "lon")
     var lon: Double? = null
-    @SerializedName("lat")
-    @Expose
+    @field:Json(name = "lat")
     var lat: Double? = null
 
 }

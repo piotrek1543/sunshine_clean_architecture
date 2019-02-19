@@ -1,12 +1,11 @@
 package com.piotrek1543.android.boilerplate.remote.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+
 
 class CloudsModel {
 
-    @SerializedName("all")
-    @Expose
+    @field:Json(name = "all")
     var all: Int? = null
 
 }

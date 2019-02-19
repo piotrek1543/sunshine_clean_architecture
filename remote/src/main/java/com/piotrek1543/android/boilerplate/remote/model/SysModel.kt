@@ -1,12 +1,10 @@
 package com.piotrek1543.android.boilerplate.remote.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 class SysModel {
 
-    @SerializedName("population")
-    @Expose
+    @field:Json(name = "population")
     var population: Int? = null
 
 }
