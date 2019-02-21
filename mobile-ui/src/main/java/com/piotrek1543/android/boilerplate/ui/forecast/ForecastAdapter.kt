@@ -2,7 +2,6 @@ package com.piotrek1543.android.boilerplate.ui.forecast
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,6 @@ import com.piotrek1543.android.boilerplate.ui.R
 import com.piotrek1543.android.boilerplate.ui.model.ForecastViewModel
 import com.piotrek1543.android.boilerplate.ui.utils.SunshineDateUtils
 import com.piotrek1543.android.boilerplate.ui.utils.SunshineWeatherUtils
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 class ForecastAdapter @Inject constructor(
@@ -26,15 +23,10 @@ class ForecastAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val forecast = forecastList[position]
+
         with(holder) {
 
-            if (position == 0)
-                dateTV.text = SimpleDateFormat("EEEE", Locale.ENGLISH).format(forecast.date * 1000L)
-            else
-                dateTV.text = DateUtils.formatDateTime(context, forecast.date * 1000L, DateUtils.FORMAT_SHOW_DATE);
-
-            val timestamp = forecast.date * 1000L
-            dateTV.text = SunshineDateUtils.getFriendlyDateString(context, timestamp, false)
+            dateTV.text = SunshineDateUtils.getFriendlyDateString(context, forecast.date * 1000L, position)
             descriptionTV.text = weatherUtils.getStringForWeatherCondition(context, forecast.icon)
             tempMaxTV.text = weatherUtils.formatTemperature(context, forecast.tempMax)
             tempMinTV.text = weatherUtils.formatTemperature(context, forecast.tempMin)
@@ -44,7 +36,7 @@ class ForecastAdapter @Inject constructor(
                         .getLargeArtResourceIdForWeatherCondition(forecast.icon)
                 VIEW_TYPE_FUTURE_DAY -> weatherUtils
                         .getSmallArtResourceIdForWeatherCondition(forecast.icon)
-                else -> R.drawable.ic_cloudy
+                else -> R.drawable.art_storm
             }
 
             weatherIconIV.setImageResource(weatherImageId)

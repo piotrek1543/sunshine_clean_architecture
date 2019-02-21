@@ -30,7 +30,9 @@ import javax.inject.Inject
  */
 class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHelper) {
 
-    private val TAG = SunshineWeatherUtils::class.java.simpleName
+    companion object {
+        private val TAG = SunshineWeatherUtils::class.java.simpleName
+    }
 
     /**
      * This method will convert a temperature from Celsius to Fahrenheit.
@@ -97,7 +99,7 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
 
         if (!prefs.isMetric) {
             windFormat = R.string.format_wind_mph
-            windSpeed = .621371192237334f * windSpeed
+            windSpeed *= .621371192237334f
         }
 
         /*
@@ -222,23 +224,23 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
          * Based on weather code data for Open Weather Map.
          */
         return when (weatherId) {
-            in 200..232 ->  R.drawable.ic_storm
-            in 300..321 ->  R.drawable.ic_light_rain
-            in 500..504 ->  R.drawable.ic_rain
-            511 ->  R.drawable.ic_snow
-            in 520..531 ->  R.drawable.ic_rain
-            in 600..622 ->  R.drawable.ic_snow
-            in 701..761 ->  R.drawable.ic_fog
-            761, 771, 781 ->  R.drawable.ic_storm
-            800 ->  R.drawable.ic_clear
-            801 ->  R.drawable.ic_light_clouds
-            in 802..804 ->  R.drawable.ic_cloudy
-            in 900..906 ->  R.drawable.ic_storm
-            in 958..962 ->  R.drawable.ic_storm
-            in 951..957 ->  R.drawable.ic_clear
+            in 200..232 -> R.drawable.ic_storm
+            in 300..321 -> R.drawable.ic_light_rain
+            in 500..504 -> R.drawable.ic_rain
+            511 -> R.drawable.ic_snow
+            in 520..531 -> R.drawable.ic_rain
+            in 600..622 -> R.drawable.ic_snow
+            in 701..761 -> R.drawable.ic_fog
+            761, 771, 781 -> R.drawable.ic_storm
+            800 -> R.drawable.ic_clear
+            801 -> R.drawable.ic_light_clouds
+            in 802..804 -> R.drawable.ic_cloudy
+            in 900..906 -> R.drawable.ic_storm
+            in 958..962 -> R.drawable.ic_storm
+            in 951..957 -> R.drawable.ic_clear
             else -> {
                 Log.e(TAG, "Unknown Weather: $weatherId")
-                 R.drawable.ic_storm
+                R.drawable.ic_storm
             }
         }
 
@@ -265,20 +267,20 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
          * Based on weather code data for Open Weather Map.
          */
         return when (weatherId) {
-            in 200..232 ->  R.drawable.art_storm
-            in 300..321 ->  R.drawable.art_light_rain
-            in 500..504 ->  R.drawable.art_rain
-            511 ->  R.drawable.art_snow
-            in 520..531 ->  R.drawable.art_rain
-            in 600..622 ->  R.drawable.art_snow
-            in 701..761 ->  R.drawable.art_fog
-            761, 771, 781 ->  R.drawable.art_storm
-            800 ->  R.drawable.art_clear
-            801 ->  R.drawable.art_light_clouds
-            in 802..804 ->  R.drawable.art_clouds
-            in 900..906 ->  R.drawable.art_storm
-            in 958..962 ->  R.drawable.art_storm
-            in 951..957 ->  R.drawable.art_clear
+            in 200..232 -> R.drawable.art_storm
+            in 300..321 -> R.drawable.art_light_rain
+            in 500..504 -> R.drawable.art_rain
+            511 -> R.drawable.art_snow
+            in 520..531 -> R.drawable.art_rain
+            in 600..622 -> R.drawable.art_snow
+            in 701..761 -> R.drawable.art_fog
+            761, 771, 781 -> R.drawable.art_storm
+            800 -> R.drawable.art_clear
+            801 -> R.drawable.art_light_clouds
+            in 802..804 -> R.drawable.art_clouds
+            in 900..906 -> R.drawable.art_storm
+            in 958..962 -> R.drawable.art_storm
+            in 951..957 -> R.drawable.art_clear
             else -> {
                 Log.e(TAG, "Unknown Weather: $weatherId")
                 R.drawable.art_storm

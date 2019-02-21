@@ -110,73 +110,6 @@ public final class SunshineDateUtils {
     }
 
     /**
-     * Normalizes a date (in milliseconds).
-     * <p>
-     * Normalize, in our usage within Sunshine means to convert a given date in milliseconds to
-     * the very beginning of the date in UTC time.
-     * <p>
-     * For example, given the time representing
-     * <p>
-     * Friday, 9/16/2016, 17:45:15 GMT-4:00 DST (1474062315000)
-     * <p>
-     * this method would return the number of milliseconds (since the epoch) that represents
-     * <p>
-     * Friday, 9/16/2016, 00:00:00 GMT (1473984000000)
-     * <p>
-     * To make it easy to query for the exact date, we normalize all dates that go into
-     * the database to the start of the day in UTC time. In order to normalize the date, we take
-     * advantage of simple integer division, noting that any remainder is discarded when dividing
-     * two integers.
-     * <p>
-     * For example, dividing 7 / 3 (when using integer division) equals 2, not 2.333 repeating
-     * as you may expect.
-     *
-     * @param date The date (in milliseconds) to normalize
-     * @return The UTC date at 12 midnight of the date
-     */
-    public static long normalizeDate(long date) {
-        long daysSinceEpoch = elapsedDaysSinceEpoch(date);
-        long millisFromEpochToTodayAtMidnightUtc = daysSinceEpoch * DAY_IN_MILLIS;
-        return millisFromEpochToTodayAtMidnightUtc;
-    }
-
-    /**
-     * In order to ensure consistent inserts into WeatherProvider, we check that dates have been
-     * normalized before they are inserted. If they are not normalized, we don't want to accept
-     * them, and leave it up to the caller to throw an IllegalArgumentException.
-     *
-     * @param millisSinceEpoch Milliseconds since January 1, 1970 at midnight
-     * @return true if the date represents the beginning of a day in Unix time, false otherwise
-     */
-    public static boolean isDateNormalized(long millisSinceEpoch) {
-        boolean isDateNormalized = false;
-        if (millisSinceEpoch % DAY_IN_MILLIS == 0) {
-            isDateNormalized = true;
-        }
-
-        return isDateNormalized;
-    }
-
-    /**
-     * This method will return the local time midnight for the provided normalized UTC date.
-     *
-     * @param normalizedUtcDate UTC time at midnight for a given date. This number comes from the
-     *                          database
-     * @return The local date corresponding to the given normalized UTC date
-     */
-    private static long getLocalMidnightFromNormalizedUtcDate(long normalizedUtcDate) {
-        /* The timeZone object will provide us the current user's time zone offset */
-        TimeZone timeZone = TimeZone.getDefault();
-        /*
-         * This offset, in milliseconds, when added to a UTC date time, will produce the local
-         * time.
-         */
-        long gmtOffset = timeZone.getOffset(normalizedUtcDate);
-        long localMidnightMillis = normalizedUtcDate - gmtOffset;
-        return localMidnightMillis;
-    }
-
-    /**
      * Helper method to convert the database representation of the date into something to display
      * to users. As classy and polished a user experience as "1474061664" is, we can do better.
      * <p/>
@@ -186,15 +119,15 @@ public final class SunshineDateUtils {
      * For the next 5 days: "Wednesday" (just the day name)
      * For all days after that: "Mon, Jun 8" (Mon, 8 Jun in UK, for example)
      *
-     * @param context               Context to use for resource localization
-     * @param normalizedUtcMidnight The date in milliseconds (UTC midnight)
-     * @param showFullDate          Used to show a fuller-version of the date, which always
-     *                              contains either the day of the week, today, or tomorrow, in
-     *                              addition to the date.
+     * @param context      Context to use for resource localization
+     * @param date         The date in milliseconds (UTC midnight)
+     * @param showFullDate Used to show a fuller-version of the date, which always
+     *                     contains either the day of the week, today, or tomorrow, in
+     *                     addition to the date.
      * @return A user-friendly representation of the date such as "Today, June 8", "Tomorrow",
      * or "Friday"
      */
-    public static String getFriendlyDateString(Context context, long normalizedUtcMidnight, boolean showFullDate) {
+    public static String getFriendlyDateString(Context context, long date, int position) {
 
         /*
          * NOTE: localDate should be localDateMidnightMillis and should be straight from the
@@ -204,23 +137,25 @@ public final class SunshineDateUtils {
          * that normalized date and produce a date (in UTC time) that represents the local time
          * zone at midnight.
          */
-        long localDate = normalizedUtcMidnight;
 
         /*
          * In order to determine which day of the week we are creating a date string for, we need
          * to compare the number of days that have passed since the epoch (January 1, 1970 at
          * 00:00 GMT)
          */
-        long daysFromEpochToProvidedDate = elapsedDaysSinceEpoch(localDate);
+        long daysFromEpochToProvidedDate = elapsedDaysSinceEpoch(date);
 
         /*
          * As a basis for comparison, we use the number of days that have passed from the epoch
          * until today.
          */
         long daysFromEpochToToday = elapsedDaysSinceEpoch(System.currentTimeMillis());
-        String dayName = getDayName(context, localDate);
-        String readableDate = getReadableDateString(context, localDate);
-        String localizedDayName = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(localDate);
+        String dayName = getDayName(context, date);
+        String localizedDayName = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date);
+        int flags = DateUtils.FORMAT_NO_YEAR
+                | DateUtils.FORMAT_SHOW_WEEKDAY
+                | DateUtils.FORMAT_SHOW_TIME;
+        String readableDate = getReadableDateString(context, date, flags);
 
         if (daysFromEpochToProvidedDate == daysFromEpochToToday) {
             /*
@@ -239,20 +174,30 @@ public final class SunshineDateUtils {
                  * documentation on DateFormat#getBestDateTimePattern(Locale, String)
                  * https://developer.android.com/reference/android/text/format/DateFormat.html#getBestDateTimePattern
                  */
+                if (position == 0)
+                    flags = DateUtils.FORMAT_SHOW_DATE
+                            | DateUtils.FORMAT_NO_YEAR
+                            | DateUtils.FORMAT_SHOW_WEEKDAY
+                            | DateUtils.FORMAT_SHOW_TIME;
+
+                readableDate = getReadableDateString(context, date, flags);
                 return readableDate.replace(localizedDayName, dayName);
             } else {
+
+
                 return readableDate;
             }
         } else if (daysFromEpochToProvidedDate < daysFromEpochToToday + 2) {
             /* If the input date is less than a week in the future, just return the day name. */
             return readableDate.replace(localizedDayName, dayName);
         } else {
-            int flags = DateUtils.FORMAT_SHOW_DATE
+             flags = DateUtils.FORMAT_SHOW_DATE
+                    | DateUtils.FORMAT_ABBREV_WEEKDAY
                     | DateUtils.FORMAT_NO_YEAR
                     | DateUtils.FORMAT_SHOW_WEEKDAY
                     | DateUtils.FORMAT_SHOW_TIME;
 
-            return DateUtils.formatDateTime(context, localDate, flags);
+            return DateUtils.formatDateTime(context, date, flags);
         }
     }
 
@@ -264,12 +209,7 @@ public final class SunshineDateUtils {
      * @param timeInMillis Time in milliseconds since the epoch (local time)
      * @return The formatted date string
      */
-    private static String getReadableDateString(Context context, long timeInMillis) {
-        int flags = DateUtils.FORMAT_SHOW_DATE
-                | DateUtils.FORMAT_NO_YEAR
-                | DateUtils.FORMAT_SHOW_WEEKDAY
-                | DateUtils.FORMAT_SHOW_TIME;
-
+    private static String getReadableDateString(Context context, long timeInMillis, int flags) {
         return DateUtils.formatDateTime(context, timeInMillis, flags);
     }
 
