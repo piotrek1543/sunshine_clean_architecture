@@ -2,11 +2,12 @@ package com.piotrek1543.android.boilerplate.cache.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import com.piotrek1543.android.boilerplate.cache.db.constants.MainConstants
 
 /**
  * Model used solely for the caching of a [Main]
  */
-@Entity(tableName = "main")
+@Entity(tableName = MainConstants.TABLE_NAME)
 data class CachedMain(
         @PrimaryKey(autoGenerate = true)
         var id: Int,

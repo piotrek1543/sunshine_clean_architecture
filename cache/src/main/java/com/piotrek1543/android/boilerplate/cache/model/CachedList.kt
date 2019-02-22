@@ -2,11 +2,12 @@ package com.piotrek1543.android.boilerplate.cache.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import com.piotrek1543.android.boilerplate.cache.db.constants.ListConstants
 
 /**
  * Model used solely for the caching of a [List]
  */
-@Entity(tableName = "list")
+@Entity(tableName = ListConstants.TABLE_NAME)
 data class CachedList(
         @PrimaryKey(autoGenerate = true)
         var id: Int,

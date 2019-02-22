@@ -2,11 +2,12 @@ package com.piotrek1543.android.boilerplate.cache.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import com.piotrek1543.android.boilerplate.cache.db.constants.CityConstants
 
 /**
  * Model used solely for the caching of a [Clouds]
  */
-@Entity(tableName = "city")
+@Entity(tableName = CityConstants.TABLE_NAME)
 data class CachedClouds(
         @PrimaryKey(autoGenerate = true)
         var id: Int,

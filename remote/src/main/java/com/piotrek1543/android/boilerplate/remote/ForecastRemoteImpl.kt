@@ -17,7 +17,7 @@ class ForecastRemoteImpl @Inject constructor(private val service: SunshineServic
         ForecastRemote {
 
     /**
-     * Retrieve a list of [ForecastEntity] instances from the [ForecastService].
+     * Retrieve a list of [ForecastEntity] instances from the [SunshineService].
      */
     override fun getForecast(): Flowable<ForecastEntity> {
         val query = Constants.QUERY

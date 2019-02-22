@@ -14,7 +14,5 @@ class CityModel {
     var country: String? = null
     @field:Json(name = "population")
     var population: Int? = null
-    @field:Json(name = "sys")
-    var sys: SysModel? = null
 
 }
