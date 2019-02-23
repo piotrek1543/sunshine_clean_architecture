@@ -12,7 +12,7 @@ data class CachedCity(
         @PrimaryKey
         var id: Int,
         var name: String,
-        var cachedCoord: CachedCoord? = null,
+        //var cachedCoord: CachedCoord? = null,
         var country: String? = null,
         var population: Int? = null
 )
