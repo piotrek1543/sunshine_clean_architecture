@@ -10,7 +10,7 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.ForecastConstants
 @Entity(tableName = ForecastConstants.TABLE_NAME)
 data class CachedForecast(
         @PrimaryKey(autoGenerate = true)
-        var id: Int? = null,
+        var id: Int? = 0,
         //var cachedCity: CachedCity? = null,
         var cod: String? = null,
         var message: Double? = null,

@@ -10,5 +10,5 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.RainConstants
 @Entity(tableName = RainConstants.TABLE_NAME)
 data class CachedRain(
         @PrimaryKey(autoGenerate = true)
-        var id: Int,
+        var id: Int? = 0,
         var _3h: Double? = null)

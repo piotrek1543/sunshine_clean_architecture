@@ -10,5 +10,5 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.CloudsConstants
 @Entity(tableName = CloudsConstants.TABLE_NAME)
 data class CachedClouds(
         @PrimaryKey(autoGenerate = true)
-        var id: Int,
+        var id: Int? = 0,
         var all: Int? = null)

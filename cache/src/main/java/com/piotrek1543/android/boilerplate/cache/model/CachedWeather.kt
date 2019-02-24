@@ -10,8 +10,8 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.WeatherConstants
  */
 @Entity(tableName = WeatherConstants.TABLE_NAME)
 data class CachedWeather(
-        @PrimaryKey
-        var id: Int,
+        @PrimaryKey(autoGenerate = true)
+        var id: Int? = 0,
         var main: String? = null,
         var description: String? = null,
         var icon: String? = null

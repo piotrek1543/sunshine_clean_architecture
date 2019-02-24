@@ -10,5 +10,5 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.SnowConstants
 @Entity(tableName = SnowConstants.TABLE_NAME)
 data class CachedSnow(
         @PrimaryKey(autoGenerate = true)
-        var id: Int,
+        var id: Int = 0,
         var _3h: Double? = null)

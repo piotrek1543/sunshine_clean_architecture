@@ -10,7 +10,7 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.MainConstants
 @Entity(tableName = MainConstants.TABLE_NAME)
 data class CachedMain(
         @PrimaryKey(autoGenerate = true)
-        var id: Int,
+        var id: Int? = 0,
         var temp: Double? = null,
         var tempMin: Double? = null,
         var tempMax: Double? = null,

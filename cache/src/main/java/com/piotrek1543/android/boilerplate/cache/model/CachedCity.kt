@@ -9,9 +9,9 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.CityConstants
  */
 @Entity(tableName = CityConstants.TABLE_NAME)
 data class CachedCity(
-        @PrimaryKey
-        var id: Int,
-        var name: String,
+        @PrimaryKey(autoGenerate = true)
+        var id: Int? = 0,
+        var name: String? = null,
         //var cachedCoord: CachedCoord? = null,
         var country: String? = null,
         var population: Int? = null

@@ -11,7 +11,7 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.CoordConstants
 @Entity(tableName = CoordConstants.TABLE_NAME)
 data class CachedCoord(
         @PrimaryKey(autoGenerate = true)
-        var id: Int,
+        var id: Int? = 0,
         var lon: Double? = null,
         var lat: Double? = null
 )
