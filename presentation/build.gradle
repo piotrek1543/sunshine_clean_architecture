@@ -55,6 +55,7 @@ dependencies {
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
 
     compile presentationDependencies.javaxAnnotation
+    compile presentationDependencies.timber
 
     compile presentationDependencies.kotlin
     compile presentationDependencies.javaxInject

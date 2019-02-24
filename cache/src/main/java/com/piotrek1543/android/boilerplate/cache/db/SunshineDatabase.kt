@@ -35,6 +35,8 @@ abstract class SunshineDatabase @Inject constructor() : RoomDatabase() {
 
     abstract fun cachedListDao(): CachedListDao
 
+    abstract fun cachedMainDao(): CachedMainDao
+
     abstract fun cachedRainDao(): CachedRainDao
 
     abstract fun cachedSnowDao(): CachedSnowDao

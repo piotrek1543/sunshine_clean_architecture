@@ -10,6 +10,7 @@ import com.piotrek1543.android.boilerplate.presentation.data.ResourceState
 import com.piotrek1543.android.boilerplate.presentation.mapper.ForecastMapper
 import com.piotrek1543.android.boilerplate.presentation.model.ForecastView
 import io.reactivex.subscribers.DisposableSubscriber
+import timber.log.Timber
 import javax.inject.Inject
 
 open class GetForecastViewModel @Inject internal constructor(
@@ -48,6 +49,7 @@ open class GetForecastViewModel @Inject internal constructor(
 
         override fun onError(exception: Throwable) {
             forecast.postValue(Resource(ResourceState.ERROR, null, exception.message))
+            Timber.d(exception)
         }
 
     }

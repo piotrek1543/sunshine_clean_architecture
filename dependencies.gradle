@@ -79,6 +79,7 @@ ext {
             archRuntime       : "android.arch.lifecycle:runtime:${roomVersion}",
             archExtensions    : "android.arch.lifecycle:extensions:${roomVersion}",
             archCompiler      : "android.arch.lifecycle:compiler:${roomVersion}",
+            timber             : "com.jakewharton.timber:timber:${timberVersion}",
     ]
 
     presentationTestDependencies = [
