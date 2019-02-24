@@ -2,7 +2,7 @@ package com.piotrek1543.android.boilerplate.cache.db
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
-import com.piotrek1543.android.boilerplate.cache.dao.CachedForecastDao
+import com.piotrek1543.android.boilerplate.cache.dao.*
 import com.piotrek1543.android.boilerplate.cache.model.*
 import javax.inject.Inject
 
@@ -25,6 +25,22 @@ import javax.inject.Inject
 )
 abstract class SunshineDatabase @Inject constructor() : RoomDatabase() {
 
+    abstract fun cachedCityDao(): CachedCityDao
+
+    abstract fun cachedCloudsDao(): CachedCloudsDao
+
+    abstract fun cachedCoordDao(): CachedCoordDao
+
     abstract fun cachedForecastDao(): CachedForecastDao
+
+    abstract fun cachedListDao(): CachedListDao
+
+    abstract fun cachedRainDao(): CachedRainDao
+
+    abstract fun cachedSnowDao(): CachedSnowDao
+
+    abstract fun cachedWeatherDao(): CachedWeatherDao
+
+    abstract fun cachedWindDao(): CachedWindDao
 
 }

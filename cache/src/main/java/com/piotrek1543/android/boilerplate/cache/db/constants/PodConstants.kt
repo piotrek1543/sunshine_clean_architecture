@@ -7,8 +7,8 @@ object PodConstants {
 
     const val TABLE_NAME = "pod"
 
-    const val QUERY_FORECAST = "SELECT * FROM $TABLE_NAME"
+    const val QUERY_POD = "SELECT * FROM $TABLE_NAME"
 
-    const val DELETE_ALL_FORECASTS = "DELETE FROM $TABLE_NAME"
+    const val DELETE_ALL_PODS = "DELETE FROM $TABLE_NAME"
 
 }

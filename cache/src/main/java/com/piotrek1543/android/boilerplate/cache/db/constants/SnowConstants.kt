@@ -7,8 +7,8 @@ object SnowConstants {
 
     const val TABLE_NAME = "snow"
 
-    const val QUERY_FORECAST = "SELECT * FROM $TABLE_NAME"
+    const val QUERY_SNOW = "SELECT * FROM $TABLE_NAME"
 
-    const val DELETE_ALL_FORECASTS = "DELETE FROM $TABLE_NAME"
+    const val DELETE_ALL_SNOWS = "DELETE FROM $TABLE_NAME"
 
 }

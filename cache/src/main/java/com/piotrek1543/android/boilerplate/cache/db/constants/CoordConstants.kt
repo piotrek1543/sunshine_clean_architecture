@@ -7,8 +7,8 @@ object CoordConstants {
 
     const val TABLE_NAME = "coord"
 
-    const val QUERY_FORECAST = "SELECT * FROM $TABLE_NAME"
+    const val QUERY_COORD = "SELECT * FROM $TABLE_NAME"
 
-    const val DELETE_ALL_FORECASTS = "DELETE FROM $TABLE_NAME"
+    const val DELETE_ALL_COORDS = "DELETE FROM $TABLE_NAME"
 
 }
