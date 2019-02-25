@@ -17,6 +17,6 @@ abstract class CachedCoordDao {
     abstract fun clearCoord()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertCoord(cachedCoord: CachedCoord)
+    abstract fun insertCoord(cachedCoord: CachedCoord?)
 
 }

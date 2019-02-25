@@ -10,7 +10,7 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.WindConstants
 @Entity(tableName = WindConstants.TABLE_NAME)
 data class CachedWind(
         @PrimaryKey(autoGenerate = true)
-        var id: Int? = 0,
+        var id: Int = 0,
         var speed: Double? = null,
         var deg: Float? = null
 )

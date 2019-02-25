@@ -10,5 +10,5 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.PodConstants
 @Entity(tableName = PodConstants.TABLE_NAME)
 data class CachedPod(
         @PrimaryKey(autoGenerate = true)
-        var id: Int? = 0,
+        var id: Int = 0,
         var pod: String? = null)

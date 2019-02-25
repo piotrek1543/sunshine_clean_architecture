@@ -17,6 +17,6 @@ abstract class CachedCityDao {
     abstract fun clearCity()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertCity(cachedCity: CachedCity)
+    abstract fun insertCity(cachedCity: CachedCity?)
 
 }

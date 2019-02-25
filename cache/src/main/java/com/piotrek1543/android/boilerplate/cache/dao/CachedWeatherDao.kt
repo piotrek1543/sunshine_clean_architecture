@@ -17,6 +17,6 @@ abstract class CachedWeatherDao {
     abstract fun clearWeather()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertWeather(cachedWeather: CachedWeather)
+    abstract fun insertWeather(cachedWeather: CachedWeather?)
 
 }

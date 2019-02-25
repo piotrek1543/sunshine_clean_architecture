@@ -2,6 +2,7 @@ package com.piotrek1543.android.boilerplate.cache.mapper
 
 import com.piotrek1543.android.boilerplate.cache.model.CachedCity
 import com.piotrek1543.android.boilerplate.data.model.CityEntity
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -16,7 +17,7 @@ open class CityEntityMapper @Inject constructor() :
      */
     override fun mapToCached(type: CityEntity): CachedCity {
         return CachedCity(
-                id = type.id,
+                id = type.id ?: Random().nextInt(100_000),
                 name = type.name,
                 country = type.country,
                 population = type.population

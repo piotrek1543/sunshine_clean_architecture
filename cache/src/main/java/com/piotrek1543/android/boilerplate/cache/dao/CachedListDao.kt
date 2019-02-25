@@ -11,12 +11,12 @@ import com.piotrek1543.android.boilerplate.cache.model.CachedList
 abstract class CachedListDao {
 
     @Query(ListConstants.QUERY_LIST)
-    abstract fun getList(): CachedList?
+    abstract fun getList(): List<CachedList>?
 
     @Query(ListConstants.DELETE_ALL_LISTS)
     abstract fun clearList()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertList(cachedList: CachedList)
+    abstract fun insertAll(cachedList: List<CachedList>?)
 
 }
