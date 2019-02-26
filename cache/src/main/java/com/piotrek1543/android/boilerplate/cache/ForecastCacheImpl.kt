@@ -1,16 +1,19 @@
 package com.piotrek1543.android.boilerplate.cache
 
+import android.util.Log
 import com.piotrek1543.android.boilerplate.cache.db.SunshineDatabase
 import com.piotrek1543.android.boilerplate.cache.mapper.*
 import com.piotrek1543.android.boilerplate.cache.model.CachedForecast
 import com.piotrek1543.android.boilerplate.cache.model.CachedList
 import com.piotrek1543.android.boilerplate.cache.model.CachedMain
+import com.piotrek1543.android.boilerplate.cache.model.CachedWeather
 import com.piotrek1543.android.boilerplate.data.model.ForecastEntity
+import com.piotrek1543.android.boilerplate.data.model.WeatherEntity
 import com.piotrek1543.android.boilerplate.data.repository.ForecastCache
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
-import io.reactivex.functions.Function3
+import io.reactivex.functions.Function4
 import javax.inject.Inject
 
 /**
@@ -39,7 +42,18 @@ class ForecastCacheImpl @Inject constructor(
      */
     override fun clearForecast(): Completable {
         return Completable.defer {
+            //fixme: aad primary keys to simplify this
+            sunshineDatabase.cachedCityDao().clearCity()
+            sunshineDatabase.cachedCloudsDao().clearClouds()
+            sunshineDatabase.cachedCoordDao().clearCoord()
             sunshineDatabase.cachedForecastDao().clearForecast()
+            sunshineDatabase.cachedListDao().clearList()
+            sunshineDatabase.cachedMainDao().clearMain()
+            sunshineDatabase.cachedPodDao().clearPod()
+            sunshineDatabase.cachedRainDao().clearRain()
+            sunshineDatabase.cachedSnowDao().clearSnow()
+            sunshineDatabase.cachedWeatherDao().clearWeather()
+            sunshineDatabase.cachedWindDao().clearWind()
             Completable.complete()
         }
     }
@@ -49,23 +63,24 @@ class ForecastCacheImpl @Inject constructor(
      */
     override fun saveForecast(forecast: ForecastEntity): Completable {
         return Completable.defer {
-            val cachedCity = forecast.cityEntity?.let { cityEntityMapper.mapToCached(it) }
-            val cachedCoord = forecast.cityEntity?.coordEntity?.let { coordEntityMapper.mapToCached(it) }
             val cachedForecast = forecastEntityMapper.mapToCached(forecast)
+
             val cachedList = forecast.listEntity?.map { listEntityMapper.mapToCached(it) }
-            val cachedMain = forecast.listEntity?.map { it.mainEntity }?.map { entity ->
-                entity?.let { mainEntityMapper.mapToCached(it) }
+            val cachedMain = forecast.listEntity?.map { listEntity ->
+                listEntity.mainEntity
+            }?.map { entity ->
+                if (entity != null) mainEntityMapper.mapToCached(entity) else CachedMain()
             }
-            // val cachedWeather = forecast.listEntity?.map { it.weatherEntity }?.get(0)?.let { weatherEntityMapper.mapToCached(it) }
+            val cachedWeather = forecast.listEntity?.map { listEntity ->
+                listEntity.weatherEntity ?: WeatherEntity()
+            }?.map { weatherEntity: WeatherEntity -> weatherEntityMapper.mapToCached(weatherEntity) }
 
 
             with(sunshineDatabase) {
                 cachedForecastDao().insertForecast(cachedForecast)
                 cachedListDao().insertAll(cachedList)
                 cachedMainDao().insertMain(cachedMain)
-                // cachedWeatherDao().insertWeather(cachedWeather)
-               // cachedCityDao().insertCity(cachedCity)
-              //  cachedCoordDao().insertCoord(cachedCoord)
+                cachedWeatherDao().insertWeather(cachedWeather)
             }
 
             Completable.complete()
@@ -80,17 +95,25 @@ class ForecastCacheImpl @Inject constructor(
             val forecastFlowable = Flowable.just(sunshineDatabase.cachedForecastDao().getForecast())
             val listFlowable = Flowable.just(sunshineDatabase.cachedListDao().getList())
             val mainFlowable = Flowable.just(sunshineDatabase.cachedMainDao().getMain())
+            val weatherFlowable = Flowable.just(sunshineDatabase.cachedWeatherDao().getWeather())
 
             Flowable.zip(
                     forecastFlowable,
                     listFlowable,
                     mainFlowable,
-                    Function3<CachedForecast?, List<CachedList>?, List<CachedMain?>?, ForecastEntity>
-                    { forecast, list, main ->
+                    weatherFlowable,
+                    Function4<CachedForecast?, List<CachedList>?, List<CachedMain>?, List<CachedWeather>?, ForecastEntity>
+                    { forecast, list, main, weather ->
+                        Log.d(TAG, list.size.toString())
+                        Log.d(TAG, main.size.toString())
+                        Log.d(TAG, weather.size.toString())
                         forecastEntityMapper.mapFromCached(forecast).copy(
                                 listEntity = list.mapIndexed { index: Int, cachedList: CachedList ->
                                     listEntityMapper.mapFromCached(cachedList)
-                                            .copy(mainEntity = main[index]?.let { mainEntityMapper.mapFromCached(it) })
+                                            .copy(
+                                                    mainEntity = mainEntityMapper.mapFromCached(main[index]),
+                                                    weatherEntity = weatherEntityMapper.mapFromCached(weather[index])
+                                            )
                                 }
                         )
                     })
@@ -102,7 +125,7 @@ class ForecastCacheImpl @Inject constructor(
      */
     override fun isCached(): Single<Boolean> {
         return Single.defer {
-            Single.just(sunshineDatabase.cachedForecastDao().getForecast() != null)
+            Single.just(true)
         }
     }
 
@@ -119,7 +142,7 @@ class ForecastCacheImpl @Inject constructor(
     override fun isExpired(): Boolean {
         val currentTime = System.currentTimeMillis()
         val lastUpdateTime = this.getLastCacheUpdateTimeMillis()
-        return false
+        return currentTime - lastUpdateTime > EXPIRATION_TIME
     }
 
     /**
@@ -131,6 +154,7 @@ class ForecastCacheImpl @Inject constructor(
 
     companion object {
         private const val EXPIRATION_TIME = (60 * 10 * 1000).toLong()
+        private const val TAG = "ForecastCacheImpl"
     }
 
 }

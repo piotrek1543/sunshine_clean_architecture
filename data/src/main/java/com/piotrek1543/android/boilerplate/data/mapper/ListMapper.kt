@@ -24,9 +24,7 @@ open class ListMapper @Inject constructor(
      */
     override fun mapFromEntity(type: ListEntity): List = List(
             dt = type.dt,
-            weather = type.weatherEntity?.map { weatherModel ->
-                weatherModel.let { weatherMapper.mapFromEntity(it) }
-            },
+            weather = type.weatherEntity?.let { weatherMapper.mapFromEntity(it) },
             main = type.mainEntity?.let { mainMapper.mapFromEntity(it) },
             // clouds = type.cloudsEntity?.let { cloudsMapper.mapFromEntity(it) },
             wind = type.windEntity?.let { windMapper.mapFromEntity(it) },
@@ -41,9 +39,7 @@ open class ListMapper @Inject constructor(
      */
     override fun mapToEntity(type: List): ListEntity = ListEntity(
             dt = type.dt,
-            weatherEntity = type.weather?.map { weatherModel ->
-                weatherModel.let { weatherMapper.mapToEntity(it) }
-            },
+            weatherEntity = type.weather?.let { weatherMapper.mapToEntity(it) },
             mainEntity = type.main?.let { mainMapper.mapToEntity(it) },
             cloudsEntity = type.clouds?.let { cloudsMapper.mapToEntity(it) },
             windEntity = type.wind?.let { windMapper.mapToEntity(it) },

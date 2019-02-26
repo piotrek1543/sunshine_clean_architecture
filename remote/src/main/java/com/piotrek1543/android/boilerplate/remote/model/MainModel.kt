@@ -21,4 +21,7 @@ class MainModel {
     @field:Json(name = "temp_kf")
     var tempKf: String? = null
 
+    @field:Json(name = "list_dt")
+    var listDt: Long? = null
+
 }

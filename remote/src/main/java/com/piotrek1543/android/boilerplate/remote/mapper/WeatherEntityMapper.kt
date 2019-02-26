@@ -17,7 +17,8 @@ open class WeatherEntityMapper @Inject constructor() : EntityMapper<WeatherModel
             id = type.id,
             main = type.main,
             description = type.description,
-            icon = type.icon
+            icon = type.icon,
+            listDt = type.listDt
     )
 
 }

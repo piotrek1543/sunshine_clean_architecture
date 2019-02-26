@@ -18,7 +18,8 @@ open class WeatherMapper @Inject constructor() : Mapper<WeatherEntity, Weather> 
             id = type.id,
             main = type.main,
             description = type.description,
-            icon = type.icon
+            icon = type.icon,
+            listDt = type.listDt
     )
 
     /**
@@ -28,7 +29,8 @@ open class WeatherMapper @Inject constructor() : Mapper<WeatherEntity, Weather> 
             id = type.id,
             main = type.main,
             description = type.description,
-            icon = type.icon
+            icon = type.icon,
+            listDt = type.listDt
     )
 
 

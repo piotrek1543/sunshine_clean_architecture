@@ -8,10 +8,17 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.WeatherConstants
 /**
  * Model used solely for the caching of a [Weather]
  */
-@Entity(tableName = WeatherConstants.TABLE_NAME)
+@Entity(tableName = WeatherConstants.TABLE_NAME
+        /* foreignKeys = [ForeignKey(entity = CachedMain::class,
+                 parentColumns = ["listDt"],
+                 childColumns = ["listDt"],
+                 onDelete = ForeignKey.CASCADE)]*/
+//todo: fix: FOREIGN KEY constraint failed (code 787 SQLITE_CONSTRAINT_FOREIGNKEY)
+)
 data class CachedWeather(
-        @PrimaryKey(autoGenerate = true)
-        var id: Int = 0,
+        @PrimaryKey
+        var listDt: Long? = null,
+        var id: Int? = null,
         var main: String? = null,
         var description: String? = null,
         var icon: String? = null

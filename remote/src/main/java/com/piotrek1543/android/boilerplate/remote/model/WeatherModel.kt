@@ -13,4 +13,6 @@ class WeatherModel {
     @field:Json(name = "icon")
     var icon: String? = null
 
+    @field:Json(name = "list_dt")
+    var listDt: Long? = null
 }

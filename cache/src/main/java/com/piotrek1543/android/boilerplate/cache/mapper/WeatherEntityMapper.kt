@@ -2,7 +2,6 @@ package com.piotrek1543.android.boilerplate.cache.mapper
 
 import com.piotrek1543.android.boilerplate.cache.model.CachedWeather
 import com.piotrek1543.android.boilerplate.data.model.WeatherEntity
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -17,10 +16,11 @@ open class WeatherEntityMapper @Inject constructor() :
      */
     override fun mapToCached(type: WeatherEntity): CachedWeather =
             CachedWeather(
-                    id = type.id ?: Random().nextInt(100_000),
+                    id = type.id,
                     main = type.main,
                     description = type.description,
-                    icon = type.icon
+                    icon = type.icon,
+                    listDt = type.listDt
             )
 
     /**
@@ -31,7 +31,8 @@ open class WeatherEntityMapper @Inject constructor() :
                     id = type.id,
                     main = type.main,
                     description = type.description,
-                    icon = type.icon
+                    icon = type.icon,
+                    listDt = type.listDt
             )
 
 }

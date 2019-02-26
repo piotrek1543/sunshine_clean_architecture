@@ -1,16 +1,22 @@
 package com.piotrek1543.android.boilerplate.cache.model
 
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.ForeignKey
+import android.arch.persistence.room.ForeignKey.CASCADE
 import android.arch.persistence.room.PrimaryKey
 import com.piotrek1543.android.boilerplate.cache.db.constants.MainConstants
 
 /**
  * Model used solely for the caching of a [Main]
  */
-@Entity(tableName = MainConstants.TABLE_NAME)
+@Entity(tableName = MainConstants.TABLE_NAME,
+        foreignKeys = [ForeignKey(entity = CachedList::class,
+                parentColumns = ["dt"],
+                childColumns = ["listDt"],
+                onDelete = CASCADE)])
 data class CachedMain(
-        @PrimaryKey(autoGenerate = true)
-        var id: Int = 0,
+        @PrimaryKey
+        var listDt: Long? = null,
         var temp: Double? = null,
         var tempMin: Double? = null,
         var tempMax: Double? = null,

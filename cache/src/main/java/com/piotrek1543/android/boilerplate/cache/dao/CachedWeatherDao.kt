@@ -11,12 +11,12 @@ import com.piotrek1543.android.boilerplate.cache.model.CachedWeather
 abstract class CachedWeatherDao {
 
     @Query(WeatherConstants.QUERY_WEATHER)
-    abstract fun getWeather(): CachedWeather?
+    abstract fun getWeather(): List<CachedWeather>?
 
     @Query(WeatherConstants.DELETE_ALL_WEATHERS)
     abstract fun clearWeather()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertWeather(cachedWeather: CachedWeather?)
+    abstract fun insertWeather(cachedWeather: List<CachedWeather>?)
 
 }

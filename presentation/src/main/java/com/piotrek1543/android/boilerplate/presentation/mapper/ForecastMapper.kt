@@ -20,8 +20,8 @@ open class ForecastMapper @Inject constructor() : Mapper<ForecastView, Forecast>
                     date = type.dt ?: 0,
                     tempMin = type.main?.tempMin ?: 0.0,
                     tempMax = type.main?.tempMax ?: 0.0,
-                    description = type.weather?.get(0)?.description ?: "",
-                    icon = type.weather?.get(0)?.id ?: 500
+                    description = type.weather?.description ?: "",
+                    icon = type.weather?.id ?: 500
             )
 
 }

@@ -6,7 +6,7 @@ package com.piotrek1543.android.boilerplate.domain.model
 data class List(
         val dt: Long? = null,
         val main: Main? = null,
-        val weather: kotlin.collections.List<Weather>? = null,
+        val weather: Weather? = null,
         val clouds: Clouds? = null,
         val wind: Wind? = null,
         val rain: Rain? = null,

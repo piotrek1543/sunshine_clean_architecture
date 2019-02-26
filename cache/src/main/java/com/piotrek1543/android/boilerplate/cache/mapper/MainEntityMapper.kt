@@ -22,7 +22,8 @@ open class MainEntityMapper @Inject constructor() :
             seaLevel = type.seaLevel,
             grndLevel = type.grndLevel,
             humidity = type.humidity,
-            tempKf = type.tempKf
+            tempKf = type.tempKf,
+            listDt = type.listDt
     )
 
     /**
@@ -36,7 +37,8 @@ open class MainEntityMapper @Inject constructor() :
             seaLevel = type.seaLevel,
             grndLevel = type.grndLevel,
             humidity = type.humidity,
-            tempKf = type.tempKf
+            tempKf = type.tempKf,
+            listDt = type.listDt
     )
 
 }
