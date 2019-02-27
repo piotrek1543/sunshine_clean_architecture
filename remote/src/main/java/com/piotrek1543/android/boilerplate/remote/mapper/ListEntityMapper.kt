@@ -23,16 +23,21 @@ open class ListEntityMapper @Inject constructor(
      */
     override fun mapFromRemote(type: ListModel): ListEntity {
         val mainModel = type.mainModel.apply { this?.listDt = type.dt }
-        val weatherModel = type.weatherModel?.map { it.apply { this.listDt = type.dt } }?.get(0)
+        val weatherModel = type.weatherModel?.get(0)?.let { it.apply { this.listDt = type.dt } }
+        val cloudsModel = type.cloudsModel.apply { this?.listDt = type.dt }
+        val windModel = type.windModel.apply { this?.listDt = type.dt }
+        val rainModel = type.rainModel.apply { this?.listDt = type.dt }
+        val snowModel = type.snowModel.apply { this?.listDt = type.dt }
+        val podModel = type.podModel.apply { this?.listDt = type.dt }
         return ListEntity(
                 dt = type.dt,
                 mainEntity = mainModel?.let { mainEntityMapper.mapFromRemote(it) },
                 weatherEntity = weatherModel?.let { weatherEntityMapper.mapFromRemote(it) },
-                cloudsEntity = type.cloudsModel?.let { cloudsEntityMapper.mapFromRemote(it) },
-                windEntity = type.windModel?.let { windEntityMapper.mapFromRemote(it) },
-                rainEntity = type.rainModel?.let { rainEntityMapper.mapFromRemote(it) },
-                snowEntity = type.snowModel?.let { snowEntityMapper.mapFromRemote(it) },
-                podEntity = type.podModel?.let { podEntityMapper.mapFromRemote(it) },
+                cloudsEntity = cloudsModel?.let { cloudsEntityMapper.mapFromRemote(it) },
+                windEntity = windModel?.let { windEntityMapper.mapFromRemote(it) },
+                rainEntity = rainModel?.let { rainEntityMapper.mapFromRemote(it) },
+                snowEntity = snowModel?.let { snowEntityMapper.mapFromRemote(it) },
+                podEntity = podModel?.let { podEntityMapper.mapFromRemote(it) },
                 dtTxt = type.dtTxt
         )
     }

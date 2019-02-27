@@ -19,6 +19,6 @@ open class WindMapper @Inject constructor() : Mapper<WindEntity, Wind> {
     /**
      * Map a [Wind] instance to a [WindEntity] instance
      */
-    override fun mapToEntity(type: Wind): WindEntity = WindEntity(speed = type.speed, deg = type.deg)
+    override fun mapToEntity(type: Wind): WindEntity = WindEntity(speed = type.speed, deg = type.deg, listDt = type.listDt)
 
 }

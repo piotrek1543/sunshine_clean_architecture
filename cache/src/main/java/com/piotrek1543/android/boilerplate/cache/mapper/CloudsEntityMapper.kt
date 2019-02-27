@@ -19,6 +19,6 @@ open class CloudsEntityMapper @Inject constructor() :
     /**
      * Map a [CachedClouds] instance to a [CloudsEntity] instance
      */
-    override fun mapFromCached(type: CachedClouds): CloudsEntity = CloudsEntity(all = type.all)
+    override fun mapFromCached(type: CachedClouds): CloudsEntity = CloudsEntity(all = type.all, listDt = type.listDt)
 
 }

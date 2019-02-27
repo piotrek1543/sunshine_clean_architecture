@@ -13,6 +13,6 @@ open class SnowEntityMapper @Inject constructor() : EntityMapper<SnowModel, Snow
     /**
      * Map an instance of a [SnowModel] to a [SnowEntity] model
      */
-    override fun mapFromRemote(type: SnowModel): SnowEntity = SnowEntity(_3h = type._3h)
+    override fun mapFromRemote(type: SnowModel): SnowEntity = SnowEntity(_3h = type._3h, listDt = type.listDt)
 
 }

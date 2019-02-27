@@ -13,6 +13,10 @@ open class WindEntityMapper @Inject constructor() : EntityMapper<WindModel, Wind
     /**
      * Map an instance of a [WindModel] to a [WindEntity] model
      */
-    override fun mapFromRemote(type: WindModel): WindEntity = WindEntity(speed = type.speed, deg = type.deg)
+    override fun mapFromRemote(type: WindModel): WindEntity = WindEntity(
+            speed = type.speed,
+            deg = type.deg,
+            listDt = type.listDt
+    )
 
 }

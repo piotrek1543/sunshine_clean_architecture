@@ -19,7 +19,7 @@ open class PodMapper @Inject constructor() : Mapper<PodEntity, Pod> {
     /**
      * Map a [Pod] instance to a [PodEntity] instance
      */
-    override fun mapToEntity(type: Pod): PodEntity = PodEntity(pod = type.pod)
+    override fun mapToEntity(type: Pod): PodEntity = PodEntity(pod = type.pod, listDt = type.listDt)
 
 
 }

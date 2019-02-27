@@ -13,6 +13,7 @@ open class RainEntityMapper @Inject constructor() : EntityMapper<RainModel, Rain
     /**
      * Map an instance of a [RainModel] to a [RainEntity] model
      */
-    override fun mapFromRemote(type: RainModel): RainEntity = RainEntity(_3h = type._3h)
+    override fun mapFromRemote(type: RainModel): RainEntity = RainEntity(_3h = type._3h, listDt = type.listDt
+    )
 
 }

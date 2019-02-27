@@ -7,4 +7,5 @@ class PodModel {
     @field:Json(name = "pod")
     var pod: String? = null
 
+    var listDt: Long? = null
 }

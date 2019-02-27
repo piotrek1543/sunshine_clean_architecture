@@ -7,4 +7,5 @@ class RainModel {
     @field:Json(name = "3h")
     var _3h:Double? = null
 
+    var listDt: Long? = null
 }

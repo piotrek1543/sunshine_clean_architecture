@@ -19,6 +19,6 @@ open class SnowEntityMapper @Inject constructor() :
     /**
      * Map a [CachedSnow] instance to a [SnowEntity] instance
      */
-    override fun mapFromCached(type: CachedSnow): SnowEntity = SnowEntity(_3h = type._3h)
+    override fun mapFromCached(type: CachedSnow): SnowEntity = SnowEntity(_3h = type._3h, listDt = type.listDt)
 
 }

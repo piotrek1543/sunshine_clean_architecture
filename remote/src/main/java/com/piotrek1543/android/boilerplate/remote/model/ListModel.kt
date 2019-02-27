@@ -23,7 +23,5 @@ class ListModel {
     @field:Json(name = "dt_txt")
     var dtTxt: String? = null
 
-    @field:Json(name = "list_dt")
     var listDt: Long? = null
-
 }

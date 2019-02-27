@@ -13,6 +13,6 @@ open class PodEntityMapper @Inject constructor() : EntityMapper<PodModel, PodEnt
     /**
      * Map an instance of a [PodModel] to a [PodEntity] model
      */
-    override fun mapFromRemote(type: PodModel): PodEntity = PodEntity(pod = type.pod)
+    override fun mapFromRemote(type: PodModel): PodEntity = PodEntity(pod = type.pod, listDt = type.listDt)
 
 }

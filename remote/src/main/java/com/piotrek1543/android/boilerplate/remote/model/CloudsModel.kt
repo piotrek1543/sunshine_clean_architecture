@@ -8,4 +8,5 @@ class CloudsModel {
     @field:Json(name = "all")
     var all: Int? = null
 
+    var listDt: Long? = null
 }

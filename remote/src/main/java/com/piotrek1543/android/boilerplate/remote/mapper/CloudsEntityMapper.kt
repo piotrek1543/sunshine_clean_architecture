@@ -13,6 +13,9 @@ open class CloudsEntityMapper @Inject constructor() : EntityMapper<CloudsModel, 
     /**
      * Map an instance of a [CloudsModel] to a [CloudsEntity] model
      */
-    override fun mapFromRemote(type: CloudsModel): CloudsEntity = CloudsEntity(all = type.all)
+    override fun mapFromRemote(type: CloudsModel): CloudsEntity = CloudsEntity(
+            all = type.all,
+            listDt = type.listDt
+    )
 
 }

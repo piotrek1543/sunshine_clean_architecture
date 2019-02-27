@@ -19,6 +19,6 @@ open class PodEntityMapper @Inject constructor() :
     /**
      * Map a [CachedPod] instance to a [PodEntity] instance
      */
-    override fun mapFromCached(type: CachedPod): PodEntity = PodEntity(pod = type.pod)
+    override fun mapFromCached(type: CachedPod): PodEntity = PodEntity(pod = type.pod, listDt = type.listDt)
 
 }

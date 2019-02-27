@@ -9,4 +9,5 @@ class WindModel {
     @field:Json(name = "deg")
     var deg: Float? = null
 
+    var listDt: Long? = null
 }
