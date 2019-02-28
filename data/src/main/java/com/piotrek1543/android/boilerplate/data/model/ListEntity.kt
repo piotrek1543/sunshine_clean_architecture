@@ -7,7 +7,7 @@ data class ListEntity(
         val dt: Long? = null,
         val mainEntity: MainEntity? = null,
         val weatherEntity: WeatherEntity? = null,
-        val cloudsEntity: Any? = null,
+        val cloudsEntity: CloudsEntity? = null,
         val windEntity: WindEntity? = null,
         val rainEntity: RainEntity? = null,
         val snowEntity: SnowEntity? = null,

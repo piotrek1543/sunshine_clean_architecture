@@ -14,7 +14,7 @@ open class RainMapper @Inject constructor() : Mapper<RainEntity, Rain> {
     /**
      * Map a [RainEntity] instance to a [Rain] instance
      */
-    override fun mapFromEntity(type: RainEntity): Rain = Rain(_3h = type._3h)
+    override fun mapFromEntity(type: RainEntity): Rain = Rain(_3h = type._3h, listDt = type.listDt)
 
     /**
      * Map a [Rain] instance to a [RainEntity] instance

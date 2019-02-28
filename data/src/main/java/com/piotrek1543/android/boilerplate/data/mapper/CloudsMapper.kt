@@ -14,7 +14,7 @@ open class CloudsMapper @Inject constructor() : Mapper<CloudsEntity, Clouds> {
     /**
      * Map a [CloudsEntity] instance to a [Clouds] instance
      */
-    override fun mapFromEntity(type: CloudsEntity): Clouds = Clouds(all = type.all)
+    override fun mapFromEntity(type: CloudsEntity): Clouds = Clouds(all = type.all, listDt = type.listDt)
 
     /**
      * Map a [Clouds] instance to a [CloudsEntity] instance

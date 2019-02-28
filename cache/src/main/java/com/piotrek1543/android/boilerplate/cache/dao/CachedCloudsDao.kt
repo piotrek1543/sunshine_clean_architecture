@@ -11,12 +11,12 @@ import com.piotrek1543.android.boilerplate.cache.model.CachedClouds
 abstract class CachedCloudsDao {
 
     @Query(CloudsConstants.QUERY_CLOUDS)
-    abstract fun getClouds(): CachedClouds?
+    abstract fun getClouds(): List<CachedClouds>?
 
     @Query(CloudsConstants.DELETE_ALL_CLOUDS)
     abstract fun clearClouds()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertClouds(cachedClouds: CachedClouds)
+    abstract fun insertClouds(cachedClouds: List<CachedClouds>?)
 
 }

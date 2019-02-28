@@ -14,11 +14,19 @@ open class WindEntityMapper @Inject constructor() :
     /**
      * Map a [WindEntity] instance to a [CachedWind] instance
      */
-    override fun mapToCached(type: WindEntity): CachedWind = CachedWind(deg = type.deg, speed = type.speed)
+    override fun mapToCached(type: WindEntity): CachedWind = CachedWind(
+            speed = type.speed,
+            deg = type.deg,
+            listDt = type.listDt
+    )
 
     /**
      * Map a [CachedWind] instance to a [WindEntity] instance
      */
-    override fun mapFromCached(type: CachedWind): WindEntity = WindEntity(speed = type.speed, deg = type.deg, listDt = type.listDt)
+    override fun mapFromCached(type: CachedWind): WindEntity = WindEntity(
+            speed = type.speed,
+            deg = type.deg,
+            listDt = type.listDt
+    )
 
 }
