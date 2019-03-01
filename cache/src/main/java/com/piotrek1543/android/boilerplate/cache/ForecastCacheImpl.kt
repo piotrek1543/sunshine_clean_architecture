@@ -43,17 +43,20 @@ class ForecastCacheImpl @Inject constructor(
     override fun clearForecast(): Completable {
         return Completable.defer {
             //fixme: aad primary keys to simplify this
-            sunshineDatabase.cachedCityDao().clearCity()
-            sunshineDatabase.cachedCloudsDao().clearClouds()
-            sunshineDatabase.cachedCoordDao().clearCoord()
-            sunshineDatabase.cachedForecastDao().clearForecast()
-            sunshineDatabase.cachedListDao().clearList()
-            sunshineDatabase.cachedMainDao().clearMain()
-            sunshineDatabase.cachedPodDao().clearPod()
-            sunshineDatabase.cachedRainDao().clearRain()
-            sunshineDatabase.cachedSnowDao().clearSnow()
-            sunshineDatabase.cachedWeatherDao().clearWeather()
-            sunshineDatabase.cachedWindDao().clearWind()
+            with(sunshineDatabase) {
+                cachedCityDao().clearCity()
+                cachedCloudsDao().clearClouds()
+                cachedCoordDao().clearCoord()
+                cachedForecastDao().clearForecast()
+                cachedListDao().clearList()
+                cachedMainDao().clearMain()
+                cachedPodDao().clearPod()
+                cachedRainDao().clearRain()
+                cachedSnowDao().clearSnow()
+                cachedWeatherDao().clearWeather()
+                cachedWindDao().clearWind()
+            }
+
             Completable.complete()
         }
     }
