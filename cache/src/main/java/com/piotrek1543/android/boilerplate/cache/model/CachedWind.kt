@@ -16,7 +16,7 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.WindConstants
 )
 data class CachedWind(
         @PrimaryKey
-        val listDt: Long? = null,
+        var listDt: Long? = null,
         var speed: Double? = null,
         var deg: Float? = null
 )

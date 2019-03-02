@@ -11,12 +11,12 @@ import com.piotrek1543.android.boilerplate.cache.model.CachedPod
 abstract class CachedPodDao {
 
     @Query(PodConstants.QUERY_POD)
-    abstract fun getPod(): CachedPod?
+    abstract fun getPod(): List<CachedPod>?
 
     @Query(PodConstants.DELETE_ALL_PODS)
     abstract fun clearPod()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertPod(cachedPod: CachedPod)
+    abstract fun insertPod(cachedPod: List<CachedPod>?)
 
 }

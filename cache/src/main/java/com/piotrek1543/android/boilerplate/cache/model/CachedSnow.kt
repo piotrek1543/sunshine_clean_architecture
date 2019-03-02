@@ -16,6 +16,6 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.SnowConstants
 )
 data class CachedSnow(
         @PrimaryKey
-        val listDt: Long? = null,
+        var listDt: Long? = null,
         var _3h: Double? = null
 )

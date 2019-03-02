@@ -2,6 +2,7 @@ package com.piotrek1543.android.boilerplate.cache.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.ForeignKey
+import android.arch.persistence.room.PrimaryKey
 import com.piotrek1543.android.boilerplate.cache.db.constants.PodConstants
 
 /**
@@ -14,7 +15,8 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.PodConstants
                 onDelete = ForeignKey.CASCADE)]
 )
 data class CachedPod(
-        val listDt: Long? = null,
+        @PrimaryKey
+        var listDt: Long? = null,
         var id: Int = 0,
         var pod: String? = null
 )

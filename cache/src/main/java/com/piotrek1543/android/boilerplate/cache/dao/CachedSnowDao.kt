@@ -11,12 +11,12 @@ import com.piotrek1543.android.boilerplate.cache.model.CachedSnow
 abstract class CachedSnowDao {
 
     @Query(SnowConstants.QUERY_SNOW)
-    abstract fun getSnow(): CachedSnow?
+    abstract fun getSnow(): List<CachedSnow>?
 
     @Query(SnowConstants.DELETE_ALL_SNOWS)
     abstract fun clearSnow()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertSnow(cachedSnow: CachedSnow)
+    abstract fun insertSnow(cachedSnow: List<CachedSnow>?)
 
 }

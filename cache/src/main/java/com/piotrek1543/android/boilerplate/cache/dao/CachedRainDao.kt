@@ -11,12 +11,12 @@ import com.piotrek1543.android.boilerplate.cache.model.CachedRain
 abstract class CachedRainDao {
 
     @Query(RainConstants.QUERY_RAIN)
-    abstract fun getRain(): CachedRain?
+    abstract fun getRain(): List<CachedRain>?
 
     @Query(RainConstants.DELETE_ALL_RAINS)
     abstract fun clearRain()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertRain(cachedRain: CachedRain)
+    abstract fun insertRain(cachedRain: List<CachedRain>?)
 
 }

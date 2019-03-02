@@ -15,6 +15,6 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.CloudsConstants
                 onDelete = ForeignKey.CASCADE)])
 data class CachedClouds(
         @PrimaryKey
-        val listDt: Long? = null,
+        var listDt: Long? = null,
         var all: Int? = null
 )

@@ -15,6 +15,6 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.RainConstants
                 onDelete = ForeignKey.CASCADE)])
 data class CachedRain(
         @PrimaryKey(autoGenerate = true)
-        val listDt: Long? = null,
+        var listDt: Long? = null,
         var _3h: Double? = null
 )

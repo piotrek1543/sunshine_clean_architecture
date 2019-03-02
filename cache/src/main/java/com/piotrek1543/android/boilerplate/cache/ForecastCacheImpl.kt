@@ -3,12 +3,8 @@ package com.piotrek1543.android.boilerplate.cache
 import android.util.Log
 import com.piotrek1543.android.boilerplate.cache.db.SunshineDatabase
 import com.piotrek1543.android.boilerplate.cache.mapper.*
-import com.piotrek1543.android.boilerplate.cache.model.CachedForecast
-import com.piotrek1543.android.boilerplate.cache.model.CachedList
-import com.piotrek1543.android.boilerplate.cache.model.CachedMain
-import com.piotrek1543.android.boilerplate.cache.model.CachedWeather
+import com.piotrek1543.android.boilerplate.cache.model.*
 import com.piotrek1543.android.boilerplate.data.model.ForecastEntity
-import com.piotrek1543.android.boilerplate.data.model.WeatherEntity
 import com.piotrek1543.android.boilerplate.data.repository.ForecastCache
 import io.reactivex.Completable
 import io.reactivex.Flowable
@@ -75,15 +71,40 @@ class ForecastCacheImpl @Inject constructor(
                 if (entity != null) mainEntityMapper.mapToCached(entity) else CachedMain()
             }
             val cachedWeather = forecast.listEntity?.map { listEntity ->
-                listEntity.weatherEntity ?: WeatherEntity()
-            }?.map { weatherEntity: WeatherEntity -> weatherEntityMapper.mapToCached(weatherEntity) }
-
+                val entity = listEntity.weatherEntity
+                if (entity != null) weatherEntityMapper.mapToCached(entity) else CachedWeather()
+            }
+            val cachedClouds = forecast.listEntity?.map { listEntity ->
+                val entity = listEntity.cloudsEntity
+                if (entity != null) cloudsEntityMapper.mapToCached(entity) else CachedClouds()
+            }
+            val cachedWind = forecast.listEntity?.map { listEntity ->
+                val entity = listEntity.windEntity
+                if (entity != null) windEntityMapper.mapToCached(entity) else CachedWind()
+            }
+            val cachedRain = forecast.listEntity?.map { listEntity ->
+                val entity = listEntity.rainEntity
+                if (entity != null) rainEntityMapper.mapToCached(entity) else CachedRain()
+            }
+            val cachedPod = forecast.listEntity?.map { listEntity ->
+                val entity = listEntity.podEntity
+                if (entity != null) podEntityMapper.mapToCached(entity) else CachedPod()
+            }
+            val cachedSnow = forecast.listEntity?.map { listEntity ->
+                val entity = listEntity.snowEntity
+                if (entity != null) snowEntityMapper.mapToCached(entity) else CachedSnow()
+            }
 
             with(sunshineDatabase) {
                 cachedForecastDao().insertForecast(cachedForecast)
                 cachedListDao().insertAll(cachedList)
                 cachedMainDao().insertMain(cachedMain)
                 cachedWeatherDao().insertWeather(cachedWeather)
+                cachedCloudsDao().insertClouds(cachedClouds)
+                cachedWindDao().insertWind(cachedWind)
+                cachedRainDao().insertRain(cachedRain)
+                cachedPodDao().insertPod(cachedPod)
+                cachedSnowDao().insertSnow(cachedSnow)
             }
 
             Completable.complete()
