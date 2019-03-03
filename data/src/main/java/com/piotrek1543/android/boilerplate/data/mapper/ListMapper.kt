@@ -26,7 +26,7 @@ open class ListMapper @Inject constructor(
             dt = type.dt,
             weather = type.weatherEntity?.let { weatherMapper.mapFromEntity(it) },
             main = type.mainEntity?.let { mainMapper.mapFromEntity(it) },
-            // clouds = type.cloudsEntity?.let { cloudsMapper.mapFromEntity(it) },
+            clouds = type.cloudsEntity?.let { cloudsMapper.mapFromEntity(it) },
             wind = type.windEntity?.let { windMapper.mapFromEntity(it) },
             rain = type.rainEntity?.let { rainMapper.mapFromEntity(it) },
             snow = type.snowEntity?.let { snowMapper.mapFromEntity(it) },

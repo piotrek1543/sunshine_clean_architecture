@@ -3,7 +3,10 @@ package com.piotrek1543.android.boilerplate.cache
 import android.util.Log
 import com.piotrek1543.android.boilerplate.cache.db.SunshineDatabase
 import com.piotrek1543.android.boilerplate.cache.mapper.*
-import com.piotrek1543.android.boilerplate.cache.model.*
+import com.piotrek1543.android.boilerplate.cache.model.CachedForecast
+import com.piotrek1543.android.boilerplate.cache.model.CachedList
+import com.piotrek1543.android.boilerplate.cache.model.CachedMain
+import com.piotrek1543.android.boilerplate.cache.model.CachedWeather
 import com.piotrek1543.android.boilerplate.data.model.ForecastEntity
 import com.piotrek1543.android.boilerplate.data.repository.ForecastCache
 import io.reactivex.Completable
@@ -70,41 +73,41 @@ class ForecastCacheImpl @Inject constructor(
             }?.map { entity ->
                 if (entity != null) mainEntityMapper.mapToCached(entity) else CachedMain()
             }
-            val cachedWeather = forecast.listEntity?.map { listEntity ->
-                val entity = listEntity.weatherEntity
-                if (entity != null) weatherEntityMapper.mapToCached(entity) else CachedWeather()
-            }
-            val cachedClouds = forecast.listEntity?.map { listEntity ->
-                val entity = listEntity.cloudsEntity
-                if (entity != null) cloudsEntityMapper.mapToCached(entity) else CachedClouds()
-            }
-            val cachedWind = forecast.listEntity?.map { listEntity ->
-                val entity = listEntity.windEntity
-                if (entity != null) windEntityMapper.mapToCached(entity) else CachedWind()
-            }
-            val cachedRain = forecast.listEntity?.map { listEntity ->
-                val entity = listEntity.rainEntity
-                if (entity != null) rainEntityMapper.mapToCached(entity) else CachedRain()
-            }
-            val cachedPod = forecast.listEntity?.map { listEntity ->
-                val entity = listEntity.podEntity
-                if (entity != null) podEntityMapper.mapToCached(entity) else CachedPod()
-            }
-            val cachedSnow = forecast.listEntity?.map { listEntity ->
-                val entity = listEntity.snowEntity
-                if (entity != null) snowEntityMapper.mapToCached(entity) else CachedSnow()
-            }
+
+            val cachedWeatherList = forecast.listEntity
+                    ?.mapNotNull { it -> it.weatherEntity }
+                    ?.map { weatherEntityMapper.mapToCached(it) }
+
+            val cachedCloudsList = forecast.listEntity
+                    ?.mapNotNull { it -> it.cloudsEntity }
+                    ?.map { cloudsEntityMapper.mapToCached(it) }
+
+            val cachedWindList = forecast.listEntity
+                    ?.mapNotNull { it -> it.windEntity }
+                    ?.map { windEntityMapper.mapToCached(it) }
+
+            val cachedRainList = forecast.listEntity
+                    ?.mapNotNull { it -> it.rainEntity }
+                    ?.map { rainEntityMapper.mapToCached(it) }
+
+            val cachedPodList = forecast.listEntity
+                    ?.mapNotNull { it -> it.podEntity }
+                    ?.map { podEntityMapper.mapToCached(it) }
+
+            val cachedSnowList = forecast.listEntity
+                    ?.mapNotNull { it -> it.snowEntity }
+                    ?.map { snowEntityMapper.mapToCached(it) }
 
             with(sunshineDatabase) {
                 cachedForecastDao().insertForecast(cachedForecast)
                 cachedListDao().insertAll(cachedList)
                 cachedMainDao().insertMain(cachedMain)
-                cachedWeatherDao().insertWeather(cachedWeather)
-                cachedCloudsDao().insertClouds(cachedClouds)
-                cachedWindDao().insertWind(cachedWind)
-                cachedRainDao().insertRain(cachedRain)
-                cachedPodDao().insertPod(cachedPod)
-                cachedSnowDao().insertSnow(cachedSnow)
+                cachedWeatherDao().insertWeather(cachedWeatherList)
+                cachedCloudsDao().insertClouds(cachedCloudsList)
+                cachedWindDao().insertWind(cachedWindList)
+                cachedRainDao().insertRain(cachedRainList)
+                cachedPodDao().insertPod(cachedPodList)
+                cachedSnowDao().insertSnow(cachedSnowList)
             }
 
             Completable.complete()
