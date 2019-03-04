@@ -10,4 +10,5 @@ class CoordModel {
     @field:Json(name = "lat")
     var lat: Double? = null
 
+    var cityId: Int? = null
 }

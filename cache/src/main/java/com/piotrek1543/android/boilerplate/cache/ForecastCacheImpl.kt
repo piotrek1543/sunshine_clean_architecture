@@ -67,7 +67,10 @@ class ForecastCacheImpl @Inject constructor(
         return Completable.defer {
             val cachedForecast = forecastEntityMapper.mapToCached(forecast)
 
+            val cachedCity = forecast.cityEntity?.let { cityEntityMapper.mapToCached(it) }
+
             val cachedList = forecast.listEntity?.map { listEntityMapper.mapToCached(it) }
+
             val cachedMain = forecast.listEntity?.map { listEntity ->
                 listEntity.mainEntity
             }?.map { entity ->
@@ -108,6 +111,7 @@ class ForecastCacheImpl @Inject constructor(
                 cachedRainDao().insertRain(cachedRainList)
                 cachedPodDao().insertPod(cachedPodList)
                 cachedSnowDao().insertSnow(cachedSnowList)
+                cachedCityDao().insertCity(cachedCity)
             }
 
             Completable.complete()

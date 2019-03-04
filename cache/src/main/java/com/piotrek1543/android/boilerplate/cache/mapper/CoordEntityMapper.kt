@@ -14,11 +14,19 @@ open class CoordEntityMapper @Inject constructor() :
     /**
      * Map a [CoordEntity] instance to a [CachedCoord] instance
      */
-    override fun mapToCached(type: CoordEntity) = CachedCoord(lat = type.lat, lon = type.lon)
+    override fun mapToCached(type: CoordEntity) = CachedCoord(
+            cityId = type.cityId,
+            lat = type.lat,
+            lon = type.lon
+    )
 
     /**
      * Map a [CachedCoord] instance to a [CoordEntity] instance
      */
-    override fun mapFromCached(type: CachedCoord): CoordEntity = CoordEntity(lat = type.lat, lon = type.lon)
+    override fun mapFromCached(type: CachedCoord): CoordEntity = CoordEntity(
+            cityId = type.cityId,
+            lat = type.lat,
+            lon = type.lon
+    )
 
 }
