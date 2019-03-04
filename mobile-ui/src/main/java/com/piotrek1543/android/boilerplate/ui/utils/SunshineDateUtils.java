@@ -93,9 +93,8 @@ public final class SunshineDateUtils {
          * midnight in GMT time. We will need to account for local time zone offsets when
          * extracting this information from the database.
          */
-        long normalizedUtcMidnightMillis = TimeUnit.DAYS.toMillis(daysSinceEpochLocal);
 
-        return normalizedUtcMidnightMillis;
+        return TimeUnit.DAYS.toMillis(daysSinceEpochLocal);
     }
 
     /**
@@ -119,15 +118,15 @@ public final class SunshineDateUtils {
      * For the next 5 days: "Wednesday" (just the day name)
      * For all days after that: "Mon, Jun 8" (Mon, 8 Jun in UK, for example)
      *
-     * @param context      Context to use for resource localization
-     * @param date         The date in milliseconds (UTC midnight)
      * @param showFullDate Used to show a fuller-version of the date, which always
      *                     contains either the day of the week, today, or tomorrow, in
      *                     addition to the date.
+     * @param context      Context to use for resource localization
+     * @param date         The date in milliseconds (UTC midnight)
      * @return A user-friendly representation of the date such as "Today, June 8", "Tomorrow",
      * or "Friday"
      */
-    public static String getFriendlyDateString(Context context, long date, int position) {
+    public static void getFriendlyDateString(Context context, long date, int position) {
 
         /*
          * NOTE: localDate should be localDateMidnightMillis and should be straight from the
@@ -181,15 +180,14 @@ public final class SunshineDateUtils {
                             | DateUtils.FORMAT_SHOW_TIME;
 
                 readableDate = getReadableDateString(context, date, flags);
-                return readableDate.replace(localizedDayName, dayName);
+                readableDate.replace(localizedDayName, dayName);
             } else {
 
 
-                return readableDate;
             }
         } else if (daysFromEpochToProvidedDate < daysFromEpochToToday + 2) {
             /* If the input date is less than a week in the future, just return the day name. */
-            return readableDate.replace(localizedDayName, dayName);
+            readableDate.replace(localizedDayName, dayName);
         } else {
              flags = DateUtils.FORMAT_SHOW_DATE
                     | DateUtils.FORMAT_ABBREV_WEEKDAY
@@ -197,7 +195,7 @@ public final class SunshineDateUtils {
                     | DateUtils.FORMAT_SHOW_WEEKDAY
                     | DateUtils.FORMAT_SHOW_TIME;
 
-            return DateUtils.formatDateTime(context, date, flags);
+            DateUtils.formatDateTime(context, date, flags);
         }
     }
 

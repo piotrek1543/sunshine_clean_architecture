@@ -14,7 +14,7 @@ open class RecyclerViewMatcher constructor(var recyclerViewId: Int) {
         return atPositionOnView(position, -1)
     }
 
-    fun atPositionOnView(position: Int, targetViewId: Int): Matcher<View> {
+    private fun atPositionOnView(position: Int, targetViewId: Int): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
             var resources: Resources? = null
@@ -23,16 +23,16 @@ open class RecyclerViewMatcher constructor(var recyclerViewId: Int) {
             override fun describeTo(description: Description) {
                 var idDescription = Integer.toString(recyclerViewId)
                 if (this.resources != null) {
-                    try {
-                        idDescription = this.resources!!.getResourceName(recyclerViewId)
+                    idDescription = try {
+                        this.resources!!.getResourceName(recyclerViewId)
                     } catch (var4: Resources.NotFoundException) {
-                        idDescription = String.format("%s (resource name not found)",
+                        String.format("%s (resource name not found)",
                                 Integer.valueOf(recyclerViewId))
                     }
 
                 }
 
-                description.appendText("with id: " + idDescription)
+                description.appendText("with id: $idDescription")
             }
 
             override fun matchesSafely(view: View): Boolean {

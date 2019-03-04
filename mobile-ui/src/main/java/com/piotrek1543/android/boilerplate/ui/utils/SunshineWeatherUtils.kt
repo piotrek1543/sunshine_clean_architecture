@@ -139,12 +139,10 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
      */
     fun getStringForWeatherCondition(context: Context, weatherId: Int): String {
         val stringId: Int
-        if (weatherId in 200..232) {
-            stringId = R.string.condition_2xx
-        } else if (weatherId in 300..321) {
-            stringId = R.string.condition_3xx
-        } else
-            when (weatherId) {
+        when (weatherId) {
+            in 200..232 -> stringId = R.string.condition_2xx
+            in 300..321 -> stringId = R.string.condition_3xx
+            else -> when (weatherId) {
                 500 -> stringId = R.string.condition_500
                 501 -> stringId = R.string.condition_501
                 502 -> stringId = R.string.condition_502
@@ -199,6 +197,7 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
                 962 -> stringId = R.string.condition_962
                 else -> return context.getString(R.string.condition_unknown, weatherId)
             }
+        }
 
         return context.getString(stringId)
     }
