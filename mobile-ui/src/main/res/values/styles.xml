@@ -35,17 +35,7 @@
     </style>
 
     <!-- Style used in the DetailActivity for the labels of the extra weather information -->
-    <style name="DetailLabel" parent="@style/TextAppearance.AppCompat.Title">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/detail_accent_label</item>
-    </style>
 
     <!-- Style used in the DetailActivity for the values of the extra weather information -->
-    <style name="ExtraWeatherMeasurement" parent="@style/TextAppearance.AppCompat.Headline">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
 
 </resources>
