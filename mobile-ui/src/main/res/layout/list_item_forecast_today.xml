@@ -61,13 +61,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
+        android:paddingTop="@dimen/today_forecast_list_item_vertical_padding"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:paddingTop="@dimen/today_forecast_list_item_vertical_padding"
         app:layout_constraintBottom_toTopOf="@+id/weather_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:text="Today, April 03" />
 
     <!-- Icon indicating weather condition -->
@@ -78,8 +80,10 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/accessibility_weather_icon"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/horizontal_middle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/horizontal_middle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/art_clouds" />
 
@@ -91,9 +95,11 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/weather_icon"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintLeft_toLeftOf="@+id/weather_icon"
         app:layout_constraintRight_toRightOf="@+id/weather_icon"
+        app:layout_constraintStart_toStartOf="@+id/weather_icon"
         app:layout_constraintTop_toBottomOf="@+id/weather_icon"
         tools:text="Rainy" />
 
@@ -114,9 +120,11 @@
         android:textColor="@color/white"
         android:textSize="72sp"
         app:layout_constraintBottom_toBottomOf="@+id/weather_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintLeft_toLeftOf="@+id/horizontal_middle"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/horizontal_middle"
         app:layout_constraintTop_toTopOf="@+id/weather_icon"
         tools:text="19\u00b0" />
 
@@ -137,8 +145,10 @@
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/weather_description"
+        app:layout_constraintEnd_toEndOf="@+id/high_temperature"
         app:layout_constraintLeft_toLeftOf="@+id/high_temperature"
         app:layout_constraintRight_toRightOf="@+id/high_temperature"
+        app:layout_constraintStart_toStartOf="@+id/high_temperature"
         tools:text="10\u00b0" />
 
 </android.support.constraint.ConstraintLayout>
