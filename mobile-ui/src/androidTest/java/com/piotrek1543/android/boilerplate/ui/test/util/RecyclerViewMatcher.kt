@@ -1,7 +1,7 @@
 package com.piotrek1543.android.boilerplate.ui.test.util
 
 import android.content.res.Resources
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -41,7 +41,7 @@ open class RecyclerViewMatcher constructor(var recyclerViewId: Int) {
 
                 if (childView == null) {
                     val recyclerView = view.rootView.findViewById(recyclerViewId)
-                            as RecyclerView
+                            as androidx.recyclerview.widget.RecyclerView
                     if (recyclerView != null && recyclerView.id == recyclerViewId) {
                         childView = recyclerView.findViewHolderForAdapterPosition(position)!!.itemView
                     } else {

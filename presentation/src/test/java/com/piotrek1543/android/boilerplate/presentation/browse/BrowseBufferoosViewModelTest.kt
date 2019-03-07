@@ -1,6 +1,6 @@
 package com.piotrek1543.android.boilerplate.presentation.browse
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockito_kotlin.*
 import io.reactivex.subscribers.DisposableSubscriber
 import org.buffer.android.boilerplate.domain.interactor.browse.GetBufferoos

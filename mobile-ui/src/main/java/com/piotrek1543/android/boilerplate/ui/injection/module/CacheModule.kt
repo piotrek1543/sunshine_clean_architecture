@@ -1,7 +1,7 @@
 package com.piotrek1543.android.boilerplate.ui.injection.module
 
 import android.app.Application
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.piotrek1543.android.boilerplate.cache.ForecastCacheImpl
 import com.piotrek1543.android.boilerplate.cache.db.SunshineDatabase
 import com.piotrek1543.android.boilerplate.data.repository.ForecastCache

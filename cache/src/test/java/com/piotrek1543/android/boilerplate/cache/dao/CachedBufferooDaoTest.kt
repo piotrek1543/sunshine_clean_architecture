@@ -1,6 +1,6 @@
 package com.piotrek1543.android.boilerplate.cache.dao
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import org.buffer.android.boilerplate.cache.db.SunshineDatabase
 import org.buffer.android.boilerplate.cache.test.factory.BufferooFactory
 import org.junit.After

@@ -76,9 +76,9 @@ ext {
             retrofit          : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitConverter : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             retrofitAdapter   : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
-            archRuntime       : "android.arch.lifecycle:runtime:${roomVersion}",
-            archExtensions    : "android.arch.lifecycle:extensions:${roomVersion}",
-            archCompiler      : "android.arch.lifecycle:compiler:${roomVersion}",
+            archRuntime       : 'androidx.lifecycle:lifecycle-runtime:2.0.0',
+            archExtensions    : 'androidx.lifecycle:lifecycle-extensions:2.0.0',
+            archCompiler      : 'androidx.lifecycle:lifecycle-compiler:2.0.0',
             timber             : "com.jakewharton.timber:timber:${timberVersion}",
     ]
 
@@ -124,8 +124,8 @@ ext {
             javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject       : "javax.inject:javax.inject:${javaxInjectVersion}",
             androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
-            roomRuntime       : "android.arch.persistence.room:runtime:${roomVersion}",
-            roomCompiler      : "android.arch.persistence.room:compiler:${roomVersion}",
+            roomRuntime       : 'androidx.room:room-runtime:2.0.0',
+            roomCompiler      : 'androidx.room:room-compiler:2.0.0',
             roomRxJava        : "android.arch.persistence.room:rxjava2:${roomVersion}"
     ]
 
@@ -135,8 +135,8 @@ ext {
             assertj      : "org.assertj:assertj-core:${assertJVersion}",
             mockito      : "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
             robolectric  : "org.robolectric:robolectric:${robolectricVersion}",
-            roomTesting  : "android.arch.persistence.room:testing:${roomVersion}",
-            archTesting  : "android.arch.core:core-testing:${roomVersion}",
+            roomTesting  : 'androidx.room:room-testing:2.0.0',
+            archTesting  : 'androidx.arch.core:core-testing:2.0.0',
             supportRunner: "com.android.support.test:runner:${androidSupportRunnerVersion}",
             supportRules : "com.android.support.test:rules:${androidSupportRulesVersion}"
     ]
@@ -175,12 +175,12 @@ ext {
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
             javaxAnnotation    : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject        : "javax.inject:javax.inject:${javaxInjectVersion}",
-            androidAnnotations : "com.android.support:support-annotations:${supportLibraryVersion}",
-            androidSupportV4   : "com.android.support:support-v4:${supportLibraryVersion}",
-            androidSupportV13  : "com.android.support:support-v13:${supportLibraryVersion}",
-            appCompatV7        : "com.android.support:appcompat-v7:${supportLibraryVersion}",
-            supportRecyclerView: "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-            supportDesign      : "com.android.support:design:${supportLibraryVersion}",
+            androidAnnotations : 'androidx.annotation:annotation:1.0.0',
+            androidSupportV4   : 'androidx.legacy:legacy-support-v4:1.0.0',
+            androidSupportV13  : 'androidx.legacy:legacy-support-v13:1.0.0',
+            appCompatV7        : 'androidx.appcompat:appcompat:1.0.0',
+            supportRecyclerView: 'androidx.recyclerview:recyclerview:1.0.0',
+            supportDesign      : 'com.google.android.material:material:1.0.0',
             timber             : "com.jakewharton.timber:timber:${timberVersion}",
             daggerSupport      : "com.google.dagger:dagger-android-support:${daggerVersion}",
             daggerProcessor    : "com.google.dagger:dagger-android-processor:${daggerVersion}",
@@ -188,8 +188,8 @@ ext {
             roomRuntime        : "android.arch.persistence.room:runtime:${roomVersion}",
             roomCompiler       : "android.arch.persistence.room:compiler:${roomVersion}",
             roomRxJava         : "android.arch.persistence.room:rxjava2:${roomVersion}",
-            constraintLayout   : "com.android.support.constraint:constraint-layout:${constraintVersion}",
-            preferenceSupport  : "com.android.support:preference-v7:${supportLibraryVersion}",
+            constraintLayout   : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            preferenceSupport  : 'androidx.preference:preference:1.0.0',
     ]
 
     mobileUiTestDependencies = [
@@ -200,11 +200,11 @@ ext {
             supportRunner  : "com.android.support.test:runner:${androidSupportRunnerVersion}",
             supportRules   : "com.android.support.test:rules:${androidSupportRulesVersion}",
             mockitoAndroid : "org.mockito:mockito-android:${mockitoAndroidVersion}",
-            espressoCore   : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-            espressoIntents: "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
-            espressoContrib: "com.android.support.test.espresso:espresso-contrib:${espressoVersion}",
-            androidRunner  : "com.android.support.test:runner:${runnerVersion}",
-            androidRules   : "com.android.support.test:rules:${runnerVersion}"
+            espressoCore   : 'androidx.test.espresso:espresso-core:3.1.0',
+            espressoIntents: 'androidx.test.espresso:espresso-intents:3.1.0',
+            espressoContrib: 'androidx.test.espresso:espresso-contrib:3.1.0',
+            androidRunner  : 'androidx.test:runner:1.1.0',
+            androidRules   : 'androidx.test:rules:1.1.0'
     ]
 
 }

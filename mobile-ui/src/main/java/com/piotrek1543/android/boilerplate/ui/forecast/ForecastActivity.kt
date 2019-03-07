@@ -1,13 +1,12 @@
 package com.piotrek1543.android.boilerplate.ui.forecast
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.piotrek1543.android.boilerplate.presentation.ViewModelFactory
 import com.piotrek1543.android.boilerplate.presentation.browse.GetForecastViewModel
 import com.piotrek1543.android.boilerplate.presentation.data.ResourceState
@@ -57,7 +56,7 @@ class ForecastActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupRecyclerView() = with(recycler_browse) {
-        layoutManager = LinearLayoutManager(this@ForecastActivity)
+        layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this@ForecastActivity)
         setHasFixedSize(true)
         adapter = browseAdapter
     }

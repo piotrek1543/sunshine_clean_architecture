@@ -1,7 +1,7 @@
 package com.piotrek1543.android.boilerplate.ui.injection.module
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.piotrek1543.android.boilerplate.presentation.ViewModelFactory
 import com.piotrek1543.android.boilerplate.presentation.browse.GetForecastViewModel
 import dagger.Binds

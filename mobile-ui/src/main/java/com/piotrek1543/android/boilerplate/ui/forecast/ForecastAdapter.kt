@@ -1,7 +1,7 @@
 package com.piotrek1543.android.boilerplate.ui.forecast
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class ForecastAdapter @Inject constructor(
         val context: Context,
         private val weatherUtils: SunshineWeatherUtils
-) : RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     var forecastList: List<ForecastViewModel> = arrayListOf()
     private val mUseTodayLayout: Boolean = context.resources.getBoolean(R.bool.use_today_layout)
@@ -77,7 +77,7 @@ class ForecastAdapter @Inject constructor(
         }
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class ViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view), View.OnClickListener {
         val weatherIconIV: ImageView = view.findViewById(R.id.weather_icon)
         val dateTV: TextView = view.findViewById(R.id.date)
         val descriptionTV: TextView = view.findViewById(R.id.weather_description)

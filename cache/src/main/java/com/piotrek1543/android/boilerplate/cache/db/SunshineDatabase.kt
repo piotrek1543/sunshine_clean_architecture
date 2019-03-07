@@ -1,7 +1,7 @@
 package com.piotrek1543.android.boilerplate.cache.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.piotrek1543.android.boilerplate.cache.dao.*
 import com.piotrek1543.android.boilerplate.cache.model.*
 import javax.inject.Inject

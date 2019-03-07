@@ -1,8 +1,8 @@
 package com.piotrek1543.android.boilerplate.presentation.browse
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.piotrek1543.android.boilerplate.domain.interactor.browse.GetForecast
 import com.piotrek1543.android.boilerplate.domain.model.Forecast
 import com.piotrek1543.android.boilerplate.presentation.data.Resource

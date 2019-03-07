@@ -68,7 +68,7 @@ dependencies {
     testImplementation presentationTestDependencies.mockito
     testImplementation presentationTestDependencies.assertj
     testImplementation presentationTestDependencies.robolectric
-    testImplementation "android.arch.core:core-testing:1.1.1"
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
 
     compile project(':domain')
 }

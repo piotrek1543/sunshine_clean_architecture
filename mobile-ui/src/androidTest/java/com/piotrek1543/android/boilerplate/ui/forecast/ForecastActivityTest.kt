@@ -1,12 +1,12 @@
 package com.piotrek1543.android.boilerplate.ui.forecast
 
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.contrib.RecyclerViewActions
-import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
-import android.support.v7.widget.RecyclerView
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.rule.ActivityTestRule
+import androidx.test.runner.AndroidJUnit4
+import androidx.recyclerview.widget.RecyclerView
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Flowable
 import org.junit.Rule
@@ -43,7 +43,7 @@ class ForecastActivityTest {
 
         bufferoos.forEachIndexed { index, bufferoo ->
             onView(withId(R.id.recycler_browse)).perform(RecyclerViewActions.
-                    scrollToPosition<RecyclerView.ViewHolder>(index))
+                    scrollToPosition<androidx.recyclerview.widget.RecyclerView.ViewHolder>(index))
             checkBufferooDetailsDisplay(bufferoo, index) }
     }
 
