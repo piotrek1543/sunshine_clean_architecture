@@ -6,7 +6,6 @@ android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
-    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
 
     defaultConfig {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
@@ -55,9 +54,8 @@ dependencies {
 
     implementation cacheDependencies.kotlin
     implementation cacheDependencies.javaxInject
-    implementation cacheDependencies.rxKotlin
-    implementation cacheDependencies.gson
-    implementation cacheDependencies.roomRuntime
+    implementation cacheDependencies.rxJava
+    api cacheDependencies.roomRuntime
     kapt cacheDependencies.roomCompiler
 
     testImplementation cacheTestDependencies.junit

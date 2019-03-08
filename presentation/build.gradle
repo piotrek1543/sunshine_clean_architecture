@@ -6,7 +6,6 @@ android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
-    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
 
     defaultConfig {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
@@ -54,21 +53,21 @@ dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
 
-    compile presentationDependencies.javaxAnnotation
-    compile presentationDependencies.timber
+    implementation  presentationDependencies.javaxAnnotation
+    implementation  presentationDependencies.timber
 
-    compile presentationDependencies.kotlin
-    compile presentationDependencies.javaxInject
-    compile presentationDependencies.rxKotlin
-    compile presentationDependencies.archRuntime
-    compile presentationDependencies.archExtensions
+    implementation  presentationDependencies.kotlin
+    implementation  presentationDependencies.javaxInject
+    implementation  presentationDependencies.rxJava
+    implementation  presentationDependencies.archRuntime
+    implementation  presentationDependencies.archExtensions
     kapt presentationDependencies.archCompiler
 
     testImplementation presentationTestDependencies.junit
     testImplementation presentationTestDependencies.mockito
     testImplementation presentationTestDependencies.assertj
     testImplementation presentationTestDependencies.robolectric
-    testImplementation 'androidx.arch.core:core-testing:2.0.0'
+    testImplementation presentationTestDependencies.archTesting
 
-    compile project(':domain')
+    implementation  project(':domain')
 }

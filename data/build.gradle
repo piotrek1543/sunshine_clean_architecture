@@ -13,7 +13,7 @@ dependencies {
 
     implementation dataDependencies.kotlin
     implementation dataDependencies.javaxInject
-    implementation dataDependencies.rxKotlin
+    implementation dataDependencies.rxJava
 
     testImplementation dataTestDependencies.junit
     testImplementation dataTestDependencies.kotlinJUnit

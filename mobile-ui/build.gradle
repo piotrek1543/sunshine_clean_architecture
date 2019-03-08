@@ -8,7 +8,6 @@ android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
-    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
 
     defaultConfig {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
@@ -75,12 +74,8 @@ dependencies {
 
     implementation mobileUiDependencies.kotlin
     implementation mobileUiDependencies.javaxInject
-    implementation mobileUiDependencies.rxKotlin
+    implementation mobileUiDependencies.rxJava
     implementation mobileUiDependencies.androidAnnotations
-    implementation mobileUiDependencies.androidSupportV4
-    implementation mobileUiDependencies.androidSupportV13
-    implementation mobileUiDependencies.appCompatV7
-    implementation mobileUiDependencies.supportRecyclerView
     implementation mobileUiDependencies.supportDesign
     implementation mobileUiDependencies.timber
     implementation mobileUiDependencies.rxAndroid
@@ -88,9 +83,8 @@ dependencies {
     implementation mobileUiDependencies.dagger
     implementation mobileUiDependencies.daggerSupport
 
-    compile presentationDependencies.archRuntime
-    compile presentationDependencies.archExtensions
-    compile 'androidx.room:room-rxjava2:2.0.0'
+    implementation presentationDependencies.archRuntime
+    implementation presentationDependencies.archExtensions
     kapt presentationDependencies.archCompiler
 
     testImplementation mobileUiTestDependencies.kotlinJUnit
