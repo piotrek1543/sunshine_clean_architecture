@@ -105,7 +105,6 @@ class SunshineWeatherUtils @Inject constructor(private val prefs: PreferencesHel
      * Helper method to provide the stringId according to the weather
      * condition id returned by the OpenWeatherMap call.
      *
-     * @param context   Android context
      * @param weatherId from OpenWeatherMap API response
      * See http://openweathermap.org/weather-conditions for a list of all IDs
      * @return Int for the weather condition

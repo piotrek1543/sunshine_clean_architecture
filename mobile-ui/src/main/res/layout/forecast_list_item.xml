@@ -67,7 +67,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/forecast_temperature_space"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/text_color_tertiary"
         android:textSize="@dimen/forecast_text_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/low_temperature"
