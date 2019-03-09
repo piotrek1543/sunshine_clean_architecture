@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="patient_image_size">160dp</dimen>
+    <bool name="isDarkMode">true</bool>
 </resources>

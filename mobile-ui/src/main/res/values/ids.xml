@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="empty_view_item_id" type="id"/>
+    <item name="patient_item_id" type="id"/>
+    <item name="patient_therapy_item_id" type="id"/>
+    <item name="therapy_details_item_id" type="id"/>
+    <item name="diagnostic_test_item_id" type="id"/>
+    <item name="personal_data_item_id" type="id"/>
+    <item name="therapy_data_item_id" type="id"/>
+    <item name="registered_exercise_item_id" type="id"/>
+    <item name="todo_item_id" type="id"/>
+    <item name="todo_exercise_item_id" type="id"/>
+    <item name="schedule_item_id" type="id"/>
+    <item name="my_progress_item_id" type="id"/>
+    <item name="sensor_item_id" type="id"/>
+
+    <item name="fab_main" type="id"/>
+    <item name="fab_calibrate_sensors" type="id"/>
+    <item name="fab_perform_exercise" type="id"/>
+    <item name="fab_record_exercise" type="id"/>
+    <item name="fab_search_for_devices" type="id"/>
+</resources>

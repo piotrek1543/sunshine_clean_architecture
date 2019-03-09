@@ -35,4 +35,19 @@
     <dimen name="list_item_date_left_margin">16dp</dimen>
     <dimen name="list_item_date_start_margin">@dimen/list_item_date_left_margin</dimen>
 
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_big">32dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_very_small">2dp</dimen>
+    <dimen name="padding_big">32dp</dimen>
+    <dimen name="margin_very_small">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_zero">0dp</dimen>
+
+    <item name="text_line_spacing" format="float" type="dimen">1.2</item>
+    <!-- per android.view.ViewGroup.LayoutParams -->
 </resources>

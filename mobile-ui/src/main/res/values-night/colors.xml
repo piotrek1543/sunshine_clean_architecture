@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_patient_contact_action">@color/white</color>
+    <color name="color_patient_contact_bg">@color/white_90</color>
+    <color name="bottomSheetBackgroundColor">#e6424242</color>
+    <color name="status_bar">@color/colorPrimaryDark</color>
+
+
+    <color name="color_background_overlay">#80000000</color>
+    <color name="drawable_blue">#00B0FF</color>
+    <color name="drawable_yellow">#FFEA00</color>
+    <color name="drawable_primary">#dedede</color>
+    <color name="drawable_secondary">#909090</color>
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/google_sans</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">?colorPrimary</item>
+        <item name="toolbarStyle">@style/Widget.Toolbar</item>
+        <item name="tabStyle">@style/Widget.Sunshine.Tabs</item>
+        <item name="android:textViewStyle">@style/Widget.Sunshine.TextView</item>
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+        <item name="android:statusBarColor">@color/status_bar</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorTertiary">@color/text_color_tertiary</item>
+        <item name="android:alertDialogTheme">@style/Theme.Sunshine.AlertDialogTheme</item>
+        <item name="alertDialogTheme">@style/Theme.Sunshine.AlertDialogTheme</item>
+        <item name="dialogTheme">@style/Theme.Sunshine.AlertDialogTheme</item>
+        <item name="android:dialogTheme">@style/Theme.Sunshine.AlertDialogTheme</item>
+        <item name="preferenceTheme">@style/AppTheme.Preferences</item>
+        <item name="bottomNavigationStyle">@style/Widget.Sunshine.BottomNavigationView</item>
+        <item name="android:textAppearanceListItemSecondary">@style/TextAppearance.Sunshine.ListSecondary</item>
+    </style>
+
+    <style name="AppTheme.Preferences" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.Sunshine.AlertDialogTheme" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Sunshine.Dialog.Content</item>
+        <item name="android:textViewStyle">@style/Widget.Sunshine.TextView</item>
+        <item name="android:windowTitleStyle">@style/TextAppearance.Sunshine.Dialog.Title</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.MaterialComponents.Button.TextButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.MaterialComponents.Button.TextButton</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.MaterialComponents.Button.Icon</item>
+    </style>
+
+    <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
+    <style name="AppTheme.Launcher" parent="AppTheme">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents"/>
+
+    <style name="Widget.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.Sunshine.ToolbarTitle</item>
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+    </style>
+
+    <style name="Widget.AppBar" parent="@style/Widget.Design.AppBarLayout">
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Widget.Sunshine.TextView" parent="@android:style/Widget.Material.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Sunshine.Body</item>
+        <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
+    </style>
+
+    <style name="TextAppearance.Sunshine.Tab" parent="@style/TextAppearance.MaterialComponents.Tab">
+        <item name="android:fontFamily">@font/google_sans</item>
+        <item name="android:textColor">@color/tab_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="Widget.Sunshine.Tabs" parent="@style/Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/TextAppearance.Sunshine.Tab</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+        <item name="android:theme">@style/AppTheme.PopupTheme</item>
+    </style>
+
+    <style name="Widget.Sunshine.BottomNavigationView"
+           parent="@style/Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="itemIconTint">@color/bottom_nav_item</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.Sunshine.BottomNavigationView.Active</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.Sunshine.BottomNavigationView</item>
+        <item name="labelVisibilityMode">selected</item>
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Dark</item>
+    </style>
+
+</resources>

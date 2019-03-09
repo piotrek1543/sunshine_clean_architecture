@@ -1,29 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-     Copyright (C) 2016 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#0288D1</color>
-    <color name="colorAccent">#FFD740</color>
+    <color name="colorPrimaryLight">#E1F5FE</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="status_bar">#202124</color>
+    <color name="text_color_tertiary">#dadce0</color>
 
-    <color name="white">#FFFFFF</color>
+    <color name="indigo">#4768fd</color>
+    <color name="teal">#31e7b6</color>
+    <color name="light_blue">#27e5fd</color>
+    <color name="yellow">#fcd230</color>
+    <color name="orange">#ff6c00</color>
+    <color name="red">#F44336</color>
+    <color name="white">#fff</color>
+    <color name="white_90">#e6ffffff</color>
 
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
+    <integer-array name="swipe_refresh">
+        <item>@color/indigo</item>
+        <item>@color/teal</item>
+        <item>@color/light_blue</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/yellow</item>
+        <item>@color/orange</item>
+        <item>@color/red</item>
+    </integer-array>
 
-    <!--our detail accent colors -->
+    <color name="bottomSheetBackgroundColor">@color/white_90</color>
+    <color name="color_patient_contact_action">#839aa7</color>
+    <color name="color_patient_contact_bg">#839aa7</color>
 
-    <!-- the activated state color for a forecast list item -->
+    <color name="color_background_overlay">#80FFFFFF</color>
+    <color name="drawable_blue">#00B0FF</color>
+    <color name="drawable_yellow">#FFEA00</color>
+    <color name="drawable_yellow_alpha">#26FFEA00</color>
+    <color name="drawable_primary">#212121</color>
+    <color name="drawable_secondary">#909090</color>
 </resources>

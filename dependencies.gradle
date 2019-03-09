@@ -20,7 +20,7 @@ ext {
     retrofitVersion = '2.3.0'
     roomVersion = '2.1.0-rc01'
     lifecycleVersion = "2.2.0-alpha01"
-    materialVersion = "1.1.0-alpha06"
+    materialVersion = "1.0.0"
     constraintVersion = '2.0.0-beta1 '
     supportLibraryVersion = '28.0.0'
     timberVersion = '4.7.1'
