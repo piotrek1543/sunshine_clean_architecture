@@ -44,6 +44,12 @@ ext {
     runnerVersion = '0.5'
     testingVersion = '2.1.0-beta01'
 
+    //Linters
+    rxLintVersion = '1.6.1'
+
+    //Reporting
+    leakCanaryVersion = '1.6.2'
+
     domainDependencies = [
             javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
@@ -180,6 +186,9 @@ ext {
             roomRxJava         : "android.arch.persistence.room:rxjava2:${roomVersion}",
             constraintLayout   : 'androidx.constraintlayout:constraintlayout:1.1.3',
             preferenceSupport  : 'androidx.preference:preference:1.0.0',
+            rxLint               : "nl.littlerobots.rxlint:rxlint:${rxLintVersion}",
+            leakCanary           : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+            leakCanaryNoOp       : "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
     ]
 
     mobileUiTestDependencies = [
