@@ -87,11 +87,13 @@ dependencies {
     implementation presentationDependencies.archExtensions
     kapt presentationDependencies.archCompiler
 
-    testImplementation mobileUiTestDependencies.kotlinJUnit
-
     kapt mobileUiDependencies.daggerCompiler
     kapt mobileUiDependencies.daggerProcessor
     compileOnly mobileUiDependencies.glassfishAnnotation
+
+    implementation mobileUiDependencies.leakCanary
+
+    testImplementation mobileUiTestDependencies.kotlinJUnit
 
     // Instrumentation test dependencies
     androidTestImplementation mobileUiTestDependencies.junit
