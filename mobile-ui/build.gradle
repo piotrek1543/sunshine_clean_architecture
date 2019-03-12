@@ -3,6 +3,27 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'jacoco-android'
+apply from: "$project.rootDir/scripts/script-git-version.gradle"
+
+Properties props = new Properties()
+def keystoreProperties = file("keystore.properties")
+if (keystoreProperties.exists()) {
+    props.load(new FileInputStream(keystoreProperties))
+}
+
+static def changeApkFileName(variant, versionName, versionCode) {
+    variant.outputs.all { output ->
+        def flavor = ""
+        if (variant.name.contains('production'))
+            flavor = 'production'
+        else if (variant.name.contains('staging'))
+            flavor = 'staging'
+        def newName = 'Orthyo_' + versionName + '_' +
+                versionCode + '-' + flavor + "_" + variant.buildType.name + '.apk'
+
+        outputFileName = newName
+    }
+}
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -16,10 +37,72 @@ android {
         testInstrumentationRunner "com.piotrek1543.android.boilerplate.ui.test.TestRunner"
     }
 
+    signingConfigs {
+        release {
+            /*  storeFile file("${props.getProperty('release.key.store', 'debug.keystore')}")
+            storePassword "${props.getProperty('release.key.store.password', 'android')}"
+            keyAlias "${props.getProperty('release.key.alias', 'androiddebugkey')}"
+            keyPassword "${props.getProperty('release.key.alias.password', 'android')}"*/
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('debug.keystore')
+            storePassword 'android'
+        }
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        staging {
+            dimension "default"
+            versionCode gitVersionCodeTime
+            versionName gitVersionName
+        }
+
+        production {
+            dimension "default"
+            versionCode gitVersionCode
+            versionName gitVersionName
+        }
+    }
+
     buildTypes {
         debug {
-            testCoverageEnabled true
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            applicationIdSuffix ".debug"
         }
+        qa {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree(dir: "proguard", include: ["*.pro"]).asList().toArray()
+            signingConfig signingConfigs.release
+            applicationIdSuffix ".qa"
+            matchingFallbacks = ['release']
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree(dir: "proguard", include: ["*.pro"]).asList().toArray()
+            signingConfig signingConfigs.release
+        }
+    }
+
+    applicationVariants.all { variant ->
+        def versionName = variant.mergedFlavor.versionName
+        def versionCode = variant.mergedFlavor.versionCode
+        changeApkFileName(variant, versionName, versionCode)
     }
 
     dexOptions {
