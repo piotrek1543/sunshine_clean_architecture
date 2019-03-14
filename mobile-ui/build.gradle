@@ -26,6 +26,11 @@ static def changeApkFileName(variant, versionName, versionCode) {
 }
 
 android {
+    lintOptions {
+        abortOnError false
+        warningsAsErrors true
+    }
+
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
@@ -33,9 +38,16 @@ android {
     defaultConfig {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
         targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
-        multiDexEnabled = true
-        testInstrumentationRunner "com.piotrek1543.android.boilerplate.ui.test.TestRunner"
+        versionCode gitVersionCode
+        versionName gitVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/app_developmentDebug.kotlin_module'
+    }
+
 
     signingConfigs {
         release {
@@ -105,10 +117,9 @@ android {
         changeApkFileName(variant, versionName, versionCode)
     }
 
-    dexOptions {
-        preDexLibraries = false
-        dexInProcess = false
-        javaMaxHeapSize "4g"
+    sourceSets {
+        test.java.srcDirs += 'src/test/kotlin'
+        test.resources.srcDirs += 'src/test/resources'
     }
 
     compileOptions {
@@ -130,6 +141,11 @@ android {
         ignoreWarnings true
     }
 
+    dexOptions {
+        preDexLibraries = false
+        dexInProcess = false
+        javaMaxHeapSize "4g"
+    }
 }
 
 kapt {
