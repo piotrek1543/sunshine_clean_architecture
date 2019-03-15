@@ -2,7 +2,6 @@ package com.piotrek1543.android.boilerplate.ui
 
 import android.os.StrictMode
 import com.piotrek1543.android.boilerplate.ui.injection.DaggerApplicationComponent
-import com.piotrek1543.android.boilerplate.ui.reporting.ReleaseTree
 import com.squareup.leakcanary.LeakCanary
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
@@ -40,7 +39,7 @@ class SunshineApplication : DaggerApplication() {
             LeakCanary.install(this)
             Timber.plant(Timber.DebugTree())
         } else {
-            Timber.plant(ReleaseTree())
+            Timber.plant(Timber.DebugTree())
         }
     }
 

@@ -48,7 +48,7 @@ open class GetForecastViewModel @Inject internal constructor(
         }
 
         override fun onError(exception: Throwable) {
-            forecast.postValue(Resource(ResourceState.ERROR, null, exception.message))
+            forecast.postValue(Resource(ResourceState.ERROR, null, exception.toString()))
             Timber.d(exception)
         }
 
