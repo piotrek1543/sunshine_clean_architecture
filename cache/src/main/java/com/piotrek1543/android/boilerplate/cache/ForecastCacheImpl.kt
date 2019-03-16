@@ -54,6 +54,7 @@ class ForecastCacheImpl @Inject constructor(
                 cachedSnowDao().clearSnow()
                 cachedWeatherDao().clearWeather()
                 cachedWindDao().clearWind()
+                cachedCoordDao().clearCoord()
             }
 
             Completable.complete()
@@ -67,39 +68,45 @@ class ForecastCacheImpl @Inject constructor(
         return Completable.defer {
             val cachedForecast = forecastEntityMapper.mapToCached(forecast)
 
-            val cachedCity = forecast.cityEntity?.let { cityEntityMapper.mapToCached(it) }
+            val cityEntity = forecast.cityEntity
+            val listEntity1 = forecast.listEntity
 
-            val cachedList = forecast.listEntity?.map { listEntityMapper.mapToCached(it) }
+            val cachedCity = cityEntity?.let { cityEntityMapper.mapToCached(it) }
+            val cachedCoord = cityEntity?.coordEntity?.let { coordEntityMapper.mapToCached(it) }
 
-            val cachedMain = forecast.listEntity?.map { listEntity ->
+            val cachedList = listEntity1?.map { listEntityMapper.mapToCached(it) }
+
+            val cachedMain = listEntity1?.map { listEntity ->
                 listEntity.mainEntity
             }?.map { entity ->
                 if (entity != null) mainEntityMapper.mapToCached(entity) else CachedMain()
-            }
+            } ?: emptyList()
 
-            val cachedWeatherList = forecast.listEntity
+            val cachedWeatherList = listEntity1
                     ?.mapNotNull { it -> it.weatherEntity }
                     ?.map { weatherEntityMapper.mapToCached(it) }
 
-            val cachedCloudsList = forecast.listEntity
+            val cachedCloudsList = listEntity1
                     ?.mapNotNull { it -> it.cloudsEntity }
                     ?.map { cloudsEntityMapper.mapToCached(it) }
 
-            val cachedWindList = forecast.listEntity
+            val cachedWindList = listEntity1
                     ?.mapNotNull { it -> it.windEntity }
                     ?.map { windEntityMapper.mapToCached(it) }
 
-            val cachedRainList = forecast.listEntity
+            val cachedRainList = listEntity1
                     ?.mapNotNull { it -> it.rainEntity }
-                    ?.map { rainEntityMapper.mapToCached(it) }
+                    ?.map { rainEntityMapper.mapToCached(it) } ?: emptyList()
 
-            val cachedPodList = forecast.listEntity
+            val cachedPodList = listEntity1
                     ?.mapNotNull { it -> it.podEntity }
                     ?.map { podEntityMapper.mapToCached(it) }
 
-            val cachedSnowList = forecast.listEntity
+            val cachedSnowList = listEntity1
                     ?.mapNotNull { it -> it.snowEntity }
                     ?.map { snowEntityMapper.mapToCached(it) }
+
+
 
             with(sunshineDatabase) {
                 cachedForecastDao().insertForecast(cachedForecast)
@@ -111,7 +118,9 @@ class ForecastCacheImpl @Inject constructor(
                 cachedRainDao().insertRain(cachedRainList)
                 cachedPodDao().insertPod(cachedPodList)
                 cachedSnowDao().insertSnow(cachedSnowList)
-                cachedCityDao().insertCity(cachedCity)
+                //fixme: cannot run CachedCity.getId() on nullable Object
+                //cachedCityDao().insertCity(cachedCity)
+                // cachedCoordDao().insertCoord(cachedCoord)
             }
 
             Completable.complete()
@@ -133,7 +142,7 @@ class ForecastCacheImpl @Inject constructor(
                     listFlowable,
                     mainFlowable,
                     weatherFlowable,
-                    Function4<CachedForecast?, List<CachedList>?, List<CachedMain>?, List<CachedWeather>?, ForecastEntity>
+                    Function4<CachedForecast?, List<CachedList>?, List<CachedMain?>?, List<CachedWeather>?, ForecastEntity>
                     { forecast, list, main, weather ->
                         Log.d(TAG, list.size.toString())
                         Log.d(TAG, main.size.toString())
@@ -142,7 +151,7 @@ class ForecastCacheImpl @Inject constructor(
                                 listEntity = list.mapIndexed { index: Int, cachedList: CachedList ->
                                     listEntityMapper.mapFromCached(cachedList)
                                             .copy(
-                                                    mainEntity = mainEntityMapper.mapFromCached(main[index]),
+                                                    mainEntity = mainEntityMapper.mapFromCached(main[index]!!),
                                                     weatherEntity = weatherEntityMapper.mapFromCached(weather[index])
                                             )
                                 }

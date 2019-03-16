@@ -17,7 +17,7 @@ import com.piotrek1543.android.boilerplate.cache.db.constants.CoordConstants
 )
 data class CachedCoord(
         @PrimaryKey
-        var cityId: Long? = null,
+        var cityId: Int? = null,
         var lon: Double? = null,
         var lat: Double? = null
 )
