@@ -146,6 +146,11 @@ android {
         dexInProcess = false
         javaMaxHeapSize "4g"
     }
+
+    dataBinding {
+        enabled = true
+        enabledForTests = true
+    }
 }
 
 kapt {
@@ -196,30 +201,18 @@ dependencies {
 
     // Instrumentation test dependencies
     androidTestImplementation mobileUiTestDependencies.junit
+    androidTestImplementation mobileUiTestDependencies.androidXTestExtKotlinRunner
     androidTestImplementation mobileUiTestDependencies.mockito
     androidTestImplementation mobileUiTestDependencies.mockitoAndroid
-    androidTestImplementation (mobileUiTestDependencies.espressoCore) {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
-    androidTestImplementation (mobileUiTestDependencies.androidRunner) {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
-    androidTestImplementation (mobileUiTestDependencies.androidRules) {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
-    androidTestImplementation (mobileUiTestDependencies.espressoIntents) {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
-    androidTestImplementation(mobileUiTestDependencies.espressoContrib) {
-        exclude module: 'appcompat'
-        exclude module: 'appcompat-v7'
-        exclude module: 'support-v4'
-        exclude module: 'support-v13'
-        exclude module: 'support-annotations'
-        exclude module: 'recyclerview-v7'
-        exclude module: 'design'
-    }
-
-    kaptTest mobileUiDependencies.daggerCompiler
-    kaptAndroidTest mobileUiDependencies.daggerCompiler
+    androidTestImplementation mobileUiTestDependencies.androidRunner
+    androidTestImplementation mobileUiTestDependencies.androidRules
+    androidTestImplementation mobileUiTestDependencies.espressoCore
+    androidTestImplementation mobileUiTestDependencies.espressoIntents
+    androidTestImplementation mobileUiTestDependencies.espressoContrib
+    androidTestImplementation mobileUiTestDependencies.espressoIdlingConcurrent
+    implementation mobileUiDependencies.espressoIdlingResource
+    // Once https://issuetracker.google.com/127986458 is fixed this can be testImplementation
+    implementation "androidx.fragment:fragment-testing:1.1.0-alpha09"
+    implementation "androidx.test:core:1.2.0"
+    implementation "androidx.fragment:fragment:1.1.0-alpha09"
 }
