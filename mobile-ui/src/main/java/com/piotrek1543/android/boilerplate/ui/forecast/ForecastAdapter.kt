@@ -1,7 +1,6 @@
 package com.piotrek1543.android.boilerplate.ui.forecast
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,8 +51,8 @@ class ForecastAdapter @Inject constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val layoutId = when (viewType) {
-            VIEW_TYPE_TODAY -> R.layout.list_item_forecast_today
-            VIEW_TYPE_FUTURE_DAY -> R.layout.forecast_list_item
+            VIEW_TYPE_TODAY -> R.layout.item_forecast_today
+            VIEW_TYPE_FUTURE_DAY -> R.layout.item_forecast
             else -> throw IllegalArgumentException("Invalid view type, value of $viewType")
         }
 
@@ -78,11 +77,11 @@ class ForecastAdapter @Inject constructor(
     }
 
     inner class ViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view), View.OnClickListener {
-        val weatherIconIV: ImageView = view.findViewById(R.id.weather_icon)
-        val dateTV: TextView = view.findViewById(R.id.date)
-        val descriptionTV: TextView = view.findViewById(R.id.weather_description)
-        val tempMaxTV: TextView = view.findViewById(R.id.high_temperature)
-        val tempMinTV: TextView = view.findViewById(R.id.low_temperature)
+        val weatherIconIV: ImageView = view.findViewById(R.id.image_weather_icon)
+        val dateTV: TextView = view.findViewById(R.id.text_date)
+        val descriptionTV: TextView = view.findViewById(R.id.text_weather_description)
+        val tempMaxTV: TextView = view.findViewById(R.id.text_high_temperature)
+        val tempMinTV: TextView = view.findViewById(R.id.text_low_temperature)
 
         init {
             view.setOnClickListener(this)

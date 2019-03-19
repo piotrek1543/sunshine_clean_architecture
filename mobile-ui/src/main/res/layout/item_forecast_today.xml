@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:background="@color/colorPrimary">
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     - This Guideline divides the screen into a left half and a right half and is used to        -
+     - anchor the views to the middle of the screen.                                             -
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <!-- Today's date -->
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:paddingTop="@dimen/today_forecast_list_item_vertical_padding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/image_weather_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Today, April 03" />
+
+    <!-- Icon indicating weather condition -->
+    <ImageView
+        android:id="@+id/image_weather_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/accessibility_weather_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guide_horizontal_middle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guide_horizontal_middle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/art_clouds" />
+
+    <!-- Text that describes weather condition -->
+    <TextView
+        android:id="@+id/text_weather_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/image_weather_icon"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintLeft_toLeftOf="@+id/image_weather_icon"
+        app:layout_constraintRight_toRightOf="@+id/image_weather_icon"
+        app:layout_constraintStart_toStartOf="@+id/image_weather_icon"
+        app:layout_constraintTop_toBottomOf="@+id/image_weather_icon"
+        tools:text="Rainy" />
+
+    <!-- High temperature for today -->
+    <TextView
+        android:id="@+id/text_high_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:textSize="72sp"
+        app:layout_constraintBottom_toBottomOf="@+id/image_weather_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintLeft_toLeftOf="@+id/guide_horizontal_middle"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guide_horizontal_middle"
+        app:layout_constraintTop_toTopOf="@+id/image_weather_icon"
+        tools:text="19\u00b0" />
+
+    <!-- Low temperature for today -->
+    <TextView
+        android:id="@+id/text_low_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_weather_description"
+        app:layout_constraintEnd_toEndOf="@+id/text_high_temperature"
+        app:layout_constraintLeft_toLeftOf="@+id/text_high_temperature"
+        app:layout_constraintRight_toRightOf="@+id/text_high_temperature"
+        app:layout_constraintStart_toStartOf="@+id/text_high_temperature"
+        tools:text="10\u00b0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

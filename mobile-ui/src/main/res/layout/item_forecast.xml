@@ -30,7 +30,7 @@
     android:paddingBottom="@dimen/list_item_padding_vertical">
 
     <ImageView
-        android:id="@+id/weather_icon"
+        android:id="@+id/image_weather_icon"
         android:layout_width="@dimen/list_icon"
         android:layout_height="@dimen/list_icon"
         android:contentDescription="@string/accessibility_weather_icon"
@@ -41,41 +41,41 @@
         tools:src="@drawable/art_clouds" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/text_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/list_item_date_start_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintLeft_toRightOf="@+id/weather_icon"
-        app:layout_constraintStart_toEndOf="@+id/weather_icon"
+        app:layout_constraintLeft_toRightOf="@+id/image_weather_icon"
+        app:layout_constraintStart_toEndOf="@+id/image_weather_icon"
         tools:text="Today, April 03" />
 
     <TextView
-        android:id="@+id/weather_description"
+        android:id="@+id/text_weather_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Sunshine.ListSecondary"
-        app:layout_constraintLeft_toLeftOf="@+id/date"
-        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintLeft_toLeftOf="@+id/text_date"
+        app:layout_constraintStart_toStartOf="@+id/text_date"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         tools:text="Rainy" />
 
     <TextView
-        android:id="@+id/high_temperature"
+        android:id="@+id/text_high_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/forecast_temperature_space"
         android:fontFamily="sans-serif-light"
         android:textSize="@dimen/forecast_text_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/low_temperature"
-        app:layout_constraintRight_toLeftOf="@+id/low_temperature"
+        app:layout_constraintEnd_toStartOf="@+id/text_low_temperature"
+        app:layout_constraintRight_toLeftOf="@+id/text_low_temperature"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         tools:text="19\u00b0" />
 
     <TextView
-        android:id="@+id/low_temperature"
+        android:id="@+id/text_low_temperature"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
