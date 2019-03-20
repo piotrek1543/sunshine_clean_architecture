@@ -37,6 +37,7 @@ class ForecastActivity : DaggerAppCompatActivity() {
 
         supportActionBar?.let {
             it.elevation = 0.0f
+            it.title = ""
             it.setDisplayShowHomeEnabled(true)
             it.setIcon(R.drawable.ic_logo)
         }
