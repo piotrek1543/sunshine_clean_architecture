@@ -13,8 +13,8 @@ class DataFactory {
             return ThreadLocalRandom.current().nextInt(0, 1000 + 1)
         }
 
-        fun randomLong(): Long {
-            return randomInt().toLong()
+        fun randomDouble(): Double {
+            return randomInt().toDouble()
         }
 
         fun randomUuid(): String {
