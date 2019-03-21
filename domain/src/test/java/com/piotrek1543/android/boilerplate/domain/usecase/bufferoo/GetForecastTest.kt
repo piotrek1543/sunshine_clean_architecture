@@ -1,4 +1,4 @@
-package com.piotrek1543.android.boilerplate.domain.usecase.bufferoo
+package com.piotrek1543.android.boilerplate.domain.usecase.Forecast
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -19,40 +19,43 @@ class GetForecastTest {
 
     private lateinit var mockThreadExecutor: ThreadExecutor
     private lateinit var mockPostExecutionThread: PostExecutionThread
-    private lateinit var mockBufferooRepository: ForecastRepository
+    private lateinit var mockForecastRepository: ForecastRepository
 
     @Before
     fun setUp() {
         mockThreadExecutor = mock()
         mockPostExecutionThread = mock()
-        mockBufferooRepository = mock()
-        getForecast = GetForecast(mockBufferooRepository, mockThreadExecutor,
-                mockPostExecutionThread)
+        mockForecastRepository = mock()
+        getForecast = GetForecast(
+                mockForecastRepository,
+                mockThreadExecutor,
+                mockPostExecutionThread
+        )
     }
 
     @Test
     fun buildUseCaseObservableCallsRepository() {
         getForecast.buildUseCaseObservable(null)
-        verify(mockBufferooRepository).getForecast()
+        verify(mockForecastRepository).getForecast()
     }
 
     @Test
     fun buildUseCaseObservableCompletes() {
-        stubBufferooRepositoryGetBufferoos(Flowable.just(ForecastFactory.makeForecast()))
+        stubForecastRepositoryGetForecasts(Flowable.just(ForecastFactory.makeForecast()))
         val testObserver = getForecast.buildUseCaseObservable(null).test()
         testObserver.assertComplete()
     }
 
     @Test
     fun buildUseCaseObservableReturnsData() {
-        val bufferoos = ForecastFactory.makeForecast()
-        stubBufferooRepositoryGetBufferoos(Flowable.just(bufferoos))
+        val Forecasts = ForecastFactory.makeForecast()
+        stubForecastRepositoryGetForecasts(Flowable.just(Forecasts))
         val testObserver = getForecast.buildUseCaseObservable(null).test()
-        testObserver.assertValue(bufferoos)
+        testObserver.assertValue(Forecasts)
     }
 
-    private fun stubBufferooRepositoryGetBufferoos(single: Flowable<Forecast>) {
-        whenever(mockBufferooRepository.getForecast())
+    private fun stubForecastRepositoryGetForecasts(single: Flowable<Forecast>) {
+        whenever(mockForecastRepository.getForecast())
                 .thenReturn(single)
     }
 

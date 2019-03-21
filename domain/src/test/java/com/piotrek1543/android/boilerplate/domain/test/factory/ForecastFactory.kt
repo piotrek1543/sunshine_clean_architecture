@@ -7,7 +7,7 @@ import com.piotrek1543.android.boilerplate.domain.test.factory.DataFactory.Facto
 import com.piotrek1543.android.boilerplate.domain.test.factory.DataFactory.Factory.randomUuid
 
 /**
- * Factory class for Bufferoo related instances
+ * Factory class for Forecast related instances
  */
 class ForecastFactory {
 
