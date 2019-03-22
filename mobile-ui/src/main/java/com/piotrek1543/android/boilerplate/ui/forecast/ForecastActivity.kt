@@ -17,6 +17,7 @@ import com.piotrek1543.android.boilerplate.ui.widget.empty.EmptyListener
 import com.piotrek1543.android.boilerplate.ui.widget.error.ErrorListener
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_forecast.*
+import kotlinx.android.synthetic.main.include_toolbar.*
 import javax.inject.Inject
 
 class ForecastActivity : DaggerAppCompatActivity() {
@@ -32,6 +33,7 @@ class ForecastActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
+        setSupportActionBar(toolbar)
         getForecastViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(GetForecastViewModel::class.java)
 
