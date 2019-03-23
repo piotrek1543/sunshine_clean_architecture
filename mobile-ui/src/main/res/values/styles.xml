@@ -45,7 +45,7 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
-    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents.Light"/>
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents.Dark"/>
 
     <style name="AppTheme.LightNav" parent="AppTheme.NoActionBar">
         <item name="android:colorButtonNormal">?colorPrimary</item>

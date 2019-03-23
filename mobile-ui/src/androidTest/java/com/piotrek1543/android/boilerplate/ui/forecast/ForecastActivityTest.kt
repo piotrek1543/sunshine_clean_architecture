@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers
@@ -15,7 +15,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.piotrek1543.android.boilerplate.ui.R
 import com.piotrek1543.android.boilerplate.ui.utils.EspressoIdlingResource
 import org.hamcrest.CoreMatchers.containsString
-import org.hamcrest.Matchers
+import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -66,7 +67,9 @@ class ForecastActivityTest {
         val activityScenario = ActivityScenario.launch(ForecastActivity::class.java)
 
         for (viewId in testIdiesList)
-            onView(RecyclerViewMatcher.withRecyclerView(R.id.recycler_browse).atPosition(0))
+            onView(withId(R.id.recycler_browse))
+                    .perform(RecyclerViewActions
+                            .scrollToPosition<RecyclerView.ViewHolder>(0))
                     .check(matches(hasDescendant(withId(viewId))))
 
         activityScenario.close()
@@ -77,16 +80,19 @@ class ForecastActivityTest {
         // start up Forecast screen
         val activityScenario = ActivityScenario.launch(ForecastActivity::class.java)
 
-        var forecastActivity : ForecastActivity? = null
+        var forecastActivity: ForecastActivity? = null
 
         activityScenario.onActivity {
             forecastActivity = it
         }
 
-        onView(RecyclerViewMatcher.withRecyclerView(R.id.recycler_browse).atPosition(0)).perform(ViewActions.click())
+        onView(withId(R.id.recycler_browse))
+                .perform(RecyclerViewActions
+                        .actionOnItemAtPosition<ForecastAdapter.ViewHolder>(0, click()))
 
-        onView(ViewMatchers.withText(containsString("ForecastViewModel"))).
-                inRoot(RootMatchers.withDecorView(Matchers.not(Matchers.`is`(forecastActivity!!.window.decorView)))).check(matches(ViewMatchers.isDisplayed()))
+        onView(ViewMatchers.withText(containsString("ForecastViewModel")))
+                .inRoot(RootMatchers.withDecorView(not(`is`(forecastActivity!!.window.decorView))))
+                .check(matches(ViewMatchers.isDisplayed()))
 
         activityScenario.close()
     }
