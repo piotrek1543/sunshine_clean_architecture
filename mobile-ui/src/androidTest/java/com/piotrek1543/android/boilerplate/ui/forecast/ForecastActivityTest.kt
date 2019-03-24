@@ -3,15 +3,15 @@ package com.piotrek1543.android.boilerplate.ui.forecast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers
-import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.piotrek1543.android.boilerplate.ui.R
 import com.piotrek1543.android.boilerplate.ui.utils.EspressoIdlingResource
 import org.hamcrest.CoreMatchers.containsString
@@ -66,7 +66,7 @@ class ForecastActivityTest {
         // start up Forecast screen
         val activityScenario = ActivityScenario.launch(ForecastActivity::class.java)
 
-        for (viewId in testIdiesList)
+        for (viewId in testForecastIdiesList)
             onView(withId(R.id.recycler_browse))
                     .perform(RecyclerViewActions
                             .scrollToPosition<RecyclerView.ViewHolder>(0))
@@ -90,20 +90,38 @@ class ForecastActivityTest {
                 .perform(RecyclerViewActions
                         .actionOnItemAtPosition<ForecastAdapter.ViewHolder>(0, click()))
 
-        onView(ViewMatchers.withText(containsString("ForecastViewModel")))
+        onView(withText(containsString("ForecastViewModel")))
                 .inRoot(RootMatchers.withDecorView(not(`is`(forecastActivity!!.window.decorView))))
-                .check(matches(ViewMatchers.isDisplayed()))
+                .check(matches(isDisplayed()))
+
+        activityScenario.close()
+    }
+
+    @Test
+    fun shouldContextMenuContainsTwoItems() {
+        // start up Forecast screen
+        val activityScenario = ActivityScenario.launch(ForecastActivity::class.java)
+
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().context)
+
+        for (itemId in testSettingsIdiesList)
+            onView(withId(itemId)).check(matches(isDisplayed()))
 
         activityScenario.close()
     }
 
     companion object {
-        val testIdiesList = listOf(
+        val testForecastIdiesList = listOf(
                 R.id.text_date,
                 R.id.text_high_temperature,
                 R.id.text_low_temperature,
                 R.id.text_weather_description,
                 R.id.image_weather_icon
+        )
+
+        val testSettingsIdiesList = listOf(
+                R.id.action_map,
+                R.id.action_settings
         )
     }
 }

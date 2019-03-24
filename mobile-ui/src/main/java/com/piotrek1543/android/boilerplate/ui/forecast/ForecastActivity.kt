@@ -56,7 +56,7 @@ class ForecastActivity : DaggerAppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.forecast, menu)
+        menuInflater.inflate(R.menu.menu_forecast, menu)
         return true
     }
 
