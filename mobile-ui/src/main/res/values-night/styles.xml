@@ -40,10 +40,6 @@
     </style>
 
     <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
-    <style name="AppTheme.Launcher" parent="AppTheme">
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="android:windowBackground">@drawable/splash_background</item>
-    </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>

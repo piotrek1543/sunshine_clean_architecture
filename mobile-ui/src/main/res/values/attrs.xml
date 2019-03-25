@@ -12,6 +12,4 @@
         <attr name="android:gravity"/>
     </declare-styleable>
 
-    <bool name="isTablet">false</bool>
-    <bool name="isDarkMode">false</bool>
 </resources>
