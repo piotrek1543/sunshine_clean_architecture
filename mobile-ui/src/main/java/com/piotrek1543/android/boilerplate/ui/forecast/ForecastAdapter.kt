@@ -16,7 +16,8 @@ import javax.inject.Inject
 
 class ForecastAdapter @Inject constructor(
         val context: Context,
-        private val weatherUtils: SunshineWeatherUtils) : RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
+        private val weatherUtils: SunshineWeatherUtils
+) : RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     var forecastList: List<ForecastViewModel> = arrayListOf()
     private val mUseTodayLayout: Boolean = context.resources.getBoolean(R.bool.use_today_layout)
@@ -27,15 +28,15 @@ class ForecastAdapter @Inject constructor(
         with(holder) {
 
             dateTV.text = SunshineDateUtils.getFriendlyDateString(context, forecast.date * 1000L, position)
-            descriptionTV.text = weatherUtils.getStringForWeatherCondition(context, forecast.icon)
+            descriptionTV.setText(weatherUtils.getStringIdForWeatherCondition(forecast.icon))
             tempMaxTV.text = weatherUtils.formatTemperature(context, forecast.tempMax)
             tempMinTV.text = weatherUtils.formatTemperature(context, forecast.tempMin)
 
             val weatherImageId = when (itemViewType) {
                 VIEW_TYPE_TODAY -> weatherUtils
-                        .getLargeArtResourceIdForWeatherCondition(forecast.icon)
+                        .getResourceIdForWeatherCondition(forecast.icon)
                 VIEW_TYPE_FUTURE_DAY -> weatherUtils
-                        .getSmallArtResourceIdForWeatherCondition(forecast.icon)
+                        .getResourceIdForWeatherCondition(forecast.icon)
                 else -> R.drawable.art_storm
             }
 
