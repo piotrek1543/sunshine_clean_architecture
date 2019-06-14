@@ -15,7 +15,7 @@ open class CoordEntityMapper @Inject constructor() :
      * Map a [CoordEntity] instance to a [CachedCoord] instance
      */
     override fun mapToCached(type: CoordEntity) = CachedCoord(
-            cityId = type.cityId ?: 1000,
+            cityId = type.cityId,
             lat = type.lat,
             lon = type.lon
     )

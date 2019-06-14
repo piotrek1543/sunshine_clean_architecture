@@ -18,6 +18,5 @@ open class CityEntityMapper @Inject constructor(private val coordEntityMapper: C
             name = type.name,
             country = type.country,
             population = type.population,
-            coordEntity = type.coord?.let { coordEntityMapper.mapFromRemote(it.apply { this.cityId = type.id }) })
-
+            coordEntity = type.coord?.let { coordEntityMapper.mapFromRemote(it) })
 }

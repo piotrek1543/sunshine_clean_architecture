@@ -18,7 +18,7 @@ ext {
     javaxInjectVersion = '1'
     okHttpVersion = '3.8.1'
     retrofitVersion = '2.3.0'
-    roomVersion = '2.1.0-rc01'
+    roomVersion = '2.1.0-beta01'
     lifecycleVersion = "2.2.0-alpha01"
     navigationVersion = '2.1.0-alpha04'
     materialVersion = "1.0.0"
@@ -30,7 +30,7 @@ ext {
     glassfishAnnotationVersion = '10.0-b28'
 
     //Testing
-    robolectricVersion = '4.3-beta-1'
+    robolectricVersion = '4.3'
     jUnitVersion = '4.13-beta-3'
     assertJVersion = '3.12.2'
     mockitoVersion = '2.0.2-beta'

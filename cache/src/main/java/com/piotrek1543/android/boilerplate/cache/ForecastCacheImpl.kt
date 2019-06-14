@@ -1,18 +1,16 @@
 package com.piotrek1543.android.boilerplate.cache
 
-import android.util.Log
 import com.piotrek1543.android.boilerplate.cache.db.SunshineDatabase
 import com.piotrek1543.android.boilerplate.cache.mapper.*
+import com.piotrek1543.android.boilerplate.cache.model.CachedCity
 import com.piotrek1543.android.boilerplate.cache.model.CachedForecast
 import com.piotrek1543.android.boilerplate.cache.model.CachedList
 import com.piotrek1543.android.boilerplate.cache.model.CachedMain
-import com.piotrek1543.android.boilerplate.cache.model.CachedWeather
 import com.piotrek1543.android.boilerplate.data.model.ForecastEntity
 import com.piotrek1543.android.boilerplate.data.repository.ForecastCache
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
-import io.reactivex.functions.Function4
 import javax.inject.Inject
 
 /**
@@ -68,11 +66,7 @@ class ForecastCacheImpl @Inject constructor(
         return Completable.defer {
             val cachedForecast = forecastEntityMapper.mapToCached(forecast)
 
-            val cityEntity = forecast.cityEntity
             val listEntity1 = forecast.listEntity
-
-            val cachedCity = cityEntity?.let { cityEntityMapper.mapToCached(it) }
-            val cachedCoord = cityEntity?.coordEntity?.let { coordEntityMapper.mapToCached(it) }
 
             val cachedList = listEntity1?.map { listEntityMapper.mapToCached(it) }
 
@@ -132,31 +126,37 @@ class ForecastCacheImpl @Inject constructor(
      */
     override fun getForecast(): Flowable<ForecastEntity> {
         return Flowable.defer {
-            val forecastFlowable = Flowable.just(sunshineDatabase.cachedForecastDao().getForecast())
-            val listFlowable = Flowable.just(sunshineDatabase.cachedListDao().getList())
-            val mainFlowable = Flowable.just(sunshineDatabase.cachedMainDao().getMain())
-            val weatherFlowable = Flowable.just(sunshineDatabase.cachedWeatherDao().getWeather())
 
-            Flowable.zip(
-                    forecastFlowable,
-                    listFlowable,
-                    mainFlowable,
-                    weatherFlowable,
-                    Function4<CachedForecast?, List<CachedList>?, List<CachedMain?>?, List<CachedWeather>?, ForecastEntity>
-                    { forecast, list, main, weather ->
-                        Log.d(TAG, list.size.toString())
-                        Log.d(TAG, main.size.toString())
-                        Log.d(TAG, weather.size.toString())
-                        forecastEntityMapper.mapFromCached(forecast).copy(
-                                listEntity = list.mapIndexed { index: Int, cachedList: CachedList ->
-                                    listEntityMapper.mapFromCached(cachedList)
-                                            .copy(
-                                                    mainEntity = mainEntityMapper.mapFromCached(main[index]!!),
-                                                    weatherEntity = weatherEntityMapper.mapFromCached(weather[index])
-                                            )
-                                }
-                        )
-                    })
+            val cachedForecast = sunshineDatabase.cachedForecastDao().getForecast()
+                    ?: CachedForecast()
+            val cachedList = sunshineDatabase.cachedListDao().getList() ?: emptyList()
+            val cachedMain = sunshineDatabase.cachedMainDao().getMain() ?: emptyList()
+            val cachedClouds = sunshineDatabase.cachedCloudsDao().getClouds() ?: emptyList()
+            val cachedWind = sunshineDatabase.cachedWindDao().getWind() ?: emptyList()
+            val cachedSnow = sunshineDatabase.cachedSnowDao().getSnow()
+                    ?: emptyList() //fixme: no snow, it's summer = 0/40
+            val cachedRain = sunshineDatabase.cachedRainDao().getRain()
+                    ?: emptyList() //fixme: rain sometimes, not always 15/40
+            val cachedCity = sunshineDatabase.cachedCityDao().getCity()
+                    ?: CachedCity() //City nullable, not sure why?
+            val cachedPod = sunshineDatabase.cachedPodDao().getPod() ?: emptyList()
+            val cachedWeather = sunshineDatabase.cachedWeatherDao().getWeather() ?: emptyList()
+
+
+            val hello = forecastEntityMapper.mapFromCached(cachedForecast).copy(
+                    listEntity = cachedList.mapIndexed { index: Int, cachedList: CachedList ->
+                        listEntityMapper.mapFromCached(cachedList)
+                                .copy(
+                                        mainEntity = mainEntityMapper.mapFromCached(cachedMain[index]!!),
+                                        weatherEntity = weatherEntityMapper.mapFromCached(cachedWeather[index]),
+                                        cloudsEntity = cloudsEntityMapper.mapFromCached(cachedClouds[index]),
+                                        windEntity = windEntityMapper.mapFromCached(cachedWind[index]),
+                                        podEntity = podEntityMapper.mapFromCached(cachedPod[index])
+                                )
+                    }
+            )
+
+            Flowable.just(hello)
         }
     }
 
