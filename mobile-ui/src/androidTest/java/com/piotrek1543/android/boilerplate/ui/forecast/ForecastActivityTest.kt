@@ -8,7 +8,7 @@ import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.RootMatchers
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
@@ -27,6 +27,7 @@ import org.junit.runner.RunWith
 class ForecastActivityTest {
 
     // An Idling Resource that waits for Data Binding to have no pending bindings
+    @Suppress("unused")
     private val dataBindingIdlingResource = DataBindingIdlingResource()
 
     /**
@@ -91,7 +92,7 @@ class ForecastActivityTest {
                         .actionOnItemAtPosition<ForecastAdapter.ViewHolder>(0, click()))
 
         onView(withText(containsString("ForecastViewModel")))
-                .inRoot(RootMatchers.withDecorView(not(`is`(forecastActivity!!.window.decorView))))
+                .inRoot(withDecorView(not(`is`(forecastActivity!!.window.decorView))))
                 .check(matches(isDisplayed()))
 
         activityScenario.close()
@@ -102,10 +103,10 @@ class ForecastActivityTest {
         // start up Forecast screen
         val activityScenario = ActivityScenario.launch(ForecastActivity::class.java)
 
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().context)
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext);
 
-        for (itemId in testSettingsIdiesList)
-            onView(withId(itemId)).check(matches(isDisplayed()))
+        for (textId in testSettingsTextIdiesList)
+            onView(withText(textId)).check(matches(isDisplayed()))
 
         activityScenario.close()
     }
@@ -119,9 +120,9 @@ class ForecastActivityTest {
                 R.id.image_weather_icon
         )
 
-        val testSettingsIdiesList = listOf(
-                R.id.action_map,
-                R.id.action_settings
+        val testSettingsTextIdiesList = listOf(
+                R.string.action_map,
+                R.string.action_settings
         )
     }
 }

@@ -13,6 +13,7 @@ import com.piotrek1543.android.boilerplate.presentation.data.ResourceState
 import com.piotrek1543.android.boilerplate.presentation.model.ForecastView
 import com.piotrek1543.android.boilerplate.ui.R
 import com.piotrek1543.android.boilerplate.ui.mapper.ForecastMapper
+import com.piotrek1543.android.boilerplate.ui.utils.EspressoIdlingResource
 import com.piotrek1543.android.boilerplate.ui.widget.empty.EmptyListener
 import com.piotrek1543.android.boilerplate.ui.widget.error.ErrorListener
 import dagger.android.support.DaggerAppCompatActivity
@@ -46,6 +47,7 @@ class ForecastActivity : DaggerAppCompatActivity() {
 
         setupRecyclerView()
         setupViewListeners()
+        EspressoIdlingResource.increment()
     }
 
     override fun onStart() {
@@ -86,8 +88,14 @@ class ForecastActivity : DaggerAppCompatActivity() {
                                 message: String?) {
         when (resourceState) {
             ResourceState.LOADING -> setupScreenForLoadingState()
-            ResourceState.SUCCESS -> setupScreenForSuccess(data)
-            ResourceState.ERROR -> setupScreenForError(message)
+            ResourceState.SUCCESS -> {
+                EspressoIdlingResource.decrement()
+                setupScreenForSuccess(data)
+            }
+            ResourceState.ERROR -> {
+                EspressoIdlingResource.decrement()
+                setupScreenForError(message)
+            }
         }
     }
 
