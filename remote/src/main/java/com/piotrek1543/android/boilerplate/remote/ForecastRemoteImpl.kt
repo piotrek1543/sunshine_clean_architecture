@@ -12,12 +12,12 @@ import javax.inject.Inject
  * [ForecastRemote] from the Data layer as it is that layers responsibility for defining the
  * operations in which data store implementation layers can carry out.
  */
-class ForecastRemoteImpl @Inject constructor(private val service: SunshineService,
+class ForecastRemoteImpl @Inject constructor(private val service: ForecastService,
                                              private val entityMapper: ForecastEntityMapper) :
         ForecastRemote {
 
     /**
-     * Retrieve a list of [ForecastEntity] instances from the [SunshineService].
+     * Retrieve a list of [ForecastEntity] instances from the [ForecastService].
      */
     override fun getForecast(): Flowable<ForecastEntity> {
         val query = Constants.QUERY

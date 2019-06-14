@@ -8,24 +8,24 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
- * Provide "make" methods to create instances of [SunshineService]
+ * Provide "make" methods to create instances of [ForecastService]
  * and its related dependencies, such as OkHttpClient, Moshi, etc.
  */
 object SunshineServiceFactory {
 
-    fun makeSunshineService(isDebug: Boolean): SunshineService {
+    fun makeSunshineService(isDebug: Boolean): ForecastService {
         val okHttpClient = makeOkHttpClient(makeLoggingInterceptor(isDebug))
         return makeSunshineService(okHttpClient)
     }
 
-    private fun makeSunshineService(okHttpClient: OkHttpClient): SunshineService {
+    private fun makeSunshineService(okHttpClient: OkHttpClient): ForecastService {
         val retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
-        return retrofit.create(SunshineService::class.java)
+        return retrofit.create(ForecastService::class.java)
     }
 
     private fun makeOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {

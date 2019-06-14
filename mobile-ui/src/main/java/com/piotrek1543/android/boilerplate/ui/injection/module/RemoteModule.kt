@@ -2,7 +2,7 @@ package com.piotrek1543.android.boilerplate.ui.injection.module
 
 import com.piotrek1543.android.boilerplate.data.repository.ForecastRemote
 import com.piotrek1543.android.boilerplate.remote.ForecastRemoteImpl
-import com.piotrek1543.android.boilerplate.remote.SunshineService
+import com.piotrek1543.android.boilerplate.remote.ForecastService
 import com.piotrek1543.android.boilerplate.remote.SunshineServiceFactory
 import com.piotrek1543.android.boilerplate.ui.BuildConfig
 import dagger.Binds
@@ -23,7 +23,7 @@ abstract class RemoteModule {
     companion object {
         @Provides
         @JvmStatic
-        fun provideSunshineService(): SunshineService {
+        fun provideSunshineService(): ForecastService {
             return SunshineServiceFactory.makeSunshineService(BuildConfig.DEBUG)
         }
     }

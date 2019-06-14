@@ -10,7 +10,7 @@ import retrofit2.http.Query
  * @author piotr on 24.02.17.
  */
 
-interface SunshineService {
+interface ForecastService {
 
     @GET("forecast/")
     operator fun get(@Query("q") q: String,
