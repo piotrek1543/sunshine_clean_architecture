@@ -24,3 +24,4 @@ ks.properties
 lint.xml
 /dist
 *.iml
+*.hprof

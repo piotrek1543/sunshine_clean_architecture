@@ -9,8 +9,8 @@ import javax.inject.Inject
  */
 open class ForecastDataStoreFactory @Inject constructor(
         private val forecastCache: ForecastCache,
-        private val ForecastCacheDataStore: ForecastCacheDataStore,
-        private val ForecastRemoteDataStore: ForecastRemoteDataStore) {
+        private val forecastCacheDataStore: ForecastCacheDataStore,
+        private val forecastRemoteDataStore: ForecastRemoteDataStore) {
 
     /**
      * Returns a DataStore based on whether or not there is content in the cache and the cache
@@ -27,14 +27,14 @@ open class ForecastDataStoreFactory @Inject constructor(
      * Return an instance of the Cache Data Store
      */
     open fun retrieveCacheDataStore(): ForecastDataStore {
-        return ForecastCacheDataStore
+        return forecastCacheDataStore
     }
 
     /**
      * Return an instance of the Remote Data Store
      */
     open fun retrieveRemoteDataStore(): ForecastDataStore {
-        return ForecastRemoteDataStore
+        return forecastRemoteDataStore
     }
 
 }
