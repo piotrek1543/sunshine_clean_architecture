@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/piotrek1543/sunshine_clean_architecture.svg?branch=master)](https://travis-ci.org/piotrek1543/sunshine_clean_architecture) [![codecov](https://codecov.io/gh/piotrek1543/sunshine_clean_architecture/branch/master/graph/badge.svg)](https://codecov.io/gh/piotrek1543/sunshine_clean_architecture) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ee987d2a95e48bdb175f7b9dbcf830f)](https://www.codacy.com/app/piotrek1543/sunshine_clean_architecture?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=piotrek1543/sunshine_clean_architecture&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/piotrek1543/sunshine_clean_architecture.svg?branch=master)](https://travis-ci.org/piotrek1543/sunshine_clean_architecture) 
+[![codecov](https://codecov.io/gh/piotrek1543/sunshine_clean_architecture/branch/master/graph/badge.svg)](https://codecov.io/gh/piotrek1543/sunshine_clean_architecture) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ee987d2a95e48bdb175f7b9dbcf830f)](https://www.codacy.com/app/piotrek1543/sunshine_clean_architecture?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=piotrek1543/sunshine_clean_architecture&amp;utm_campaign=Badge_Grade)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 # Sunshine Clean Architecture Example
 
@@ -14,12 +17,14 @@ The main purpose of this project is to master clean architecture approaches and 
 * [AndroidX Support Libraries](https://developer.android.com/jetpack/androidx)
 * [Material Components for Android](https://github.com/material-components/material-components-android)
 * [RxJava2](https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0)
-* [Dagger 2 (2.11)](https://github.com/google/dagger)
+* [Dagger2](https://github.com/google/dagger)
 * [Glide](https://github.com/bumptech/glide)
 * [Retrofit](http://square.github.io/retrofit/)
 * [OkHttp](http://square.github.io/okhttp/)
 * [Gson](https://github.com/google/gson)
 * [Timber](https://github.com/JakeWharton/timber)
+* [KtLint](https://ktlint.github.io/)
+* [Detekt](https://arturbosch.github.io/detekt/)
 * [Mockito](http://site.mockito.org/)
 * [Espresso](https://developer.android.com/training/testing/espresso/index.html)
 * [Robolectric](http://robolectric.org/)
