@@ -18,6 +18,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.Mockito
 
 @RunWith(JUnit4::class)
 class ForecastDataRepositoryTest {
@@ -124,7 +125,7 @@ class ForecastDataRepositoryTest {
         stubForecastCacheDataStoreGetForecast(Flowable.just(forecastEntity))
 
         val testObserver = forecastDataRepository.getForecast().test()
-        testObserver.assertValue(forecast)
+        testObserver.assertResult(forecast)
     }
 
     @Test
@@ -187,8 +188,8 @@ class ForecastDataRepositoryTest {
 
     private fun stubForecastMapperMapFromEntity(forecastEntity: ForecastEntity,
                                                 forecast: Forecast) {
-        whenever(forecastMapper.mapFromEntity(forecastEntity))
-                .thenReturn(forecast)
+        val forecastMapper: ForecastMapper = mock()
+        Mockito.`when`(forecastMapper.mapFromEntity(forecastEntity)).thenReturn(forecast)
     }
     //</editor-fold>
 

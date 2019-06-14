@@ -28,7 +28,7 @@ class ForecastFactory {
                     id = city.id,
                     name = city.name,
                     population = city.population,
-                    country = city.name,
+                    country = city.country,
                     coordEntity = coordEntity
             )
             val weatherEntity = WeatherEntity(
