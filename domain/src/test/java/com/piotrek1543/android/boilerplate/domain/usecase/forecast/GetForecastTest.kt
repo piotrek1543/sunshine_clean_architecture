@@ -1,4 +1,4 @@
-package com.piotrek1543.android.boilerplate.domain.usecase.Forecast
+package com.piotrek1543.android.boilerplate.domain.usecase.forecast
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
